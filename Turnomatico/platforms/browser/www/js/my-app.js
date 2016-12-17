@@ -14,6 +14,7 @@ var mainView = myApp.addView('.view-main', {
 // Handle Cordova Device Ready Event
 $$(document).on('deviceready', function() {
     console.log("Device is ready!");
+     window.printText("<h1>Audios</h1>",function(){alert("bien")});
 });
 
 
@@ -36,7 +37,3 @@ $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
     
 
 })
-document.addEventListener("deviceready", onDeviceReady, false); 
-    function onDeviceReady() { 
-        window.printText("<h1>Audios</h1>",successCallback); 
-        }

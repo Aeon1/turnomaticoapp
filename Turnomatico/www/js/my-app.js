@@ -51,9 +51,10 @@ window.DatecsPrinter.listBluetoothDevices(
 );
 
 function printSomeTestText() {
-  window.DatecsPrinter.printText("Print Test!{br}{br}", 'ISO-8859-1', 
+  window.DatecsPrinter.printText("Print Test!{br}x{br}", 'ISO-8859-1', 
     function() {
-      printMyImage();
+      //printMyImage();
+      alert('success!');
     }
   );
 }

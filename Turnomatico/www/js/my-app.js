@@ -53,7 +53,8 @@ $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
 function printSomeTestText() {
   window.DatecsPrinter.printText("Print Test!{cut}", 'ISO-8859-1', 
     function() {
-      printMyImage();
+      //printMyImage();
+      alert("bien");
     }
   );
 }

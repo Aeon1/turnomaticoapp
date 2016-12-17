@@ -38,9 +38,7 @@ window.DatecsPrinter.listBluetoothDevices(
   function (devices) {
     window.DatecsPrinter.connect(devices[0].address, 
       function() {
-        window.DatecsPrinter.printSelfTest();
-        window.DatecsPrinter.printPage();
-        //printSomeTestText();
+        printSomeTestText();
       },
       function() {
         alert(JSON.stringify(error));
@@ -53,7 +51,7 @@ window.DatecsPrinter.listBluetoothDevices(
 );
 
 function printSomeTestText() {
-  window.DatecsPrinter.printText("Print Test!", 'ISO-8859-1', 
+  window.DatecsPrinter.printText("Print Test!{br}{br}", 'ISO-8859-1', 
     function() {
       printMyImage();
     }

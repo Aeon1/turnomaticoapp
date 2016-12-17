@@ -14,7 +14,9 @@ var mainView = myApp.addView('.view-main', {
 // Handle Cordova Device Ready Event
 $$(document).on('deviceready', function() {
     console.log("Device is ready!");
-   
+    //Create an ePOS-Print Builder object
+
+ 
      
 });
 
@@ -24,6 +26,8 @@ $$(document).on('deviceready', function() {
 // Option 1. Using page callback for page (for "about" page in this case) (recommended way):
 myApp.onPageInit('about', function (page) {
     // Do something here for "about" page
+    
+
 
 })
 
@@ -40,9 +44,6 @@ $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
     window.DatecsPrinter.connect(devices[0].address, 
       function() {
         printSomeTestText();
-         var builder = new epson.ePOSBuilder();
-         builder.addCut(builder.CUT_FEED);
-
       },
       function() {
         alert(JSON.stringify(error));
@@ -58,7 +59,7 @@ function printSomeTestText() {
 var data = "hello world"+[0x01B, 0x64, 10];
 var buffer = new Uint8Array(data).buffer;
 var corte="PGN1dC8+";
-  window.DatecsPrinter.printText(String.fromCharCode(27)+" m "+corte, 'ISO-8859-1', 
+  window.DatecsPrinter.printText('<epos-print xmlns="http://www.epson-pos.com/schemas/2011/03/epos-print"><text lang="en"/><text smooth="true"/><text font="font_a"/><text width="4" height="4"/><text reverse="false" ul="false" em="true"/><text>Hello,&#9;World!&#10;</text><cut type="feed"/></epos-print>', 'ISO-8859-1', 
     function() {
       printMyImage();
     }

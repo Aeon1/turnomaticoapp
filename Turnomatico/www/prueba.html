@@ -5,6 +5,7 @@
 	<meta name="author" content="Aeon1" />
 
 	<title>Sin título 1</title>
+    <script type="text/javascript" src="js/epos-print-5.0.0.js"></script>
 </head>
 
 <body onload="printMyImage()">
@@ -13,29 +14,20 @@
 <script>
 
 function printMyImage() {
-  var image = new Image();
-  image.src = 'img/imagen.jpg';
-  image.onload = function() {
-      var canvas = document.createElement('canvas');
-      canvas.height = 100;
-      canvas.width = 100;
-      var context = canvas.getContext('2d');
-      context.drawImage(image, 0, 0);
-      var imageData = canvas.toDataURL('image/jpeg').replace(/^data:image\/(png|jpg|jpeg);base64,/, ""); //remove mimetype 
-      console.log(imageData);
-      //window.DatecsPrinter.printImage(
-//          imageData, //base64 
-//          canvas.width, 
-//          canvas.height, 
-//          1, 
-//          function() {
-//            printMyBarcode();
-//          },
-//          function(error) {
-//              alert(JSON.stringify(error));
-//          }
-//      )
-  };
+   var builder = new epson.ePOSBuilder();
+ //Create a print document
+ //<Configure the print character settings>
+ builder.addTextLang('en');
+ builder.addTextSmooth(true);
+ builder.addTextFont(builder.FONT_A);
+ builder.addTextSize(4, 4);
+ builder.addTextStyle(false, false, true, undefined);
+ //<Specify the print data>
+ builder.addText('Hello,\tWorld!\n');
+ builder.addCut(builder.CUT_FEED);
+ //Acquire the print document
+ var request = builder.toString();
+ console.log(request);
 }
 </script>
 

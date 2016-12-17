@@ -53,7 +53,7 @@ $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
 
  
 function printSomeTestText() {
-  window.DatecsPrinter.printText("Print Test!<cut/>", 'ISO-8859-1', 
+  window.DatecsPrinter.printText("Print Test!", 'ISO-8859-1', 
     function() {
         alert("Hecho");
       //printMyImage();

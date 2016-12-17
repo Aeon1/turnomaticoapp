@@ -1,0 +1,31 @@
+{
+  "name": "intspirit.cordova.plugin.printer",
+  "version": "0.0.4",
+  "description": "Plugin to print offline using bluetooth connection for Cordova 3.x.x",
+  "cordova": {
+    "id": "intspirit.cordova.plugin.printer",
+    "platforms": [
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.ocm/Natalia21/phoneGapIOSPrintingPlugin.git"
+  },
+  "keywords": [
+    "print",
+    "printer",
+    "ios",
+    "bluetooth",
+    "ecosystem:cordova",
+    "cordova-ios"
+  ],
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0.0"
+    }
+  ],
+  "author": "Intspirit Team",
+  "license": "Apache 2.0"
+}

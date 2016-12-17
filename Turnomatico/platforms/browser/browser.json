@@ -18,6 +18,9 @@
         },
         "cordova-plugin-datecs-printer": {
             "PACKAGE_NAME": "com.avi.turnomatico"
+        },
+        "intspirit.cordova.plugin.printer": {
+            "PACKAGE_NAME": "com.avi.turnomatico"
         }
     },
     "dependent_plugins": {},
@@ -37,12 +40,21 @@
             "clobbers": [
                 "DatecsPrinter"
             ]
+        },
+        {
+            "file": "plugins/intspirit.cordova.plugin.printer/www/printer.js",
+            "id": "intspirit.cordova.plugin.printer.NPrinter",
+            "pluginId": "intspirit.cordova.plugin.printer",
+            "clobbers": [
+                "plugin.printer"
+            ]
         }
     ],
     "plugin_metadata": {
         "cordova-plugin-whitelist": "1.2.2",
         "cordova-plugin-console": "1.0.5",
         "cordova-plugin-statusbar": "1.0.1",
-        "cordova-plugin-datecs-printer": "0.5.0"
+        "cordova-plugin-datecs-printer": "0.5.0",
+        "intspirit.cordova.plugin.printer": "0.0.1"
     }
 }

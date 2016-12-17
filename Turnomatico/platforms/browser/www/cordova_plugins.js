@@ -15,6 +15,14 @@ module.exports = [
         "clobbers": [
             "DatecsPrinter"
         ]
+    },
+    {
+        "file": "plugins/intspirit.cordova.plugin.printer/www/printer.js",
+        "id": "intspirit.cordova.plugin.printer.NPrinter",
+        "pluginId": "intspirit.cordova.plugin.printer",
+        "clobbers": [
+            "plugin.printer"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -23,7 +31,8 @@ module.exports.metadata =
     "cordova-plugin-whitelist": "1.2.2",
     "cordova-plugin-console": "1.0.5",
     "cordova-plugin-statusbar": "1.0.1",
-    "cordova-plugin-datecs-printer": "0.5.0"
+    "cordova-plugin-datecs-printer": "0.5.0",
+    "intspirit.cordova.plugin.printer": "0.0.1"
 }
 // BOTTOM OF METADATA
 });

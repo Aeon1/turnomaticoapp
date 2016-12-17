@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://www.apache.org/cordova/ns/plugins/1.0"
+        id="intspirit.cordova.plugin.printer"
+        version="0.0.1">
+
+    <name>Print online/offline with Third party apps</name>
+
+    <description>Plugin to print offline using bluetooth connection for Cordova 3.x.x</description>
+    <repo>https://github.com/Natalia21/phoneGapIOSPrintingPlugin.git</repo>
+    <keywords>print, printer, ios, bluetooth</keywords>
+    <license>Apache 2.0</license>
+
+    <author>Intspirit Team</author>
+
+    <engines>
+        <engine name="cordova" version=">=3.0.0" />
+    </engines>
+
+    <!-- interface -->
+    <js-module src="www/printer.js" name="NPrinter">
+        <clobbers target="plugin.printer" />
+    </js-module>
+
+    <!-- ios -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="NPrinter">
+                <param name="ios-package" value="NPrinter"/>
+            </feature>
+        </config-file>
+
+        <source-file src="src/ios/libeposprint.a" framework="true"/>
+        <header-file src="src/ios/ePOS-Print.h" framework="true"/>
+        <header-file src="src/ios/ePOSBluetoothConnection.h" framework="true"/>
+        <source-file src="src/ios/NPrint.h" />
+        <source-file src="src/ios/NPrint.m" />
+
+        <framework src="ExternalAccessory.framework" />
+
+        <config-file target="*-Info.plist" parent="UISupportedExternalAccessoryProtocols">
+            <array>
+                <string>com.epson.escpos</string>
+            </array>
+        </config-file>
+
+    </platform>
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="NPrinter">
+                <param name="android-package" value="nirwan.cordova.plugin.printer.Printer"/>
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/Printer.java" target-dir="src/nirwan/cordova/plugin/printer" />
+    </platform>
+
+</plugin>

@@ -18,6 +18,9 @@
         },
         "cordova-plugin-datecs-printer": {
             "PACKAGE_NAME": "com.avi.turnomatico"
+        },
+        "intspirit.cordova.plugin.printer": {
+            "PACKAGE_NAME": "com.avi.turnomatico"
         }
     },
     "dependent_plugins": {}

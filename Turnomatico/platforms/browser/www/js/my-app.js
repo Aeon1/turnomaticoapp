@@ -14,9 +14,7 @@ var mainView = myApp.addView('.view-main', {
 // Handle Cordova Device Ready Event
 $$(document).on('deviceready', function() {
     console.log("Device is ready!");
-    window.initPrinter(printerMacAddress,function(){
-        window.printText("<h1>Audios</h1>",function(){alert("bien")});
-    });
+   
      
 });
 
@@ -37,6 +35,27 @@ $$(document).on('pageInit', function (e) {
 })
 // Option 2. Using live 'pageInit' event handlers for each page
 $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
-    
+    window.DatecsPrinter.listBluetoothDevices(
+  function (devices) {
+    window.DatecsPrinter.connect(devices[0].address, 
+      function() {
+        printSomeTestText();
+      },
+      function() {
+        alert(JSON.stringify(error));
+      }
+    );
+  },
+  function (error) {
+    alert(JSON.stringify(error));
+  }
+);
+function printSomeTestText() {
+  window.DatecsPrinter.printText("Print Test!{cut}", 'ISO-8859-1', 
+    function() {
+      printMyImage();
+    }
+  );
+}
 
 })

@@ -59,9 +59,8 @@ function printSomeTestText() {
  }
  return arr
 }
-var data = "hello world"+concat([0x01B, 0x64, 10]);
-alert(data);
-  window.DatecsPrinter.printText(data, 'ISO-8859-1', 
+
+  window.DatecsPrinter.printText("hello world [0x01B, 0x64, 10]", 'ISO-8859-1', 
     function() {
       printMyImage();
     }

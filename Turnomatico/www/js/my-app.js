@@ -59,7 +59,7 @@ function printSomeTestText() {
   window.DatecsPrinter.printText("Print Test!", 'ISO-8859-1', 
     function() {
       printMyImage();
-      builder.addCut();
+      builder.addCut("feed");
     }
   );
 }

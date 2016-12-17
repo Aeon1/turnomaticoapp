@@ -31,7 +31,7 @@ $$(document).on('pageInit', function (e) {
     var page = e.detail.page;
 
 })
-
+var builder;
 // Option 2. Using live 'pageInit' event handlers for each page
 $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
     // Following code will be executed for page with data-page attribute equal to "about"
@@ -39,6 +39,7 @@ $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
   function (devices) {
     window.DatecsPrinter.connect(devices[0].address, 
       function() {
+        builder = new epson.ePOSBuilder();
         //printSomeTestText();
         printMyImage() 
       },
@@ -58,6 +59,7 @@ function printSomeTestText() {
   window.DatecsPrinter.printText("Print Test!", 'ISO-8859-1', 
     function() {
       printMyImage();
+      builder.addCut();
     }
   );
 }

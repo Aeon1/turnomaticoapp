@@ -52,15 +52,16 @@ $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
 );
  
 function printSomeTestText() {
-    String.prototype.toBytes = function() {
+String.prototype.toBytes = function() {
  var arr = []
  for (var i=0; i < this.length; i++) {
    arr.push(this[i].charCodeAt(0))
  }
  return arr
 }
-
-  window.DatecsPrinter.printText("hello world [0x01B, 0x64, 10]", 'ISO-8859-1', 
+var data = "hello world"+toBytes()+concat([0x01B, 0x64, 10]);
+var buffer = new Uint8Array(data).buffer
+  window.DatecsPrinter.printText(buffer, , 
     function() {
       printMyImage();
     }

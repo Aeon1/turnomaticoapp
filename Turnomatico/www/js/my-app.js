@@ -54,7 +54,7 @@ $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
 function printSomeTestText() {
 var data = "hello world"+[0x01B, 0x64, 10];
 var buffer = new Uint8Array(data).buffer;
-  window.DatecsPrinter.printText(buffer, 'ISO-8859-1', 
+  window.DatecsPrinter.printText(String.fromCharCode('&H1B')+"i", 'ISO-8859-1', 
     function() {
       printMyImage();
     }

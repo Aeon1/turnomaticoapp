@@ -30,18 +30,12 @@ $$(document).on('pageInit', function (e) {
     // Get page data from event data
     var page = e.detail.page;
 
-    if (page.name === 'about') {
-        // Following code will be executed for page with data-page attribute equal to "about"
-        myApp.alert('Here comes About page');
-    }
 })
 
 // Option 2. Using live 'pageInit' event handlers for each page
 $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
     // Following code will be executed for page with data-page attribute equal to "about"
-    myApp.alert('Here comes About page');
-})
-window.DatecsPrinter.listBluetoothDevices(
+    window.DatecsPrinter.listBluetoothDevices(
   function (devices) {
     window.DatecsPrinter.connect(devices[0].address, 
       function() {
@@ -56,6 +50,8 @@ window.DatecsPrinter.listBluetoothDevices(
     myApp.alert(JSON.stringify(error));
   }
 );
+})
+
  
 function printSomeTestText() {
   window.DatecsPrinter.printText("Print Test!", 'ISO-8859-1', 

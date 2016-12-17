@@ -14,7 +14,10 @@ var mainView = myApp.addView('.view-main', {
 // Handle Cordova Device Ready Event
 $$(document).on('deviceready', function() {
     console.log("Device is ready!");
-     window.printText("<h1>Audios</h1>",function(){alert("bien")});
+    window.initPrinter(printerMacAddress,function(){
+        window.printText("<h1>Audios</h1>",function(){alert("bien")});
+    });
+     
 });
 
 

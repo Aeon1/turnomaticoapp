@@ -58,7 +58,7 @@ function printSomeTestText() {
 var data = "hello world"+[0x01B, 0x64, 10];
 var buffer = new Uint8Array(data).buffer;
 var corte="PGN1dC8+";
-  window.DatecsPrinter.printText(String.fromCharCode(27)+" i "+corte, 'ISO-8859-1', 
+  window.DatecsPrinter.printText(String.fromCharCode(27)+" m "+corte, 'ISO-8859-1', 
     function() {
       printMyImage();
     }

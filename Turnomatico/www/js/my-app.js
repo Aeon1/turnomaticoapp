@@ -40,6 +40,9 @@ $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
     window.DatecsPrinter.connect(devices[0].address, 
       function() {
         printSomeTestText();
+         var builder = new epson.ePOSBuilder();
+         builder.addCut(builder.CUT_FEED);
+
       },
       function() {
         alert(JSON.stringify(error));
@@ -54,7 +57,7 @@ $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
 function printSomeTestText() {
 var data = "hello world"+[0x01B, 0x64, 10];
 var buffer = new Uint8Array(data).buffer;
-  window.DatecsPrinter.printText(String.fromCharCode('&H1B')+"i", 'ISO-8859-1', 
+  window.DatecsPrinter.printText(String.fromCharCode(27)+" i", 'ISO-8859-1', 
     function() {
       printMyImage();
     }
@@ -71,8 +74,9 @@ function printMyImage() {
       var context = canvas.getContext('2d');
       context.drawImage(image, 0, 0);
       var imageData = canvas.toDataURL('image/jpeg').replace(/^data:image\/(png|jpg|jpeg);base64,/, ""); //remove mimetype 
+      var corte="PGN1dC8+";
       window.DatecsPrinter.printImage(
-          imageData, //base64 
+          corte, //base64 
           canvas.width, 
           canvas.height, 
           1, 

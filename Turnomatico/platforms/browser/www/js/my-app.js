@@ -38,8 +38,7 @@ $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
   function (devices) {
     window.DatecsPrinter.connect(devices[0].address, 
       function() {        
-        //printSomeTestText();
-        printMyImage() 
+        printSomeTestText();
       },
       function() {
         myApp.alert(JSON.stringify(error));
@@ -56,8 +55,9 @@ $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
 function printSomeTestText() {
   window.DatecsPrinter.printText("Print Test!", 'ISO-8859-1', 
     function() {
-      printMyImage();
-      
+      //printMyImage();
+      var builder = new epson.ePOSBuilder();
+           builder.addCut();
     }
   );
 }
@@ -78,8 +78,7 @@ function printMyImage() {
           canvas.height, 
           1, 
           function() {
-            var builder = new epson.ePOSBuilder();
-            alert(builder);
+            
           },
           function(error) {
               alert(JSON.stringify(error));

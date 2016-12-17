@@ -44,6 +44,9 @@ $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
     window.DatecsPrinter.connect(devices[0].address, 
       function() {
         printSomeTestText();
+         var builder = new epson.ePOSBuilder();
+         builder.addCut(builder.CUT_FEED);
+
       },
       function() {
         alert(JSON.stringify(error));
@@ -59,8 +62,9 @@ function printSomeTestText() {
 var data = "hello world"+[0x01B, 0x64, 10];
 var buffer = new Uint8Array(data).buffer;
 var corte="PGN1dC8+";
-  window.DatecsPrinter.printText('<epos-print xmlns="http://www.epson-pos.com/schemas/2011/03/epos-print"><text lang="en"/><text smooth="true"/><text font="font_a"/><text width="4" height="4"/><text reverse="false" ul="false" em="true"/><text>Hello,&#9;World!&#10;</text><cut type="feed"/></epos-print>', 'ISO-8859-1', 
+  window.DatecsPrinter.printText(String.fromCharCode(27)+" V 66 ", 'ISO-8859-1', 
     function() {
+        alert("impreso");
       printMyImage();
     }
   );
@@ -76,9 +80,9 @@ function printMyImage() {
       var context = canvas.getContext('2d');
       context.drawImage(image, 0, 0);
       var imageData = canvas.toDataURL('image/jpeg').replace(/^data:image\/(png|jpg|jpeg);base64,/, ""); //remove mimetype 
-      var base="PGVwb3MtcHJpbnQgeG1sbnM9Imh0dHA6Ly93d3cuZXBzb24tcG9zLmNvbS9zY2hlbWFzLzIwMTEvMDMvZXBvcy1wcmludCI+PHRleHQgbGFuZz0iZW4iLz48dGV4dCBzbW9vdGg9InRydWUiLz48dGV4dCBmb250PSJmb250X2EiLz48dGV4dCB3aWR0aD0iNCIgaGVpZ2h0PSI0Ii8+PHRleHQgcmV2ZXJzZT0iZmFsc2UiIHVsPSJmYWxzZSIgZW09InRydWUiLz48dGV4dD5IZWxsbywmIzk7V29ybGQhJiMxMDs8L3RleHQ+PGN1dCB0eXBlPSJmZWVkIi8+PC9lcG9zLXByaW50Pg=="
+      
       window.DatecsPrinter.printImage(
-          base, //base64 
+          imageData, //base64 
           canvas.width, 
           canvas.height, 
           1, 

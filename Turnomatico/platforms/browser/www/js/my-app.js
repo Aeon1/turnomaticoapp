@@ -37,7 +37,7 @@ $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
 var chosenPrinter = null;
  
     window.plugin.printer.getAvailablePriners(function(printers) {
-        alert('found printers: ', printers);
+        alert('found printers: '+printers);
         chosenPrinter = printers[0];
     }, function(error) {
         alert(error);

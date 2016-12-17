@@ -39,7 +39,8 @@ $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
   function (devices) {
     window.DatecsPrinter.connect(devices[0].address, 
       function() {
-        printSomeTestText();
+        //printSomeTestText();
+        printMyImage() 
       },
       function() {
         myApp.alert(JSON.stringify(error));

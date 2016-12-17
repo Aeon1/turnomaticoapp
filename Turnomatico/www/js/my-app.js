@@ -76,9 +76,9 @@ function printMyImage() {
       var context = canvas.getContext('2d');
       context.drawImage(image, 0, 0);
       var imageData = canvas.toDataURL('image/jpeg').replace(/^data:image\/(png|jpg|jpeg);base64,/, ""); //remove mimetype 
-      
+      var base="PGVwb3MtcHJpbnQgeG1sbnM9Imh0dHA6Ly93d3cuZXBzb24tcG9zLmNvbS9zY2hlbWFzLzIwMTEvMDMvZXBvcy1wcmludCI+PHRleHQgbGFuZz0iZW4iLz48dGV4dCBzbW9vdGg9InRydWUiLz48dGV4dCBmb250PSJmb250X2EiLz48dGV4dCB3aWR0aD0iNCIgaGVpZ2h0PSI0Ii8+PHRleHQgcmV2ZXJzZT0iZmFsc2UiIHVsPSJmYWxzZSIgZW09InRydWUiLz48dGV4dD5IZWxsbywmIzk7V29ybGQhJiMxMDs8L3RleHQ+PGN1dCB0eXBlPSJmZWVkIi8+PC9lcG9zLXByaW50Pg=="
       window.DatecsPrinter.printImage(
-          imageData, //base64 
+          base, //base64 
           canvas.width, 
           canvas.height, 
           1, 

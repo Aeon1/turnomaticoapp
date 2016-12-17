@@ -7,6 +7,14 @@ module.exports = [
         "clobbers": [
             "window.StatusBar"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-datecs-printer/www/printer.js",
+        "id": "cordova-plugin-datecs-printer.DatecsPrinter",
+        "pluginId": "cordova-plugin-datecs-printer",
+        "clobbers": [
+            "DatecsPrinter"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -14,7 +22,8 @@ module.exports.metadata =
 {
     "cordova-plugin-whitelist": "1.2.2",
     "cordova-plugin-console": "1.0.5",
-    "cordova-plugin-statusbar": "1.0.1"
+    "cordova-plugin-statusbar": "1.0.1",
+    "cordova-plugin-datecs-printer": "0.5.0"
 }
 // BOTTOM OF METADATA
 });

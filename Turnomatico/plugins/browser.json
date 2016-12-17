@@ -15,6 +15,9 @@
         },
         "cordova-plugin-statusbar": {
             "PACKAGE_NAME": "com.avi.turnomatico"
+        },
+        "cordova-plugin-datecs-printer": {
+            "PACKAGE_NAME": "com.avi.turnomatico"
         }
     },
     "dependent_plugins": {}

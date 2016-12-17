@@ -1096,4 +1096,3 @@
         window.epson.ePOSBuilder = ePOSBuilder;
         window.epson.ePOSPrint = ePOSPrint;
         window.epson.CanvasPrint = CanvasPrint
-}

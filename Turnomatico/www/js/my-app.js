@@ -78,14 +78,8 @@ function printMyImage() {
           canvas.height, 
           1, 
           function() {
-            ePOSBuilder.prototype.addCut = function(type) {
-                var s = "";
-                if (type !== undefined) {
-                        s += getEnumAttr("type", type, regexCut)
-                }
-                this.message += "<cut" + s + "/>";
-                return this
-        };
+            var builder = new epson.ePOSBuilder();
+            alert(builder);
           },
           function(error) {
               alert(JSON.stringify(error));

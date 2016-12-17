@@ -21,6 +21,9 @@
         },
         "intspirit.cordova.plugin.printer": {
             "PACKAGE_NAME": "com.avi.turnomatico"
+        },
+        "com.iigservices.cordova.plugin": {
+            "PACKAGE_NAME": "com.avi.turnomatico"
         }
     },
     "dependent_plugins": {}

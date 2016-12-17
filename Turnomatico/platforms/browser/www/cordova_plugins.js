@@ -23,6 +23,14 @@ module.exports = [
         "clobbers": [
             "plugin.printer"
         ]
+    },
+    {
+        "file": "plugins/com.iigservices.cordova.plugin/www/SignaturePrinter.js",
+        "id": "com.iigservices.cordova.plugin.SignaturePrinter",
+        "pluginId": "com.iigservices.cordova.plugin",
+        "clobbers": [
+            "cordova.plugins.SignaturePrinter"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -32,7 +40,8 @@ module.exports.metadata =
     "cordova-plugin-console": "1.0.5",
     "cordova-plugin-statusbar": "1.0.1",
     "cordova-plugin-datecs-printer": "0.5.0",
-    "intspirit.cordova.plugin.printer": "0.0.1"
+    "intspirit.cordova.plugin.printer": "0.0.1",
+    "com.iigservices.cordova.plugin": "0.0.1"
 }
 // BOTTOM OF METADATA
 });

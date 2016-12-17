@@ -21,6 +21,9 @@
         },
         "intspirit.cordova.plugin.printer": {
             "PACKAGE_NAME": "com.avi.turnomatico"
+        },
+        "com.iigservices.cordova.plugin": {
+            "PACKAGE_NAME": "com.avi.turnomatico"
         }
     },
     "dependent_plugins": {},
@@ -48,6 +51,14 @@
             "clobbers": [
                 "plugin.printer"
             ]
+        },
+        {
+            "file": "plugins/com.iigservices.cordova.plugin/www/SignaturePrinter.js",
+            "id": "com.iigservices.cordova.plugin.SignaturePrinter",
+            "pluginId": "com.iigservices.cordova.plugin",
+            "clobbers": [
+                "cordova.plugins.SignaturePrinter"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -55,6 +66,7 @@
         "cordova-plugin-console": "1.0.5",
         "cordova-plugin-statusbar": "1.0.1",
         "cordova-plugin-datecs-printer": "0.5.0",
-        "intspirit.cordova.plugin.printer": "0.0.1"
+        "intspirit.cordova.plugin.printer": "0.0.1",
+        "com.iigservices.cordova.plugin": "0.0.1"
     }
 }

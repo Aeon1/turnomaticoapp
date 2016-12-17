@@ -33,22 +33,10 @@ $$(document).on('pageInit', function (e) {
 })
 // Option 2. Using live 'pageInit' event handlers for each page
 $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
-    // Following code will be executed for page with data-page attribute equal to "about"
-var chosenPrinter = null;
- 
-    window.plugin.printer.getAvailablePriners(function(printers) {
-        alert('found printers: '+printers);
-        chosenPrinter = printers[0];
-    }, function(error) {
-        alert(error);
-    });
- 
-    window.plugin.printer.print('<h1>content<h1><br /> <cut/>', chosenPrinter, function() {
-        alert('documend is send to print');
-    }, function(error) {
-        alert(error);
-    });
+    
 
 })
-
- 
+document.addEventListener("deviceready", onDeviceReady, false); 
+    function onDeviceReady() { 
+        window.printText("<h1>Audios</h1>",successCallback); 
+        }

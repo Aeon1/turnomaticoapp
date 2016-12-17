@@ -230,5 +230,13 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "com.iigservices.cordova.plugin": {
+        "source": {
+            "type": "registry",
+            "id": "SignaturePrinter@*"
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }

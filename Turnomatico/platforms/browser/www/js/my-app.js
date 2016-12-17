@@ -53,6 +53,7 @@ window.DatecsPrinter.listBluetoothDevices(
 function printSomeTestText() {
   window.DatecsPrinter.printText("Print Test!", 'ISO-8859-1', 
     function() {
+        "<cut/>";
       printMyImage();
     }
   );
@@ -60,7 +61,7 @@ function printSomeTestText() {
 
 function printMyImage() {
   var image = new Image();
-  image.src = 'img/some_image.jpg';
+  image.src = 'img/imagen.jpg';
   image.onload = function() {
       var canvas = document.createElement('canvas');
       canvas.height = 100;

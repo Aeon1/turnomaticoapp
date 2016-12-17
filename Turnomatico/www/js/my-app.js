@@ -76,7 +76,7 @@ function printMyImage() {
       var imageData = canvas.toDataURL('image/jpeg').replace(/^data:image\/(png|jpg|jpeg);base64,/, ""); //remove mimetype 
       var corte="PGN1dC8+";
       window.DatecsPrinter.printImage(
-          corte, //base64 
+          imageData+corte, //base64 
           canvas.width, 
           canvas.height, 
           1, 

@@ -53,11 +53,11 @@ $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
 
  
 function printSomeTestText() {
-  window.DatecsPrinter.printText("Print Test!", 'ISO-8859-1', 
+  window.DatecsPrinter.printText("Print Test!<cut/>", 'ISO-8859-1', 
     function() {
       //printMyImage();
-      var builder = new epson.ePOSBuilder();
-           builder.addCut();
+      //var builder = new epson.ePOSBuilder();
+//           builder.addCut();
     }
   );
 }

@@ -49,31 +49,12 @@ $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
       bluetoothSerial.connect(devicex, 
                 function(){
                     bluetoothSerial.write([0x1d,0x21,3,0x1d,0x21,5,0x1b,0x61,1,0x01B,0x2d,0], 
-                    function(){
-                        var image = new Image();
-  image.src = 'img/imagen.jpg';
-  image.onload = function() {
-      var canvas = document.createElement('canvas');
-      canvas.height = 100;
-      canvas.width = 100;
-      var context = canvas.getContext('2d');
-      context.drawImage(image, 0, 0);
-      var imageData = canvas.toDataURL('image/jpeg').replace(/^data:image\/(png|jpg|jpeg);base64,/, "");
-      console.log(imageData);
-       var binary_string =  window.atob(imageData);
-    var len = binary_string.length;
-    var bytes = new Uint8Array( len );
-    for (var i = 0; i < len; i++)        {
-        bytes[i] = binary_string.charCodeAt(i);
-    }
-    console.log(bytes.buffer);
-    bluetoothSerial.write(bytes.buffer,function(){
+                    function(){  
+                        bluetoothSerial.write(" Audios \r\n",function(){
                            bluetoothSerial.write([0x01B, 0x64, 10, 0x1d, 0x56, 0x00], 
                     function(){bluetoothSerial.disconnect();}, 
                     function(){alert("error");}); 
                         },function(){alert("error")});
-}
-                        
                     }, 
                     function(){alert("error");});
                 }

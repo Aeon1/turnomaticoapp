@@ -48,8 +48,12 @@ $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
         window.DatecsPrinter.disconnect();
       bluetoothSerial.connect(devicex, 
                 function(){
-                    var data='hola';
-                    bluetoothSerial.write(data, 
+var data = new Uint8Array(4);
+data[0] = 0x41;
+data[1] = 0x42;
+data[2] = 0x43;
+data[3] = 0x44;
+                    bluetoothSerial.write([0x1d,0x21,10,0x1b,0x61,1,data], 
                     function(){bluetoothSerial.disconnect();}, 
                     function(){alert("error");});
                 }

@@ -48,7 +48,7 @@ $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
         window.DatecsPrinter.disconnect();
       bluetoothSerial.connect(devicex, 
                 function(){
-                    var data='<epos-print xmlns="http://www.epson-pos.com/schemas/2011/03/epos-print"><text lang="en"/><text smooth="true"/><text font="font_a"/><text width="4" height="4"/><text reverse="false" ul="false" em="true"/><text>Hello,&#9;World!&#10;</text><cut type="feed"/></epos-print>';
+                    var data='<h1>hola</h1>';
                     bluetoothSerial.write(data, 
                     function(){bluetoothSerial.disconnect();}, 
                     function(){alert("error");});

@@ -48,10 +48,10 @@ $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
         window.DatecsPrinter.disconnect();
       bluetoothSerial.connect(devicex, 
                 function(){
-                    bluetoothSerial.write([0x1d,0x21,4,0x1b,0x61,1], 
+                    bluetoothSerial.write([0x1d,0x21,4,0x1d,0x21,3,0x1d,0x21,5,0x1b,0x61,1], 
                     function(){
                         
-                        bluetoothSerial.write("texto \r\n",function(){
+                        bluetoothSerial.write("texto",function(){
                             alert("bien");
                           // bluetoothSerial.write([0x01B, 0x64, 1, 0x1d, 0x56, 0x00], 
 //                    function(){bluetoothSerial.disconnect();}, 

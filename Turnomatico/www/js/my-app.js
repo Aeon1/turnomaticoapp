@@ -53,7 +53,7 @@ data[0] = 0x41;
 data[1] = 0x42;
 data[2] = 0x43;
 data[3] = 0x44;
-                    bluetoothSerial.write([0x1d,0x21,10,0x1b,0x61,1,data], 
+                    bluetoothSerial.write([0x1d,0x21,10,0x1b,0x61,1,0x01B, 0x64, 10, 0x1d, 0x56, 0x00], 
                     function(){bluetoothSerial.disconnect();}, 
                     function(){alert("error");});
                 }

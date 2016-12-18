@@ -44,18 +44,18 @@ $$(document).on('pageInit', function (e) {
 })
 // Option 2. Using live 'pageInit' event handlers for each page
 $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
-
+//centrado= 0x1b,0x61,1
         window.DatecsPrinter.disconnect();
       bluetoothSerial.connect(devicex, 
                 function(){
-                    bluetoothSerial.write([0x1d,0x21,4,0x1d,0x21,3,0x1d,0x21,5,0x1b,0x61,1], 
+                    bluetoothSerial.write([0x1d,0x21,3,0x1b,0x61,1], 
                     function(){
                         
                         bluetoothSerial.write("texto \r\n",function(){
                             alert("bien");
-                          // bluetoothSerial.write([0x01B, 0x64, 1, 0x1d, 0x56, 0x00], 
-//                    function(){bluetoothSerial.disconnect();}, 
-//                    function(){alert("error");}); 
+                           bluetoothSerial.write([0x01B, 0x64, 5], 
+                    function(){bluetoothSerial.disconnect();}, 
+                    function(){alert("error");}); 
                         },function(){alert("error")});
                     }, 
                     function(){alert("error");});

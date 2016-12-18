@@ -27,17 +27,18 @@
     text-align: center;
 }
 .number_phone{
-    height: 43px;
+    height: 100px;
     width: 100%;
-    font-size: 40px;
+    font-size: 50px;
     text-align: center;
 }
 .button-mega-big-circle{
-    height: 100px;
-    line-height: 100px;
-    border-radius: 50px;
+    height: 200px;
+    line-height: 200px;
+    border-radius: 150px;
     font-size: 50px;
     color: #000000;
+    margin: auto;
 }
 fieldset{
     height: 0;
@@ -50,3 +51,4 @@ legend{
     margin: auto;
     display: block;
 }
+.row{margin-bottom: 10px!important;}

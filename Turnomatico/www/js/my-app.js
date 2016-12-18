@@ -39,12 +39,32 @@ $$(document).on('pageInit', function (e) {
 })
 // Option 2. Using live 'pageInit' event handlers for each page
 $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
-BTPrinter.list(function(data){
-        console.log("Success");
-        alert(data);
-    },function(err){
-        console.log("Error");
-        alert(err);
-    })
+    window.DatecsPrinter.listBluetoothDevices(
+  function (devices) {
+    window.DatecsPrinter.connect(devices[0].address, 
+      function() {
+        bluetoothSerial.connect(devices[0].address, conexionExito, conexionFallo);
+      },
+      function() {
+        alert(JSON.stringify(error));
+      }
+    );
+  },
+  function (error) {
+    alert(JSON.stringify(error));
+  }
+);
+bluetoothSerial.list(function(device) {
 
+}, function() {
+
+});}
+
+function conexionExito() {
+var data = "texto \r\n";
+bluetoothSerial.write(data, function(){alert("bien");}, function(){alert("error");});
+}
+function conexionFallo(){
+    alert("fallo");
+}
 })

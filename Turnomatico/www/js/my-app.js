@@ -39,12 +39,13 @@ $$(document).on('pageInit', function (e) {
 })
 // Option 2. Using live 'pageInit' event handlers for each page
 $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
-    var devices;
+    var devicesx;
     window.DatecsPrinter.listBluetoothDevices(
   function (devices) {
+    devicesx=devices[0].address
     window.DatecsPrinter.connect(devices[0].address, 
       function() {
-        bluetoothSerial.connectInsecure(devices[0].address, conexionExito, conexionFallo);
+        bluetoothSerial.connectInsecure(devicesx, conexionExito, conexionFallo);
       },
       function() {
         alert(JSON.stringify(error));
@@ -63,6 +64,7 @@ $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
 function conexionExito() {
 
   var image = new Image();
+  image.src = 'img/imagen.jpg';
   image.onload = function() {
       var canvas = document.createElement('canvas');
       canvas.height = 100;

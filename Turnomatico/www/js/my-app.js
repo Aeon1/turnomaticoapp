@@ -40,24 +40,11 @@ $$(document).on('pageInit', function (e) {
 // Option 2. Using live 'pageInit' event handlers for each page
 $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
     var devicesx;
-    window.DatecsPrinter.listBluetoothDevices(
-  function (devices) {
-    devicesx=devices[0].address;
-    window.DatecsPrinter.connect(devices[0].address, 
-      function() {
-        conexionExito();
-      },
-      function() {
+bluetoothSerial.list(function(devices) {
+    bluetoothSerial.connect(device[0].address, conexionExito, function(){alert("no se peude conectar");});
+},function() {
         alert(JSON.stringify(error));
-      }
-    );
-  },
-  function (error) {
-    alert(JSON.stringify(error));
-  }
-  
-);
-
+      });
 
 
 
@@ -72,21 +59,16 @@ function conexionExito() {
       var context = canvas.getContext('2d');
       context.drawImage(image, 0, 0);
       var imageData = canvas.toDataURL('image/jpeg').replace(/^data:image\/(png|jpg|jpeg);base64,/, ""); //remove mimetype 
-      window.DatecsPrinter.printImage(
-          imageData, //base64 
-          canvas.width, 
-          canvas.height, 
-          1, 
+      bluetoothSerial.write(
+          imageData, 
           function() {            
-            bluetoothSerial.connect(devicesx, function(){
-            bluetoothSerial.write([0x01B, 0x64, 10, 0x1d, 0x56, 0x00], 
+          bluetoothSerial.write([0x01B, 0x64, 10, 0x1d, 0x56, 0x00], 
                 function(){
                     bluetoothSerial.disconnect(
                         function(){alert("desconectado");}, 
                         function(){alert("fallo la desconexion");});
                     }, 
                 function(){alert("mal");});
-        }, function(){alert("no se puede conectar");});
           },
           function(error) {
               alert(JSON.stringify(error));

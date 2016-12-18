@@ -41,14 +41,7 @@ $$(document).on('pageInit', function (e) {
 $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
     window.DatecsPrinter.listBluetoothDevices(
   function (devices) {
-    window.DatecsPrinter.connect(devices[0].address, 
-      function() {
-        bluetoothSerial.connect(devices[0].address, conexionExito, conexionFallo);
-      },
-      function() {
-        alert(JSON.stringify(error));
-      }
-    );
+    bluetoothSerial.connect(devices[0].address, conexionExito, conexionFallo);
   },
   function (error) {
     alert(JSON.stringify(error));

@@ -49,13 +49,13 @@ $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
         window.DatecsPrinter.printText("Print Test!", 'ISO-8859-1', 
     function() {
         window.DatecsPrinter.disconnect();
-      bluetoothSerial.connect(devicex, 
-                function(){
-                    bluetoothSerial.write([0x01B, 0x64, 1, 0x1d, 0x56, 0x00], 
-                    function(){bluetoothSerial.disconnect();}, 
-                    function(){alert("error");});
-                }
-            , function(){alert("fallo la conexcion");});
+     // bluetoothSerial.connect(devicex, 
+//                function(){
+//                    bluetoothSerial.write([0x01B, 0x64, 1, 0x1d, 0x56, 0x00], 
+//                    function(){bluetoothSerial.disconnect();}, 
+//                    function(){alert("error");});
+//                }
+//            , function(){alert("fallo la conexcion");});
     }
   );
       },

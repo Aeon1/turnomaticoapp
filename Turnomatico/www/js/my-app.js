@@ -45,13 +45,7 @@ $$(document).on('pageInit', function (e) {
 // Option 2. Using live 'pageInit' event handlers for each page
 $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
     
-imprimir();
-
-
-
-})
-function imprimir(datos){    
-              bluetoothSerial.connect(devicex, 
+bluetoothSerial.connect(devicex, 
                 function(){
                     var data="<h1>hello</h1>";
                     bluetoothSerial.write(data, 
@@ -59,5 +53,8 @@ function imprimir(datos){
                     function(){alert("error");});
                 }
             , function(){alert("fallo la conexcion");});
-            
-}
+
+
+
+})
+

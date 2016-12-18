@@ -45,13 +45,12 @@ $$(document).on('pageInit', function (e) {
 // Option 2. Using live 'pageInit' event handlers for each page
 $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
     bluetoothSerial.connect(devicex, 
-     bluetoothSerial.write([0x01B, 0x64, 10, 0x1d, 0x56, 0x00], 
-                function(){
-                    alert("bien");
-                    }, 
-                function(){alert("mal");});,
-                
-                 function(){alert("fallo la conexion");});
+    function(){
+        bluetoothSerial.write([0x01B, 0x64, 10, 0x1d, 0x56, 0x00], 
+                    function(){alert("bien");}, 
+                    function(){alert("error");});
+    }
+    , function(){alert("fallo la conexcion");});
 
 
 

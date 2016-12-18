@@ -54,7 +54,7 @@ function imprimir(datos){
               bluetoothSerial.connect(devicex, 
                 function(){
                     var data="<h1>hello</h1>";
-                    bluetoothSerial.write(data+[0x01B, 0x64, 10, 0x1d, 0x56, 0x00], 
+                    bluetoothSerial.write(data, 
                     function(){bluetoothSerial.disconnect();}, 
                     function(){alert("error");});
                 }

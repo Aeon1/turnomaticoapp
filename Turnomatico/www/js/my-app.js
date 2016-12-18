@@ -87,12 +87,13 @@ function conexionExito() {
   };
 }
 function cortar(){
+    alert(devicesx);
     bluetoothSerial.isConnected(
     function() {
         bluetoothSerial.write([0x01B, 0x64, 10, 0x1d, 0x56, 0x00], function(){}, function(){});
     },
     function() {
-        bluetoothSerial.connect(00:01:90:C6:1C:94, cortar, cortar);
+        bluetoothSerial.connect(devicesx, cortar, cortar);
     }
 );
 }

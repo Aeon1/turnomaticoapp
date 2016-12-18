@@ -33,9 +33,9 @@
     text-align: center;
 }
 .button-mega-big-circle{
-    height: 200px;
-    line-height: 200px;
-    border-radius: 150px;
+    height: 100px;
+    line-height: 100px;
+    border-radius: 50px;
     font-size: 50px;
     color: #000000;
     margin: auto;

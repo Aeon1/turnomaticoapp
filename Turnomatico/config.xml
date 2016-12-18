@@ -29,5 +29,5 @@
     <plugin name="cordova-plugin-console" spec="~1.0.1" />
     <plugin name="cordova-plugin-statusbar" spec="~1.0.1" />
     <plugin name="cordova-plugin-datecs-printer" spec="*" source="npm" />
-    <plugin name="Cordova-Plugin-Bluetooth-Printer" spec="*" source="npm" />
+    <plugin name="https://github.com/srehanuddin/Cordova-Plugin-Bluetooth-Printer.git" spec="*"/>
 </widget>

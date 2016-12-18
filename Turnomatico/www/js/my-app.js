@@ -12,24 +12,16 @@ var mainView = myApp.addView('.view-main', {
 });
 var devicex="";
 // Handle Cordova Device Ready Event
-$$(document).on('deviceready', function() {
-    console.log("Device is ready!");
-    //Create an ePOS-Print Builder object
-    
-//    window.DatecsPrinter.listBluetoothDevices(
-//  function (devices) {
-//    devicex=devices[0].address;
-//  },
-//  function (error) {
-//    alert(JSON.stringify(error));
-//  }
-//);
-bluetoothSerial.list(function(devices) {
-    bluetoothSerial.connect(devices[0].address, conexionExito, function(){alert("no se peude conectar");});
-},function() {
-        alert(JSON.stringify(error));
-      });
- 
+$$(document).on('deviceready', function() {    
+    window.DatecsPrinter.listBluetoothDevices(
+  function (devices) {
+    devicex=devices[0].address;
+  },
+  function (error) {
+    alert(JSON.stringify(error));
+  }
+);
+
      
 });
 
@@ -48,43 +40,17 @@ myApp.onPageInit('about', function (page) {
 $$(document).on('pageInit', function (e) {
     // Get page data from event data
     var page = e.detail.page;
-
-})
-// Option 2. Using live 'pageInit' event handlers for each page
-$$(document).on('pageInit', '.page[data-page="about"]', function (e) {
-    var devicesx;
-
-
-
-
-function conexionExito() {
-
-  var image = new Image();
-  image.src = 'img/imagen.jpg';
-  image.onload = function() {
-      var canvas = document.createElement('canvas');
-      canvas.height = 100;
-      canvas.width = 100;
-      var context = canvas.getContext('2d');
-      context.drawImage(image, 0, 0);
-      var imageData = canvas.toDataURL('image/jpeg').replace(/^data:image\/(png|jpg|jpeg);base64,/, ""); //remove mimetype 
-      bluetoothSerial.write(
-          imageData, 
-          function() {            
-          bluetoothSerial.write([0x01B, 0x64, 10, 0x1d, 0x56, 0x00], 
+bluetoothSerial.write([0x01B, 0x64, 10, 0x1d, 0x56, 0x00], 
                 function(){
                     bluetoothSerial.disconnect(
                         function(){alert("desconectado");}, 
                         function(){alert("fallo la desconexion");});
                     }, 
                 function(){alert("mal");});
-          },
-          function(error) {
-              alert(JSON.stringify(error));
-          }
-      )
-  };
-}
+})
+// Option 2. Using live 'pageInit' event handlers for each page
+$$(document).on('pageInit', '.page[data-page="about"]', function (e) {
+ 
 
 
 

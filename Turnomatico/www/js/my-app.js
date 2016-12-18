@@ -39,22 +39,12 @@ $$(document).on('pageInit', function (e) {
 })
 // Option 2. Using live 'pageInit' event handlers for each page
 $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
- ZJPrinter.list(function(data){
-        ZJPrinter.connect(function(data){
-            ZJPrinter.printText(function(data){
-                console.log("Success");
-                alert(data)
-            },function(err){
-                console.log("Error");
-                alert(err)
-            }, "String to Print")
-        },function(err){
-            console.log("Error");
-            console.log(err)
-        }, "PrinterName")
+BTPrinter.list(function(data){
+        console.log("Success");
+        alert(data);
     },function(err){
         console.log("Error");
-        console.log(err);
+        alert(err);
     })
 
 })

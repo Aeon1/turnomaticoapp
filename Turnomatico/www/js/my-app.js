@@ -54,11 +54,8 @@ $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
     alert(JSON.stringify(error));
   }
 );
-bluetoothSerial.list(function(device) {
 
-}, function() {
 
-});}
 
 function conexionExito() {
 var data = "texto \r\n";

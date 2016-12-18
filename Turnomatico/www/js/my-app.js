@@ -44,26 +44,17 @@ $$(document).on('pageInit', function (e) {
 })
 // Option 2. Using live 'pageInit' event handlers for each page
 $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
-    window.DatecsPrinter.connect(devicex, 
-      function() {
-        window.DatecsPrinter.printText("Print Test!", 'ISO-8859-1', 
-    function() {
-        alert("bien");
-        //window.DatecsPrinter.disconnect();
-     // bluetoothSerial.connect(devicex, 
-//                function(){
-//                    bluetoothSerial.write([0x01B, 0x64, 1, 0x1d, 0x56, 0x00], 
-//                    function(){bluetoothSerial.disconnect();}, 
-//                    function(){alert("error");});
-//                }
-//            , function(){alert("fallo la conexcion");});
-    }
-  );
-      },
-      function() {
-        alert(JSON.stringify(error));
-      }
-    );
+
+        window.DatecsPrinter.disconnect();
+      bluetoothSerial.connect(devicex, 
+                function(){
+                    var data='<epos-print xmlns="http://www.epson-pos.com/schemas/2011/03/epos-print"><text lang="en"/><text smooth="true"/><text font="font_a"/><text width="4" height="4"/><text reverse="false" ul="false" em="true"/><text>Hello,&#9;World!&#10;</text><cut type="feed"/></epos-print>';
+                    bluetoothSerial.write(data, 
+                    function(){bluetoothSerial.disconnect();}, 
+                    function(){alert("error");});
+                }
+            , function(){alert("fallo la conexcion");});
+
 
 
 

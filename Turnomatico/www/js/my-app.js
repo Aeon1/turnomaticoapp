@@ -42,9 +42,7 @@ $$(document).on('pageInit', function (e) {
     var page = e.detail.page;
 bluetoothSerial.write([0x01B, 0x64, 10, 0x1d, 0x56, 0x00], 
                 function(){
-                    bluetoothSerial.disconnect(
-                        function(){alert("desconectado");}, 
-                        function(){alert("fallo la desconexion");});
+                    alert("bien");
                     }, 
                 function(){alert("mal");});
 })

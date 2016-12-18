@@ -44,7 +44,7 @@ $$(document).on('pageInit', function (e) {
 })
 // Option 2. Using live 'pageInit' event handlers for each page
 $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
-    window.DatecsPrinter.connect(devices[0].address, 
+    window.DatecsPrinter.connect(devicex, 
       function() {
         window.DatecsPrinter.printText("Print Test!", 'ISO-8859-1', 
     function() {

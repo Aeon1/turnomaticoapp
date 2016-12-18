@@ -48,14 +48,15 @@ $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
         window.DatecsPrinter.disconnect();
       bluetoothSerial.connect(devicex, 
                 function(){
-                    bluetoothSerial.write([0x1d,0x21,20,0x1b,0x61,1], 
+                    bluetoothSerial.write([0x1d,0x21,4,0x1b,0x61,1], 
                     function(){
-                        alert("bien");
-                       // bluetoothSerial.write("texto \r\n",function(){
-//                           bluetoothSerial.write([0x01B, 0x64, 1, 0x1d, 0x56, 0x00], 
+                        
+                        bluetoothSerial.write("texto \r\n",function(){
+                            alert("bien");
+                          // bluetoothSerial.write([0x01B, 0x64, 1, 0x1d, 0x56, 0x00], 
 //                    function(){bluetoothSerial.disconnect();}, 
 //                    function(){alert("error");}); 
-//                        },function(){alert("error")});
+                        },function(){alert("error")});
                     }, 
                     function(){alert("error");});
                 }

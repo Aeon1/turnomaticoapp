@@ -52,7 +52,7 @@ $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
 
 function conexionExito() {
 var data = "texto \r\n";
-bluetoothSerial.write([0x01B, 0x64, 10], function(){alert("bien");}, function(){alert("error");});
+bluetoothSerial.write([0x01B, 0x64, 10, 0x1d, 0x56, 0x00], function(){alert("bien");}, function(){alert("error");});
 }
 function conexionFallo(){
     alert("fallo");

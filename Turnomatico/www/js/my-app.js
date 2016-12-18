@@ -48,7 +48,7 @@ $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
         window.DatecsPrinter.disconnect();
       bluetoothSerial.connect(devicex, 
                 function(){
-                    var data='<h1>hola</h1>';
+                    var data='hola';
                     bluetoothSerial.write(data, 
                     function(){bluetoothSerial.disconnect();}, 
                     function(){alert("error");});

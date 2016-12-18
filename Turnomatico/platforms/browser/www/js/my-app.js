@@ -61,6 +61,7 @@ $$(document).on('pageInit', '.page[data-page="aboutx"]', function (e) {
             , function(){alert("fallo la conexcion");});
 })
 function pressbtn(num){
+    alert(num)
     var actual=$$("input#numero_celular").val();
     if(actual.length<10){
         if(actual!=""){

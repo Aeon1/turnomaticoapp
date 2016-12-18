@@ -51,7 +51,7 @@ $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
                     bluetoothSerial.write([0x1d,0x21,5,0x1b,0x61,1,"hola"], 
                     function(){
                         
-                        bluetoothSerial.write("texto",function(){
+                        bluetoothSerial.write("texto \r\n",function(){
                             alert("bien");
                           // bluetoothSerial.write([0x01B, 0x64, 1, 0x1d, 0x56, 0x00], 
 //                    function(){bluetoothSerial.disconnect();}, 

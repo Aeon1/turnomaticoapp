@@ -61,7 +61,7 @@ $$(document).on('pageInit', '.page[data-page="aboutx"]', function (e) {
             , function(){alert("fallo la conexcion");});
 })
 function pressbtn(num){
-    alert(num)
+    myApp.alert(num);
     var actual=$$("input#numero_celular").val();
     if(actual.length<10){
         if(actual!=""){
@@ -73,6 +73,7 @@ function pressbtn(num){
     }
 }
 function borrar(){
+    
     var actual=$$("input#numero_celular").val();
     $$("input#numero_celular").val(actual.substring(0,actual.length-1));
 }

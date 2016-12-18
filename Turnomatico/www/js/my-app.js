@@ -39,21 +39,53 @@ $$(document).on('pageInit', function (e) {
 })
 // Option 2. Using live 'pageInit' event handlers for each page
 $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
+    var devices;
     window.DatecsPrinter.listBluetoothDevices(
   function (devices) {
-    bluetoothSerial.connect(devices[0].address, conexionExito, conexionFallo);
+    window.DatecsPrinter.connect(devices[0].address, 
+      function() {
+        bluetoothSerial.connectInsecure(devices[0].address, conexionExito, conexionFallo);
+      },
+      function() {
+        alert(JSON.stringify(error));
+      }
+    );
   },
   function (error) {
     alert(JSON.stringify(error));
   }
+  
 );
 
 
 
+
 function conexionExito() {
-var data = "texto \r\n";
-bluetoothSerial.write([0x01B, 0x64, 10, 0x1d, 0x56, 0x00], function(){alert("bien");}, function(){alert("error");});
+
+  var image = new Image();
+  image.onload = function() {
+      var canvas = document.createElement('canvas');
+      canvas.height = 100;
+      canvas.width = 100;
+      var context = canvas.getContext('2d');
+      context.drawImage(image, 0, 0);
+      var imageData = canvas.toDataURL('image/jpeg').replace(/^data:image\/(png|jpg|jpeg);base64,/, ""); //remove mimetype 
+      window.DatecsPrinter.printImage(
+          imageData, //base64 
+          canvas.width, 
+          canvas.height, 
+          1, 
+          function() {
+            bluetoothSerial.write([0x01B, 0x64, 10, 0x1d, 0x56, 0x00], function(){alert("bien");}, function(){alert("error");});
+          },
+          function(error) {
+              alert(JSON.stringify(error));
+          }
+      )
+  };
 }
+
+
 function conexionFallo(){
     alert("fallo");
 }

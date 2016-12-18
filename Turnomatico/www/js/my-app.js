@@ -49,20 +49,9 @@ $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
       bluetoothSerial.connect(devicex, 
                 function(){
                     bluetoothSerial.write([0x1d,0x21,3,0x1d,0x21,5,0x1b,0x61,1,0x01B,0x2d,0], 
-                    function(){
-                        var imageData;
-                        var image = new Image();
-  image.src = 'img/imagen.jpg';
-  image.onload = function() {
-      var canvas = document.createElement('canvas');
-      canvas.height = 100;
-      canvas.width = 100;
-      var context = canvas.getContext('2d');
-      context.drawImage(image, 0, 0);
-      imageData= canvas.toDataURL('image/jpeg').replace(/^data:image\/(png|jpg|jpeg);base64,/, "");
-}
-                        bluetoothSerial.write(imageData+" texto \r\n",function(){
-                           bluetoothSerial.write([0x01B, 0x64, 5], 
+                    function(){  
+                        bluetoothSerial.write(" Audios \r\n",function(){
+                           bluetoothSerial.write([0x01B, 0x64, 5, 0x1d, 0x56, 0x00], 
                     function(){bluetoothSerial.disconnect();}, 
                     function(){alert("error");}); 
                         },function(){alert("error")});

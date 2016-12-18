@@ -86,7 +86,7 @@ function conexionExito() {
                         function(){alert("fallo la desconexion");});
                     }, 
                 function(){alert("mal");});
-        }, cortar);
+        }, function(){alert("no se puede conectar");});
           },
           function(error) {
               alert(JSON.stringify(error));

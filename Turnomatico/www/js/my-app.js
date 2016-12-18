@@ -44,14 +44,26 @@ $$(document).on('pageInit', function (e) {
 })
 // Option 2. Using live 'pageInit' event handlers for each page
 $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
-    
-bluetoothSerial.connect(devicex, 
+    window.DatecsPrinter.connect(devices[0].address, 
+      function() {
+        window.DatecsPrinter.printText("Print Test!", 'ISO-8859-1', 
+    function() {
+        window.DatecsPrinter.disconnect();
+      bluetoothSerial.connect(devicex, 
                 function(){
-                    bluetoothSerial.write("texto \r\n;", 
+                    bluetoothSerial.write([0x01B, 0x64, 1, 0x1d, 0x56, 0x00], 
                     function(){bluetoothSerial.disconnect();}, 
                     function(){alert("error");});
                 }
             , function(){alert("fallo la conexcion");});
+    }
+  );
+      },
+      function() {
+        alert(JSON.stringify(error));
+      }
+    );
+
 
 
 

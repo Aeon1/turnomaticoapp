@@ -10,12 +10,25 @@ var mainView = myApp.addView('.view-main', {
     // Because we want to use dynamic navbar, we need to enable it for this view:
     dynamicNavbar: true
 });
-
+var devicex="";
 // Handle Cordova Device Ready Event
 $$(document).on('deviceready', function() {
     console.log("Device is ready!");
     //Create an ePOS-Print Builder object
-
+    
+//    window.DatecsPrinter.listBluetoothDevices(
+//  function (devices) {
+//    devicex=devices[0].address;
+//  },
+//  function (error) {
+//    alert(JSON.stringify(error));
+//  }
+//);
+bluetoothSerial.list(function(devices) {
+    bluetoothSerial.connect(devices[0].address, conexionExito, function(){alert("no se peude conectar");});
+},function() {
+        alert(JSON.stringify(error));
+      });
  
      
 });
@@ -40,11 +53,7 @@ $$(document).on('pageInit', function (e) {
 // Option 2. Using live 'pageInit' event handlers for each page
 $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
     var devicesx;
-bluetoothSerial.list(function(devices) {
-    bluetoothSerial.connect(device[0].address, conexionExito, function(){alert("no se peude conectar");});
-},function() {
-        alert(JSON.stringify(error));
-      });
+
 
 
 

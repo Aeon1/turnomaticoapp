@@ -31,6 +31,22 @@ module.exports = [
         "clobbers": [
             "cordova.plugins.SignaturePrinter"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-bluetooth-serial/www/bluetoothSerial.js",
+        "id": "cordova-plugin-bluetooth-serial.bluetoothSerial",
+        "pluginId": "cordova-plugin-bluetooth-serial",
+        "clobbers": [
+            "window.bluetoothSerial"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-bluetooth-serial/src/browser/bluetoothSerial.js",
+        "id": "cordova-plugin-bluetooth-serial.BluetoothSerial_browser",
+        "pluginId": "cordova-plugin-bluetooth-serial",
+        "clobbers": [
+            "window.bluetoothSerial"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -41,7 +57,8 @@ module.exports.metadata =
     "cordova-plugin-statusbar": "1.0.1",
     "cordova-plugin-datecs-printer": "0.5.0",
     "intspirit.cordova.plugin.printer": "0.0.1",
-    "com.iigservices.cordova.plugin": "0.0.1"
+    "com.iigservices.cordova.plugin": "0.0.1",
+    "cordova-plugin-bluetooth-serial": "0.4.6"
 }
 // BOTTOM OF METADATA
 });

@@ -1,5 +1,5 @@
 // Initialize app
-var myApp = new Framework7();
+var myApp = new Framework7({material:true});
 
 
 // If we need to use custom DOM library, let's save it to $$ variable:
@@ -13,14 +13,14 @@ var mainView = myApp.addView('.view-main', {
 var devicex="";
 // Handle Cordova Device Ready Event
 $$(document).on('deviceready', function() {    
-    window.DatecsPrinter.listBluetoothDevices(
-  function (devices) {
-    devicex=devices[0].address;
-  },
-  function (error) {
-    alert(JSON.stringify(error));
-  }
-);
+//    window.DatecsPrinter.listBluetoothDevices(
+//  function (devices) {
+//    devicex=devices[0].address;
+//  },
+//  function (error) {
+//    alert(JSON.stringify(error));
+//  }
+//);
 
      
 });
@@ -43,7 +43,7 @@ $$(document).on('pageInit', function (e) {
 
 })
 // Option 2. Using live 'pageInit' event handlers for each page
-$$(document).on('pageInit', '.page[data-page="about"]', function (e) {
+$$(document).on('pageInit', '.page[data-page="aboutx"]', function (e) {
 //centrado= 0x1b,0x61,1
         window.DatecsPrinter.disconnect();
       bluetoothSerial.connect(devicex, 
@@ -59,10 +59,20 @@ $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
                     function(){alert("error");});
                 }
             , function(){alert("fallo la conexcion");});
-
-
-
-
-
 })
+function pressbtn(num){
+    var actual=$$("input#numero_celular").val();
+    if(actual.length<10){
+        if(actual!=""){
+        valor=actual+num;
+        $$("input#numero_celular").val(valor);
+        }else{
+            $$("input#numero_celular").val(num);
+        }
+    }
+}
+function borrar(){
+    var actual=$$("input#numero_celular").val();
+    $$("input#numero_celular").val(actual.substring(0,actual.length-1));
+}
 

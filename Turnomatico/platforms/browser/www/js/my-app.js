@@ -1,5 +1,5 @@
 // Initialize app
-var myApp = new Framework7();
+var myApp = new Framework7({material:true});
 
 
 // If we need to use custom DOM library, let's save it to $$ variable:
@@ -10,11 +10,18 @@ var mainView = myApp.addView('.view-main', {
     // Because we want to use dynamic navbar, we need to enable it for this view:
     dynamicNavbar: true
 });
-
+var devicex="";
 // Handle Cordova Device Ready Event
-$$(document).on('deviceready', function() {
-    console.log("Device is ready!");
-   
+$$(document).on('deviceready', function() {    
+//    window.DatecsPrinter.listBluetoothDevices(
+//  function (devices) {
+//    devicex=devices[0].address;
+//  },
+//  function (error) {
+//    alert(JSON.stringify(error));
+//  }
+//);
+
      
 });
 
@@ -24,6 +31,8 @@ $$(document).on('deviceready', function() {
 // Option 1. Using page callback for page (for "about" page in this case) (recommended way):
 myApp.onPageInit('about', function (page) {
     // Do something here for "about" page
+    
+
 
 })
 
@@ -34,69 +43,36 @@ $$(document).on('pageInit', function (e) {
 
 })
 // Option 2. Using live 'pageInit' event handlers for each page
-$$(document).on('pageInit', '.page[data-page="about"]', function (e) {
- window.DatecsPrinter.listBluetoothDevices(
-  function (devices) {
-    window.DatecsPrinter.connect(devices[0].address, 
-      function() {
-        printSomeTestText();
-      },
-      function() {
-        alert(JSON.stringify(error));
-      }
-    );
-  },
-  function (error) {
-    alert(JSON.stringify(error));
-  }
-);
- 
-function printSomeTestText() {
-var data = "hello world"+[0x01B, 0x64, 10];
-var buffer = new Uint8Array(data).buffer;
-  window.DatecsPrinter.printText(String.fromCharCode('&H1B')+"i", 'ISO-8859-1', 
-    function() {
-      printMyImage();
+$$(document).on('pageInit', '.page[data-page="aboutx"]', function (e) {
+//centrado= 0x1b,0x61,1
+        window.DatecsPrinter.disconnect();
+      bluetoothSerial.connect(devicex, 
+                function(){
+                    bluetoothSerial.write([0x1d,0x21,3,0x1d,0x21,5,0x1b,0x61,1,0x01B,0x2d,0], 
+                    function(){  
+                        bluetoothSerial.write(" Audios \r\n",function(){
+                           bluetoothSerial.write([0x01B, 0x64, 10, 0x1d, 0x56, 0x00], 
+                    function(){bluetoothSerial.disconnect();}, 
+                    function(){alert("error");}); 
+                        },function(){alert("error")});
+                    }, 
+                    function(){alert("error");});
+                }
+            , function(){alert("fallo la conexcion");});
+})
+function pressbtn(num){
+    var actual=$$("input#numero_celular").val();
+    if(actual.length<10){
+        if(actual!=""){
+        valor=actual+num;
+        $$("input#numero_celular").val(valor);
+        }else{
+            $$("input#numero_celular").val(num);
+        }
     }
-  );
 }
- 
-function printMyImage() {
-  var image = new Image();
-  image.src = 'img/imagen.jpg';
-  image.onload = function() {
-      var canvas = document.createElement('canvas');
-      canvas.height = 100;
-      canvas.width = 100;
-      var context = canvas.getContext('2d');
-      context.drawImage(image, 0, 0);
-      var imageData = canvas.toDataURL('image/jpeg').replace(/^data:image\/(png|jpg|jpeg);base64,/, ""); //remove mimetype 
-      window.DatecsPrinter.printImage(
-          imageData, //base64 
-          canvas.width, 
-          canvas.height, 
-          1, 
-          function() {
-            printMyBarcode();
-          },
-          function(error) {
-              alert(JSON.stringify(error));
-          }
-      )
-  };
-}
- 
-function printMyBarcode() {
-  window.DatecsPrinter.printBarcode(
-    75, //here goes the barcode type code 
-    '13132498746313210584982011487', //your barcode data 
-    function() {
-      alert('success!');
-    },
-    function() {
-      alert(JSON.stringify(error));
-    }
-  );
+function borrar(){
+    var actual=$$("input#numero_celular").val();
+    $$("input#numero_celular").val(actual.substring(0,actual.length-1));
 }
 
-})

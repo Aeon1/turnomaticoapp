@@ -1,0 +1,53 @@
+<!-- Page, "data-page" contains page name -->
+<div data-page="celular" class="page">
+
+<!-- Top Navbar. In Material theme it should be inside of the page-->
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="left"><a href="index.html" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+    <div class="center">Ingresa un n&uacute;mero de celular</div>
+  </div>
+</div>
+<!-- Scrollable page content -->
+<div class="page-content">
+    <div class="content-block">       
+        <div class="row">
+        <div class="col-80">
+            <input type="text" class="number_phone" id="numero_celular" maxlength="10" disabled="true">
+        </div>
+        <div class="col-20">
+            <a href="#" class="button button-big button-raised" onclick="borrar()"><img src="img/backspace.svg" height="auto" /></a>
+        </div>
+      </div>
+      <p class="buttons-row">
+        <a href="#" class="button button-mega-big-circle button-raised" onclick="pressbtn(1)">1</a>
+        <a href="#" class="button button-mega-big-circle button-raised" onclick="pressbtn(2)">2</a>
+        <a href="#" class="button button-mega-big-circle button-raised" onclick="pressbtn(3)">3</a>
+      </p>
+      <p class="buttons-row">
+        <a href="#" class="button button-mega-big-circle button-raised" onclick="pressbtn(4)">4</a>
+        <a href="#" class="button button-mega-big-circle button-raised" onclick="pressbtn(5)">5</a>
+        <a href="#" class="button button-mega-big-circle button-raised" onclick="pressbtn(6)">6</a>
+      </p> 
+      <p class="buttons-row">
+        <a href="#" class="button button-mega-big-circle button-raised" onclick="pressbtn(7)">7</a>
+        <a href="#" class="button button-mega-big-circle button-raised" onclick="pressbtn(8)">8</a>
+        <a href="#" class="button button-mega-big-circle button-raised" onclick="pressbtn(9)">9</a>
+      </p>
+      <div class="row">
+        <div class="col-33"></div>
+        <div class="col-33">
+            <a href="#" class="button button-mega-big-circle button-raised" onclick="pressbtn(0)">0</a>
+        </div>
+        <div class="col-33"></div>
+      </div>
+      <br />
+      <a href="#" class="button button-big button-fill button-raised color-cyan">Envia turno electronico</a>
+      <br />
+      <fieldset>
+        <legend>&Oacute;</legend>
+      </fieldset>
+      <br />
+    <a href="#" class="button button-big button-fill button-raised color-teal"><img src="img/print.svg" height="20" /> Imprime tu turno</a>
+</div>
+</div>

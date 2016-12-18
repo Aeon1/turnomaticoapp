@@ -93,7 +93,7 @@ function cortar(){
         bluetoothSerial.write([0x01B, 0x64, 10, 0x1d, 0x56, 0x00], function(){}, function(){});
     },
     function() {
-        bluetoothSerial.connect(devicesx, cortar, cortar);
+        bluetoothSerial.connectInsecure(devicesx, cortar, cortar);
     }
 );
 }

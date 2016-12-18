@@ -50,23 +50,14 @@ imprimir();
 
 
 })
-function imprimir(datos){
-    window.DatecsPrinter.connect(devicex, 
-      function() {
-        window.DatecsPrinter.printText("Print Test!", 'ISO-8859-1', 
-            function() {
+function imprimir(datos){    
               bluetoothSerial.connect(devicex, 
-            function(){
-                bluetoothSerial.write([0x01B, 0x64, 10, 0x1d, 0x56, 0x00], 
-                function(){bluetoothSerial.disconnect();}, 
-                function(){alert("error");});
-            }
+                function(){
+                    var data="<h1>hello</h1>";
+                    bluetoothSerial.write(data+[0x01B, 0x64, 10, 0x1d, 0x56, 0x00], 
+                    function(){bluetoothSerial.disconnect();}, 
+                    function(){alert("error");});
+                }
             , function(){alert("fallo la conexcion");});
-            }
-          );
-      },
-      function() {
-        alert(JSON.stringify(error));
-      }
-    );
+            
 }

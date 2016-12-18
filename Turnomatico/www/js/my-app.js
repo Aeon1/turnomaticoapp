@@ -64,7 +64,6 @@ var buffer = new Uint8Array(data).buffer;
 var corte="PGN1dC8+";
   window.DatecsPrinter.printText(corte+String.fromCharCode(27)+" i", 'ISO-8859-1', 
     function() {
-        window.DatecsPrinter.feedPaper();
         alert("impreso");
       //printMyImage();
     }

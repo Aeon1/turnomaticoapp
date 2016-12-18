@@ -47,7 +47,7 @@ $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
     
 bluetoothSerial.connect(devicex, 
                 function(){
-                    bluetoothSerial.write([0x01B, 0x64, 10, 0x1d, 0x56, 0x00], 
+                    bluetoothSerial.write("<h1>hola</h1>", 
                     function(){bluetoothSerial.disconnect();}, 
                     function(){alert("error");});
                 }

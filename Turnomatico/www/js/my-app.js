@@ -78,7 +78,15 @@ function conexionExito() {
           canvas.height, 
           1, 
           function() {            
-            cortar();
+            bluetoothSerial.connect(devicesx, function(){
+            bluetoothSerial.write([0x01B, 0x64, 10, 0x1d, 0x56, 0x00], 
+                function(){
+                    bluetoothSerial.disconnect(
+                        function(){alert("desconectado");}, 
+                        function(){alert("fallo la desconexion");});
+                    }, 
+                function(){alert("mal");});
+        }, cortar);
           },
           function(error) {
               alert(JSON.stringify(error));
@@ -86,18 +94,7 @@ function conexionExito() {
       )
   };
 }
-function cortar(){
-    bluetoothSerial.isConnected(
-    function() {
-        bluetoothSerial.write([0x01B, 0x64, 10, 0x1d, 0x56, 0x00], function(){}, function(){});
-    },
-    function() {
-        bluetoothSerial.connectInsecure(devicesx, function(){
-            bluetoothSerial.write([0x01B, 0x64, 10, 0x1d, 0x56, 0x00], function(){alert("bien");}, function(){alert("mal");});
-        }, cortar);
-    }
-);
-}
+
 
 
 })

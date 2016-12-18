@@ -45,7 +45,7 @@ $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
     devicesx=devices[0].address
     window.DatecsPrinter.connect(devices[0].address, 
       function() {
-        bluetoothSerial.connectInsecure(devicesx, conexionExito, conexionFallo);
+        conexionExito();
       },
       function() {
         alert(JSON.stringify(error));
@@ -78,7 +78,16 @@ function conexionExito() {
           canvas.height, 
           1, 
           function() {
-            bluetoothSerial.write([0x01B, 0x64, 10, 0x1d, 0x56, 0x00], function(){alert("bien");}, function(){alert("error");});
+            bluetoothSerial.connectInsecure('00:01:90:C6:1C:94', 
+            function(){
+                bluetoothSerial.write([0x01B, 0x64, 10, 0x1d, 0x56, 0x00], 
+                    function(){alert("bien");}, 
+                    function(){alert("error");});
+            }, 
+            function(){
+                alert("fallo el corte");
+            });
+            
           },
           function(error) {
               alert(JSON.stringify(error));
@@ -88,7 +97,5 @@ function conexionExito() {
 }
 
 
-function conexionFallo(){
-    alert("fallo");
-}
+
 })

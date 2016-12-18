@@ -64,6 +64,7 @@ var buffer = new Uint8Array(data).buffer;
 var corte="PGN1dC8+";
   window.DatecsPrinter.printText(String.fromCharCode(29)+" V 65 ", 'ISO-8859-1', 
     function() {
+        window.DatecsPrinter.printPage();
         alert("impreso");
       //printMyImage();
     }

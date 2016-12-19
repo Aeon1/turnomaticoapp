@@ -83,8 +83,8 @@ function imprimir(){
                 function(){
                     bluetoothSerial.write("Gobierno del Estado de Sinaloa\r\n", 
                     function(){  
-                        bluetoothSerial.write(,function(){
-                           bluetoothSerial.write([0x1d,0x21,0,0x55,0x53,0x45,0x01B, 0x64, 3, 0x1d, 0x56, 0x00], 
+                        bluetoothSerial.write([0x1d,0x21,0,0x55,0x53,0x45],function(){
+                           bluetoothSerial.write([0x01B, 0x64, 3, 0x1d, 0x56, 0x00], 
                     function(){bluetoothSerial.disconnect();}, 
                     function(){alert("error");}); 
                         },function(){alert("error")});

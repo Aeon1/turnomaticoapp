@@ -86,7 +86,7 @@ var canvas = document.createElement('canvas');
       ctx.fillStyle = "#FFFFFF";
       ctx.fillRect(0, 0, 300, 500);       
       var img = new Image();
-img.src = "img/sinaloa.png";
+img.src = "img/sinaloaticket.png";
 img.onload = function(){
     ctx.drawImage(img, 100, 0,100,200);
     ctx.fillStyle="#000000";
@@ -114,7 +114,7 @@ img.onload = function(){
         canvas.height, 
         1, 
     function() {
-         window.DatecsPrinter.printText("Hora:10:00 PM {br} Fecha: 18/dic/2016", 'ISO-8859-1', 
+         window.DatecsPrinter.printText("Hora:10:00 PM Fecha: 18/dic/2016", 'ISO-8859-1', 
         function() {
           window.DatecsPrinter.disconnect(function(){alert("cortar");},function(){alert('mal');});
         bluetoothSerial.connect(devicex, 

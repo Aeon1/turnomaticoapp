@@ -79,43 +79,38 @@ function borrar(){
 function imprimir(){
   window.DatecsPrinter.connect(devicex, 
       function() {
-var canvas = document.createElement('canvas');
-      canvas.height = 500;
+ var canvas = document.createElement('canvas');
+      canvas.height = 300;
       canvas.width = 300;
       var ctx = canvas.getContext('2d');
       ctx.fillStyle = "#FFFFFF";
-      ctx.fillRect(0, 0, 300, 500);       
-      var img = new Image();
-img.src = "img/sinaloa.svg";
-img.onload = function(){
-    ctx.drawImage(img, 100, 0,100,200);
+      ctx.fillRect(0, 0, 300, 500);
+       
     ctx.fillStyle="#000000";
     ctx.textAlign = "center"; 
     ctx.font = "bold 30px Avenir";
-    ctx.fillText("Gobierno del Estado de Sinaloa", 150, 250,250);
+    ctx.fillText("Gobierno del Estado de Sinaloa", 150, 50,250);
     ctx.font = "20px avenir";
-    ctx.fillText("USE", 150,280);
+    ctx.fillText("USE", 150,80);
     ctx.font = "20px Avenir";
-    ctx.fillText("Número de turno;", 150,320);
+    ctx.fillText("Número de turno;", 150,120);
     ctx.font = "50px Avenir";
-    ctx.fillText("A-02", 150,370);
+    ctx.fillText("A-02", 150,170);
     ctx.font = "20px Avenir";
-    ctx.fillText("Servicio:", 150,400);
+    ctx.fillText("Servicio:", 150,200);
     ctx.font = "bold 20px Avenir";
-    ctx.fillText("Canje de placas", 150,420);
-//    ctx.font = "20px Avenir";
-//    ctx.fillText("Hora: 10:00 PM.", 150,450);
-//    ctx.font = "20px Avenir";
-//    ctx.fillText("Fecha: 18/dic/2016", 150,480);
+    ctx.fillText("Canje de placas", 150,220);
+    ctx.font = "20px Avenir";
+    ctx.fillText("Hora: 10:00 PM.", 150,250);
+    ctx.font = "20px Avenir";
+    ctx.fillText("Fecha: 18/dic/2016", 150,280);
     var imageData = canvas.toDataURL('image/jpeg').replace(/^data:image\/(png|jpg|jpeg);base64,/, "");
     window.DatecsPrinter.printImage(
         imageData, //base64 
         canvas.width, 
         canvas.height, 
         1, 
-    function() {
-         window.DatecsPrinter.printText("Hora:10:00 PM Fecha: 18/dic/2016", 'ISO-8859-1', 
-        function() {
+    function() {         
           window.DatecsPrinter.disconnect(function(){alert("cortar");},function(){alert('mal');});
         bluetoothSerial.connect(devicex, 
                 function(){
@@ -124,14 +119,13 @@ img.onload = function(){
                     function(){alert("error");});
                 }
             , function(){alert("fallo la conexcion");});
-        }
-      );
+        
           },
           function(error) {
               alert(JSON.stringify(error));
           }
       ) 
-}
+
       },
       function() {
         alert(JSON.stringify(error));

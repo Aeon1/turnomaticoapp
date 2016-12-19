@@ -13,14 +13,14 @@ var mainView = myApp.addView('.view-main', {
 var devicex="";
 // Handle Cordova Device Ready Event
 $$(document).on('deviceready', function() {    
-    window.DatecsPrinter.listBluetoothDevices(
-  function (devices) {
-    devicex=devices[0].address;
-  },
-  function (error) {
-    alert(JSON.stringify(error));
-  }
-);
+    //window.DatecsPrinter.listBluetoothDevices(
+//  function (devices) {
+//    devicex=devices[0].address;
+//  },
+//  function (error) {
+//    alert(JSON.stringify(error));
+//  }
+//);
 
      
 });
@@ -45,20 +45,20 @@ $$(document).on('pageInit', function (e) {
 // Option 2. Using live 'pageInit' event handlers for each page
 $$(document).on('pageInit', '.page[data-page="aboutx"]', function (e) {
 //centrado= 0x1b,0x61,1
-        window.DatecsPrinter.disconnect();
-      bluetoothSerial.connect(devicex, 
-                function(){
-                    bluetoothSerial.write([0x1c , 0x21, 0x48 ,0x1d,0x21,2,0x1b,0x61,1], 
-                    function(){  
-                        bluetoothSerial.write("Audios \r\n",function(){
-                           bluetoothSerial.write([0x01B, 0x64, 3, 0x1d, 0x56, 0x00], 
-                    function(){bluetoothSerial.disconnect();}, 
-                    function(){alert("error");}); 
-                        },function(){alert("error")});
-                    }, 
-                    function(){alert("error");});
-                }
-            , function(){alert("fallo la conexcion");});
+    //    window.DatecsPrinter.disconnect();
+//      bluetoothSerial.connect(devicex, 
+//                function(){
+//                    bluetoothSerial.write([0x1c , 0x21, 0x48 ,0x1d,0x21,2,0x1b,0x61,1], 
+//                    function(){  
+//                        bluetoothSerial.write("Audios \r\n",function(){
+//                           bluetoothSerial.write([0x01B, 0x64, 3, 0x1d, 0x56, 0x00], 
+//                    function(){bluetoothSerial.disconnect();}, 
+//                    function(){alert("error");}); 
+//                        },function(){alert("error")});
+//                    }, 
+//                    function(){alert("error");});
+//                }
+//            , function(){alert("fallo la conexcion");});
 })
 function pressbtn(num){
     var actual=$$("input#numero_celular").val();
@@ -85,9 +85,11 @@ function imprimir(){
     var servicio="Canje de placas";
     var hora="10:00 PM";
     var fecha="19/12/2016";
-    bluetoothSerial.connect(devicex, 
+    window.DatecsPrinter.listBluetoothDevices(
+  function (devices) {//
+//    devicex=devices[0].address;
+    bluetoothSerial.connect(devices[0].address, 
                 function(){
-                    bluetoothSerial.write([0x1c ,0x56,0x48]);
                     bluetoothSerial.write([0x1b,0x61,1,0x1d,0x21,2]);
                     bluetoothSerial.write("Gobierno del Estado de Sinaloa\r\n");
                     bluetoothSerial.write([0x1d,0x21,1]);
@@ -103,12 +105,17 @@ function imprimir(){
                     bluetoothSerial.write("Fecha:"+fecha+"\r\n");
                     bluetoothSerial.write([0x01B, 0x64, 5, 0x1d, 0x56, 0x00],
                     function(){
-                        bluetoothSerial.disconnect();
+                        bluetoothSerial.disconnect(function(){alert("desconectado");},function(){alert("no se pudo desconectar");});
                     },
                     function(error){alert(error);}
                     );
                 }
             , function(){alert("fallo la conexcion");});
+            },
+  function (error) {
+    alert(JSON.stringify(error));
+  }
+);
 //  window.DatecsPrinter.connect(devicex, 
 //      function() {
 //var canvas = document.createElement('canvas');

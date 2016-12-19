@@ -79,9 +79,26 @@ function borrar(){
 function imprimir(){
   window.DatecsPrinter.connect(devicex, 
       function() {
-             window.DatecsPrinter.printText("hola", 'ISO-8859-1', 
-        function() {
-          window.DatecsPrinter.disconnect(function(){alert('correcto');},function(errro){alert(errro)});
+           var canvas = document.createElement('canvas');
+      canvas.height = 150;
+      canvas.width = 100;
+      var ctx = canvas.getContext('2d');
+      ctx.fillStyle="#FFFFFF";
+      ctx.font = "30px Georgia";
+    ctx.textAlign = "center"; 
+    ctx.fillText("Lorem Ipsum", 50, 50,100);
+    ctx.font = "15px Verdana";
+    ctx.fillText("A-001", 50,100);
+    ctx.font = "4px Verdana";
+    ctx.fillText("Tome asiento, en un momento sera llamado", 50,140);
+      var imageData = canvas.toDataURL('image/jpeg').replace(/^data:image\/(png|jpg|jpeg);base64,/, "");
+  window.DatecsPrinter.printImage(
+          imageData, //base64 
+          canvas.width, 
+          canvas.height, 
+          1, 
+          function() {
+            window.DatecsPrinter.disconnect();
         bluetoothSerial.connect(devicex, 
                 function(){
                     bluetoothSerial.write([0x01B, 0x64, 10, 0x1d, 0x56, 0x00], 
@@ -89,8 +106,11 @@ function imprimir(){
                     function(){alert("error");});
                 }
             , function(){alert("fallo la conexcion");});
-        }
-      );
+          },
+          function(error) {
+              alert(JSON.stringify(error));
+          }
+      ) 
       },
       function() {
         alert(JSON.stringify(error));
@@ -98,3 +118,16 @@ function imprimir(){
     );
 
 }
+
+// window.DatecsPrinter.printText("hola", 'ISO-8859-1', 
+//        function() {
+//          window.DatecsPrinter.disconnect();
+//        bluetoothSerial.connect(devicex, 
+//                function(){
+//                    bluetoothSerial.write([0x01B, 0x64, 10, 0x1d, 0x56, 0x00], 
+//                    function(){bluetoothSerial.disconnect();}, 
+//                    function(){alert("error");});
+//                }
+//            , function(){alert("fallo la conexcion");});
+//        }
+//      );

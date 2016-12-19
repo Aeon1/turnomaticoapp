@@ -86,7 +86,7 @@ var canvas = document.createElement('canvas');
       ctx.fillStyle = "#FFFFFF";
       ctx.fillRect(0, 0, 300, 500);       
       var img = new Image();
-img.src = "img/sinaloaticket.png";
+img.src = "img/sinaloa.svg";
 img.onload = function(){
     ctx.drawImage(img, 100, 0,100,200);
     ctx.fillStyle="#000000";

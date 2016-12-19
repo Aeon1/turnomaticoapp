@@ -81,9 +81,9 @@ function imprimir(){
     //centrar=0x1b,0x61,1
     bluetoothSerial.connect(devicex, 
                 function(){
-                    bluetoothSerial.write([0x1d,0x21,2,0x1b,0x61,2]+"Gobierno del Estado de Sinaloa \r\n", 
+                    bluetoothSerial.write("Gobierno del Estado de Sinaloa \r\n", 
                     function(){  
-                        bluetoothSerial.write([0x1d,0x21,2,0x1b,0x61,1]+"Gobierno del Estado de Sinaloa \r\n",function(){
+                        bluetoothSerial.write([0x1d,0x21,2,0x1b,0x61,5]+"Gobierno del Estado de Sinaloa \r\n",function(){
                            bluetoothSerial.write([0x01B, 0x64, 3, 0x1d, 0x56, 0x00], 
                     function(){bluetoothSerial.disconnect();}, 
                     function(){alert("error");}); 

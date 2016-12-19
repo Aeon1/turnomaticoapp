@@ -48,7 +48,7 @@ $$(document).on('pageInit', '.page[data-page="aboutx"]', function (e) {
         window.DatecsPrinter.disconnect();
       bluetoothSerial.connect(devicex, 
                 function(){
-                    bluetoothSerial.write([0x1b ,0x20,0x79,0x1d,0x21,3,0x1d,0x21,3,0x1b,0x61,1,0x01B,0x2d,0], 
+                    bluetoothSerial.write([0x1d,0x21,8,8,0x1b,0x61,1,0x01B,0x2d,0], 
                     function(){  
                         bluetoothSerial.write(" Audios \r\n",function(){
                            bluetoothSerial.write([0x01B, 0x64, 10, 0x1d, 0x56, 0x00], 

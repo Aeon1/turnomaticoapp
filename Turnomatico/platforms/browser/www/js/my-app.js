@@ -116,7 +116,7 @@ img.onload = function(){
     function() {
          window.DatecsPrinter.printText("Hora:10:00 PM {br} Fecha: 18/dic/2016", 'ISO-8859-1', 
         function() {
-          window.DatecsPrinter.disconnect();
+          window.DatecsPrinter.disconnect(function(){alert("cortar");},function(){alert('mal');});
         bluetoothSerial.connect(devicex, 
                 function(){
                     bluetoothSerial.write([0x01B, 0x64, 10, 0x1d, 0x56, 0x00], 

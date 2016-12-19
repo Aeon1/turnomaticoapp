@@ -50,7 +50,7 @@ $$(document).on('pageInit', '.page[data-page="aboutx"]', function (e) {
                 function(){
                     bluetoothSerial.write([0x1c , 0x21, 0x48 ,0x1d,0x21,2,0x1b,0x61,1], 
                     function(){  
-                        bluetoothSerial.write(" Audios \r\n",function(){
+                        bluetoothSerial.write("Audios \r\n",function(){
                            bluetoothSerial.write([0x01B, 0x64, 3, 0x1d, 0x56, 0x00], 
                     function(){bluetoothSerial.disconnect();}, 
                     function(){alert("error");}); 
@@ -79,10 +79,10 @@ function borrar(){
 function imprimir(){
     bluetoothSerial.connect(devicex, 
                 function(){
-                    bluetoothSerial.write([0x20,0x79,0x1d,0x21,3,0x1d,0x21,5,0x1b,0x61,1,0x01B,0x2d,0], 
+                    bluetoothSerial.write([0x1c , 0x21, 0x48 ,0x1d,0x21,2,0x1b,0x61,1], 
                     function(){  
-                        bluetoothSerial.write(" Audios \r\n",function(){
-                           bluetoothSerial.write([0x01B, 0x64, 10, 0x1d, 0x56, 0x00], 
+                        bluetoothSerial.write("Audios \r\n",function(){
+                           bluetoothSerial.write([0x01B, 0x64, 3, 0x1d, 0x56, 0x00], 
                     function(){bluetoothSerial.disconnect();}, 
                     function(){alert("error");}); 
                         },function(){alert("error")});

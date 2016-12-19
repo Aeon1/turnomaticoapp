@@ -81,12 +81,24 @@ function imprimir(){
     //centrar=0x1b,0x61,1
     //cortar=0x1d, 0x56, 0x00
     //salto=0x01B, 0x64, n
+    var turno="A-001";
+    var servicio="Canje de placas";
+    var hora="10:00 PM";
+    var fecha="19/12/2016";
     bluetoothSerial.connect(devicex, 
                 function(){
-                    bluetoothSerial.write([0x1b,0x61,1,0x1d,0x21,3]);
+                    bluetoothSerial.write([0x1b,0x61,1,0x1d,0x21,2]);
                     bluetoothSerial.write("Gobierno del Estado de Sinaloa\r\n");
                     bluetoothSerial.write([0x1d,0x21,1]);
-                    bluetoothSerial.write("USE\r\n");
+                    bluetoothSerial.write("USE\r\n\n\n");
+                    bluetoothSerial.write("Número de turno:\r\n\n\n\n\n");
+                    bluetoothSerial.write([0x1b,0x61,1,0x1d,0x21,2]);
+                    bluetoothSerial.write(turno+"\r\n\n");
+                    bluetoothSerial.write([0x1d,0x21,1]);
+                    bluetoothSerial.write("Servicio:"+servicio+"\r\n\n\n");
+                    bluetoothSerial.write([0x1d,0x21,1]);
+                    bluetoothSerial.write("Hora:"+hora+"\r\n");
+                    bluetoothSerial.write("Fecha:"+fecha+"\r\n");
                 }
             , function(){alert("fallo la conexcion");});
 //  window.DatecsPrinter.connect(devicex, 

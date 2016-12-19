@@ -90,7 +90,7 @@ function imprimir(){
 //    devicex=devices[0].address;
     bluetoothSerial.connect(devices[0].address, 
                 function(){
-                    bluetoothSerial.write([0x1b,0x21,0,0x1b,0x61,1,0x1d,0x21,0x20,0x1d,0x21,2]);
+                    bluetoothSerial.write([0x1b,0x21,0,0x1b,0x61,1,0x1d,0x21,0x20,0x1d,0x21,7]);
                     bluetoothSerial.write("A-002\r\n");
                    
 

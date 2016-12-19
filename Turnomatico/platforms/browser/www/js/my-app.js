@@ -107,7 +107,7 @@ function imprimir(){
     var imageData = canvas.toDataURL('image/jpeg').replace(/^data:image\/(png|jpg|jpeg);base64,/, "");
     window.DatecsPrinter.printImage(
         imageData, //base64 
-        300,//canvas.width, 
+        canvas.width, 
         canvas.height, 
         1, 
     function() {         

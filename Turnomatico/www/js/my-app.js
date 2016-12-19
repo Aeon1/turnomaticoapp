@@ -45,20 +45,20 @@ $$(document).on('pageInit', function (e) {
 // Option 2. Using live 'pageInit' event handlers for each page
 $$(document).on('pageInit', '.page[data-page="aboutx"]', function (e) {
 //centrado= 0x1b,0x61,1
-        //window.DatecsPrinter.disconnect();
-//      bluetoothSerial.connect(devicex, 
-//                function(){
-//                    bluetoothSerial.write([0x1c , 0x21, 0x48 ,0x1d,0x21,2,0x1b,0x61,1], 
-//                    function(){  
-//                        bluetoothSerial.write("Audios \r\n",function(){
-//                           bluetoothSerial.write([0x01B, 0x64, 3, 0x1d, 0x56, 0x00], 
-//                    function(){bluetoothSerial.disconnect();}, 
-//                    function(){alert("error");}); 
-//                        },function(){alert("error")});
-//                    }, 
-//                    function(){alert("error");});
-//                }
-//            , function(){alert("fallo la conexcion");});
+        window.DatecsPrinter.disconnect();
+      bluetoothSerial.connect(devicex, 
+                function(){
+                    bluetoothSerial.write([0x1c , 0x21, 0x48 ,0x1d,0x21,2,0x1b,0x61,1], 
+                    function(){  
+                        bluetoothSerial.write("Audios \r\n",function(){
+                           bluetoothSerial.write([0x01B, 0x64, 3, 0x1d, 0x56, 0x00], 
+                    function(){bluetoothSerial.disconnect();}, 
+                    function(){alert("error");}); 
+                        },function(){alert("error")});
+                    }, 
+                    function(){alert("error");});
+                }
+            , function(){alert("fallo la conexcion");});
 })
 function pressbtn(num){
     var actual=$$("input#numero_celular").val();
@@ -81,13 +81,13 @@ function imprimir(){
     //centrar=0x1b,0x61,1
     bluetoothSerial.connect(devicex, 
                 function(){
-                    bluetoothSerial.write(['hola',97], 
+                    bluetoothSerial.write("Gobierno del Estado de Sinaloa\r\n", 
                     function(){  
-                        //bluetoothSerial.write([0x1d,0x21,2,0x1b,0x61,5,],function(){
-//                           bluetoothSerial.write([0x01B, 0x64, 3, 0x1d, 0x56, 0x00], 
-//                    function(){bluetoothSerial.disconnect();}, 
-//                    function(){alert("error");}); 
-//                        },function(){alert("error")});
+                        bluetoothSerial.write(,function(){
+                           bluetoothSerial.write([0x1d,0x21,0,0x55,0x53,0x45,0x01B, 0x64, 3, 0x1d, 0x56, 0x00], 
+                    function(){bluetoothSerial.disconnect();}, 
+                    function(){alert("error");}); 
+                        },function(){alert("error")});
                     }, 
                     function(){alert("error");});
                 }

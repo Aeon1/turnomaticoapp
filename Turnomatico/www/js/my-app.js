@@ -79,7 +79,7 @@ function borrar(){
 function imprimir(){
   window.DatecsPrinter.connect(devicex, 
       function() {
-             window.DatecsPrinter.printText([0x01B, 0x64, 10, 0x1d, 0x56, 0x00], 'ISO-8859-1', 
+             window.DatecsPrinter.printText("{b}hola", 'ISO-8859-1', 
         function() {
           alert("bien");
         }

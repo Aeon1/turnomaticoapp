@@ -80,8 +80,8 @@ function imprimir(){
   window.DatecsPrinter.connect(devicex, 
       function() {
  var canvas = document.createElement('canvas');
-      canvas.height = 300;
-      canvas.width = 300;
+      canvas.height = 100;
+      canvas.width = 100;
       var ctx = canvas.getContext('2d');
       ctx.fillStyle = "#FFFFFF";
       ctx.fillRect(0, 0, 300, 500);

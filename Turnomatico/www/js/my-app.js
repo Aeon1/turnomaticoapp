@@ -79,31 +79,31 @@ function borrar(){
 function imprimir(){
   window.DatecsPrinter.connect(devicex, 
       function() {
- var canvas = document.createElement('canvas');
-      canvas.height = 300;
-      canvas.width = 150;
+var canvas = document.createElement('canvas');
+      canvas.height = 80;
+      canvas.width = 400;
       var ctx = canvas.getContext('2d');
       ctx.fillStyle = "#FFFFFF";
-      ctx.fillRect(0, 0, 150, 300);
+      ctx.fillRect(0, 0, 400, 80);
        
     ctx.fillStyle="#000000";
     ctx.textAlign = "center"; 
-    ctx.font = "bold 10px Avenir";
-    ctx.fillText("Gobierno del Estado de Sinaloa", 75, 50,250);
-    ctx.font = "10px avenir";
-    ctx.fillText("USE", 75,80);
-    ctx.font = "10px Avenir";
-    ctx.fillText("Número de turno;", 75,120);
-    ctx.font = "20px Avenir";
-    ctx.fillText("A-02", 75,170);
-    ctx.font = "10px Avenir";
-    ctx.fillText("Servicio:", 75,200);
-    ctx.font = "bold 10px Avenir";
-    ctx.fillText("Canje de placas", 75,220);
-    ctx.font = "10px Avenir";
-    ctx.fillText("Hora: 10:00 PM.", 75,250);
-    ctx.font = "10px Avenir";
-    ctx.fillText("Fecha: 18/dic/2016", 75,280);
+    ctx.font = "bold 50px Avenir";
+    ctx.fillText("Gobierno del Estado de Sinaloa", 200, 50,400);
+    ctx.font = "20px avenir";
+    ctx.fillText("USE", 200,70);
+    //ctx.font = "10px Avenir";
+//    ctx.fillText("Número de turno;", 75,120);
+//    ctx.font = "20px Avenir";
+//    ctx.fillText("A-02", 75,170);
+//    ctx.font = "10px Avenir";
+//    ctx.fillText("Servicio:", 75,200);
+//    ctx.font = "bold 10px Avenir";
+//    ctx.fillText("Canje de placas", 75,220);
+//    ctx.font = "10px Avenir";
+//    ctx.fillText("Hora: 10:00 PM.", 75,250);
+//    ctx.font = "10px Avenir";
+//    ctx.fillText("Fecha: 18/dic/2016", 75,280);
     var imageData = canvas.toDataURL('image/jpeg').replace(/^data:image\/(png|jpg|jpeg);base64,/, "");
     window.DatecsPrinter.printImage(
         imageData, //base64 

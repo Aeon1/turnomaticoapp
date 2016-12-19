@@ -86,12 +86,12 @@ function imprimir(){
       ctx.fillStyle = "#FFFFFF";
       ctx.fillRect(0, 0, 300, 200);
       ctx.fillStyle="#000000";
-      ctx.font = "30px Georgia";
+      ctx.font = "50px Arial";
     ctx.textAlign = "center"; 
-    ctx.fillText("Lorem Ipsum", 150, 50,190);
-    ctx.font = "15px Verdana";
+    ctx.fillText("Lorem Ipsum", 150, 50,250);
+    ctx.font = "30px Arial";
     ctx.fillText("A-001", 150,100);
-    ctx.font = "4px Verdana";
+    ctx.font = "12px Arial";
     ctx.fillText("Tome asiento, en un momento sera llamado", 150,140);
       var imageData = canvas.toDataURL('image/jpeg').replace(/^data:image\/(png|jpg|jpeg);base64,/, "");
   window.DatecsPrinter.printImage(

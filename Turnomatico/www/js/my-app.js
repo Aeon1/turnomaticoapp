@@ -79,33 +79,49 @@ function borrar(){
 function imprimir(){
   window.DatecsPrinter.connect(devicex, 
       function() {
-           var canvas = document.createElement('canvas');
-      canvas.height = 200;
+var canvas = document.createElement('canvas');
+      canvas.height = 500;
       canvas.width = 300;
       var ctx = canvas.getContext('2d');
       ctx.fillStyle = "#FFFFFF";
-      ctx.fillRect(0, 0, 300, 200);
-      ctx.fillStyle="#000000";
-      ctx.font = "50px Arial";
+      ctx.fillRect(0, 0, 300, 500);
+       
+      var img = new Image();
+img.src = "img/sinaloaticket.png";
+img.onload = function(){
+    ctx.textAlign = "center";
+    ctx.drawImage(img, 100, 0,100,200);
+    ctx.fillStyle="#000000";
     ctx.textAlign = "center"; 
-    ctx.fillText("Lorem Ipsum", 150, 50,250);
-    ctx.font = "30px Arial";
-    ctx.fillText("A-001", 150,100);
-    ctx.font = "12px Arial";
-    ctx.fillText("Tome asiento, en un momento sera llamado", 150,140);
-      var imageData = canvas.toDataURL('image/jpeg').replace(/^data:image\/(png|jpg|jpeg);base64,/, "");
-  window.DatecsPrinter.printImage(
-          imageData, //base64 
-          canvas.width, 
-          canvas.height, 
-          1, 
-          function() {
-            window.DatecsPrinter.disconnect();
+    ctx.font = "bold 30px Avenir";
+    ctx.fillText("Gobierno del Estado de Sinaloa", 150, 250,250);
+    ctx.font = "20px avenir";
+    ctx.fillText("USE", 150,280);
+    ctx.font = "20px Avenir";
+    ctx.fillText("Número de turno;", 150,320);
+    ctx.font = "50px Avenir";
+    ctx.fillText("A-02", 150,370);
+    ctx.font = "20px Avenir";
+    ctx.fillText("Servicio:", 150,400);
+    ctx.font = "bold 20px Avenir";
+    ctx.fillText("Canje de placas", 150,420);
+    ctx.font = "20px Avenir";
+    ctx.fillText("Hora: 10:00 PM.", 150,450);
+    ctx.font = "20px Avenir";
+    ctx.fillText("Fecha: 18/dic/2016", 150,480);
+    var imageData = canvas.toDataURL('image/jpeg').replace(/^data:image\/(png|jpg|jpeg);base64,/, "");
+    window.DatecsPrinter.printImage(
+        imageData, //base64 
+        canvas.width, 
+        canvas.height, 
+        1, 
+    function() {
+        window.DatecsPrinter.disconnect();
         bluetoothSerial.connect(devicex, 
-                function(){
-                    bluetoothSerial.write([0x01B, 0x64, 10, 0x1d, 0x56, 0x00], 
-                    function(){bluetoothSerial.disconnect();}, 
-                    function(){alert("error");});
+            function(){
+                bluetoothSerial.write([0x01B, 0x64, 10, 0x1d, 0x56, 0x00], 
+                function(){bluetoothSerial.disconnect();}, 
+                function(){alert("error");});
                 }
             , function(){alert("fallo la conexcion");});
           },
@@ -113,6 +129,7 @@ function imprimir(){
               alert(JSON.stringify(error));
           }
       ) 
+}
       },
       function() {
         alert(JSON.stringify(error));

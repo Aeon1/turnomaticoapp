@@ -80,17 +80,19 @@ function imprimir(){
   window.DatecsPrinter.connect(devicex, 
       function() {
            var canvas = document.createElement('canvas');
-      canvas.height = 150;
-      canvas.width = 100;
+      canvas.height = 200;
+      canvas.width = 300;
       var ctx = canvas.getContext('2d');
-      ctx.fillStyle="#FFFFFF";
+      ctx.fillStyle = "#FFFFFF";
+      ctx.fillRect(0, 0, 300, 200);
+      ctx.fillStyle="#000000";
       ctx.font = "30px Georgia";
     ctx.textAlign = "center"; 
-    ctx.fillText("Lorem Ipsum", 50, 50,100);
+    ctx.fillText("Lorem Ipsum", 150, 50,190);
     ctx.font = "15px Verdana";
-    ctx.fillText("A-001", 50,100);
+    ctx.fillText("A-001", 150,100);
     ctx.font = "4px Verdana";
-    ctx.fillText("Tome asiento, en un momento sera llamado", 50,140);
+    ctx.fillText("Tome asiento, en un momento sera llamado", 150,140);
       var imageData = canvas.toDataURL('image/jpeg').replace(/^data:image\/(png|jpg|jpeg);base64,/, "");
   window.DatecsPrinter.printImage(
           imageData, //base64 

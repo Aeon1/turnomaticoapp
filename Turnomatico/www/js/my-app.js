@@ -90,36 +90,23 @@ function imprimir(){
 //    devicex=devices[0].address;
     bluetoothSerial.connect(devices[0].address, 
                 function(){
-                   // bluetoothSerial.write([0x1b,0x21,0,0x1b,0x61,1,0x1d,0x21,7]);
-//                    bluetoothSerial.write("A-002\r\n");
-                   // bluetoothSerial.write([0x1d,0x21,3,0x1c ,0x21 ,3]);
-//                    bluetoothSerial.write("Gobierno del Estado de Sinaloa\r\n");
-//                    bluetoothSerial.write([0x1d,0x21,4,0x1c ,0x21 ,4]);
-//                    bluetoothSerial.write("Gobierno del Estado de Sinaloa\r\n");
-//                    bluetoothSerial.write([0x1d,0x21,5,,0x1c ,0x21 ,5]);
-//                    bluetoothSerial.write("Gobierno del Estado de Sinaloa\r\n");
-//                    bluetoothSerial.write([0x1d,0x21,6,0x1c ,0x21 ,6]);
-//                    bluetoothSerial.write("Gobierno del Estado de Sinaloa\r\n");
-//                    bluetoothSerial.write([0x1d,0x21,7,0x1c ,0x21 ,7]);
-//                    bluetoothSerial.write("Gobierno del Estado de Sinaloa\r\n");
-//                    bluetoothSerial.write([0x1d,0x21,8,0x1c ,0x21 ,8]);
-//                    bluetoothSerial.write("Gobierno del Estado de Sinaloa\r\n");
-//                    bluetoothSerial.write([0x1d,0x21,10,0x1c ,0x21 ,10]);
-//                    bluetoothSerial.write("Gobierno del Estado de Sinaloa\r\n");
+                    bluetoothSerial.write([0x1b,0x21,0,0x1b,0x61,1,0x1d,0x21,0x20 ]);
+                    bluetoothSerial.write("A-002\r\n");
+                   
 
-                    bluetoothSerial.write([0x1b,0x21,0,0x1b,0x61,1,0x1d,0x21,2]);
-                    bluetoothSerial.write("Gobierno del Estado de Sinaloa\r\n");
-                    bluetoothSerial.write([0x1d,0x21,1]);
-                    bluetoothSerial.write("USE\r\n\n");
-                    bluetoothSerial.write([0x1d,0x21,0]);
-                    bluetoothSerial.write("Numero de turno:\r\n\n");
-                    bluetoothSerial.write([0x1d,0x21,2]);
-                    bluetoothSerial.write(turno+"\r\n\n");
-                    bluetoothSerial.write([0x1d,0x21,0]);
-                    bluetoothSerial.write("Servicio:"+servicio+"\r\n\n\n");
-                    bluetoothSerial.write([0x1d,0x21,0]);
-                    bluetoothSerial.write("Hora:"+hora+"\r\n");
-                    bluetoothSerial.write("Fecha:"+fecha+"\r\n");
+                    //bluetoothSerial.write([0x1b,0x21,0,0x1b,0x61,1,0x1d,0x21,2]);
+//                    bluetoothSerial.write("Gobierno del Estado de Sinaloa\r\n");
+//                    bluetoothSerial.write([0x1d,0x21,1]);
+//                    bluetoothSerial.write("USE\r\n\n");
+//                    bluetoothSerial.write([0x1d,0x21,0]);
+//                    bluetoothSerial.write("Numero de turno:\r\n\n");
+//                    bluetoothSerial.write([0x1d,0x21,2]);
+//                    bluetoothSerial.write(turno+"\r\n\n");
+//                    bluetoothSerial.write([0x1d,0x21,0]);
+//                    bluetoothSerial.write("Servicio:"+servicio+"\r\n\n\n");
+//                    bluetoothSerial.write([0x1d,0x21,0]);
+//                    bluetoothSerial.write("Hora:"+hora+"\r\n");
+//                    bluetoothSerial.write("Fecha:"+fecha+"\r\n");
                     bluetoothSerial.write([0x01B, 0x64, 5, 0x1d, 0x56, 0x00],
                     function(){
                         bluetoothSerial.disconnect(function(){alert("desconectado");},function(){alert("no se pudo desconectar");});

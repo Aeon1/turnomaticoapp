@@ -13,14 +13,14 @@ var mainView = myApp.addView('.view-main', {
 var devicex="";
 // Handle Cordova Device Ready Event
 $$(document).on('deviceready', function() {    
-//    window.DatecsPrinter.listBluetoothDevices(
-//  function (devices) {
-//    devicex=devices[0].address;
-//  },
-//  function (error) {
-//    alert(JSON.stringify(error));
-//  }
-//);
+    window.DatecsPrinter.listBluetoothDevices(
+  function (devices) {
+    devicex=devices[0].address;
+  },
+  function (error) {
+    alert(JSON.stringify(error));
+  }
+);
 
      
 });
@@ -76,4 +76,18 @@ function borrar(){
     var actual=$$("input#numero_celular").val();
     $$("input#numero_celular").val(actual.substring(0,actual.length-1));
 }
+function imprimir(){
+  window.DatecsPrinter.connect(devicex, 
+      function() {
+             window.DatecsPrinter.printText([0x01B, 0x64, 10, 0x1d, 0x56, 0x00], 'ISO-8859-1', 
+        function() {
+          alert("bien");
+        }
+      );
+      },
+      function() {
+        alert(JSON.stringify(error));
+      }
+    );
 
+}

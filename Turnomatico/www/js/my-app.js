@@ -90,21 +90,7 @@ function imprimir(){
 //    devicex=devices[0].address;
     bluetoothSerial.connect(devices[0].address, 
                 function(){
-                    bluetoothSerial.write([0x1b,0x61,1,0x1d,0x21,3,0x1b  ,0x21 ,0]);
-                    bluetoothSerial.write("Gobierno del Estado de Sinaloa\r\n");
-                    bluetoothSerial.write([0x1b,0x61,1,0x1d,0x21,3,0x1b  ,0x21 ,1]);
-                    bluetoothSerial.write("Gobierno del Estado de Sinaloa\r\n");
-                    bluetoothSerial.write([0x1b,0x61,1,0x1d,0x21,3,0x1b  ,0x21 ,2]);
-                    bluetoothSerial.write("Gobierno del Estado de Sinaloa\r\n");
-                    bluetoothSerial.write([0x1b,0x61,1,0x1d,0x21,3,0x1b  ,0x21 ,3]);
-                    bluetoothSerial.write("Gobierno del Estado de Sinaloa\r\n");
-                    bluetoothSerial.write([0x1b,0x61,1,0x1d,0x21,3,0x1b  ,0x21 ,4]);
-                    bluetoothSerial.write("Gobierno del Estado de Sinaloa\r\n");
-                    bluetoothSerial.write([0x1b,0x61,1,0x1d,0x21,3,0x1b  ,0x21 ,5]);
-                    bluetoothSerial.write("Gobierno del Estado de Sinaloa\r\n");
-                    bluetoothSerial.write([0x1b,0x61,1,0x1d,0x21,3,0x1b  ,0x21 ,6]);
-                    bluetoothSerial.write("Gobierno del Estado de Sinaloa\r\n");
-                    bluetoothSerial.write([0x1b,0x61,1,0x1d,0x21,3,0x1b  ,0x21 ,7]);
+                    bluetoothSerial.write([0x1b,0x61,1,0x1d,0x21,2,0x1b,0x21,0]);
                     bluetoothSerial.write("Gobierno del Estado de Sinaloa\r\n");
                    // bluetoothSerial.write([0x1d,0x21,3,0x1c ,0x21 ,3]);
 //                    bluetoothSerial.write("Gobierno del Estado de Sinaloa\r\n");

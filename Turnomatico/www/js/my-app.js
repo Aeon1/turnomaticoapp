@@ -101,8 +101,12 @@ function imprimir(){
                     bluetoothSerial.write([0x1d,0x21,0]);
                     bluetoothSerial.write("Hora:"+hora+"\r\n");
                     bluetoothSerial.write("Fecha:"+fecha+"\r\n");
-                    bluetoothSerial.write([0x01B, 0x64, 5, 0x1d, 0x56, 0x00]);
-                    bluetoothSerial.disconnect();
+                    bluetoothSerial.write([0x01B, 0x64, 5, 0x1d, 0x56, 0x00],
+                    function(){
+                        bluetoothSerial.disconnect();
+                    },
+                    function(error){alert(error);}
+                    );
                 }
             , function(){alert("fallo la conexcion");});
 //  window.DatecsPrinter.connect(devicex, 

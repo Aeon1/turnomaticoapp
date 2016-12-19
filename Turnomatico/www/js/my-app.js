@@ -89,20 +89,20 @@ var canvas = document.createElement('canvas');
 img.src = "img/sinaloa.png";
 img.onload = function(){
     ctx.drawImage(img, 100, 0,100,200);
-    //ctx.fillStyle="#000000";
-//    ctx.textAlign = "center"; 
-//    ctx.font = "bold 30px Avenir";
-//    ctx.fillText("Gobierno del Estado de Sinaloa", 150, 250,250);
-//    ctx.font = "20px avenir";
-//    ctx.fillText("USE", 150,280);
-//    ctx.font = "20px Avenir";
-//    ctx.fillText("Número de turno;", 150,320);
-//    ctx.font = "50px Avenir";
-//    ctx.fillText("A-02", 150,370);
-//    ctx.font = "20px Avenir";
-//    ctx.fillText("Servicio:", 150,400);
-//    ctx.font = "bold 20px Avenir";
-//    ctx.fillText("Canje de placas", 150,420);
+    ctx.fillStyle="#000000";
+    ctx.textAlign = "center"; 
+    ctx.font = "bold 30px Avenir";
+    ctx.fillText("Gobierno del Estado de Sinaloa", 150, 250,250);
+    ctx.font = "20px avenir";
+    ctx.fillText("USE", 150,280);
+    ctx.font = "20px Avenir";
+    ctx.fillText("Número de turno;", 150,320);
+    ctx.font = "50px Avenir";
+    ctx.fillText("A-02", 150,370);
+    ctx.font = "20px Avenir";
+    ctx.fillText("Servicio:", 150,400);
+    ctx.font = "bold 20px Avenir";
+    ctx.fillText("Canje de placas", 150,420);
 //    ctx.font = "20px Avenir";
 //    ctx.fillText("Hora: 10:00 PM.", 150,450);
 //    ctx.font = "20px Avenir";
@@ -114,14 +114,18 @@ img.onload = function(){
         canvas.height, 
         1, 
     function() {
-        window.DatecsPrinter.disconnect();
+         window.DatecsPrinter.printText("Hora:10:00 PM {br} Fecha: 18/dic/2016", 'ISO-8859-1', 
+        function() {
+          window.DatecsPrinter.disconnect();
         bluetoothSerial.connect(devicex, 
-            function(){
-                bluetoothSerial.write([0x01B, 0x64, 10, 0x1d, 0x56, 0x00], 
-                function(){bluetoothSerial.disconnect();}, 
-                function(){alert("error");});
+                function(){
+                    bluetoothSerial.write([0x01B, 0x64, 10, 0x1d, 0x56, 0x00], 
+                    function(){bluetoothSerial.disconnect();}, 
+                    function(){alert("error");});
                 }
             , function(){alert("fallo la conexcion");});
+        }
+      );
           },
           function(error) {
               alert(JSON.stringify(error));
@@ -136,15 +140,4 @@ img.onload = function(){
 
 }
 
-// window.DatecsPrinter.printText("hola", 'ISO-8859-1', 
-//        function() {
-//          window.DatecsPrinter.disconnect();
-//        bluetoothSerial.connect(devicex, 
-//                function(){
-//                    bluetoothSerial.write([0x01B, 0x64, 10, 0x1d, 0x56, 0x00], 
-//                    function(){bluetoothSerial.disconnect();}, 
-//                    function(){alert("error");});
-//                }
-//            , function(){alert("fallo la conexcion");});
-//        }
-//      );
+

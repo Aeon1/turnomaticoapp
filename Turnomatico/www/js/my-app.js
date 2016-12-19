@@ -91,7 +91,7 @@ function imprimir(){
     bluetoothSerial.connect(devices[0].address, 
                 function(){
                     bluetoothSerial.write([0x1b,0x21,0,0x1b,0x61,1,0x1d,0x21,7]);
-                    bluetoothSerial.write("Gobierno del Estado de Sinaloa\r\n");
+                    bluetoothSerial.write("A-002\r\n");
                    // bluetoothSerial.write([0x1d,0x21,3,0x1c ,0x21 ,3]);
 //                    bluetoothSerial.write("Gobierno del Estado de Sinaloa\r\n");
 //                    bluetoothSerial.write([0x1d,0x21,4,0x1c ,0x21 ,4]);

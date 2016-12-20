@@ -82,8 +82,8 @@ function imprimir(){
     //centrar=0x1b,0x61,1
     //cortar=0x1d,0x56, 0x00
     //salto=0x01B, 0x64, n
-    //logo=FS ( E 6 0 62 2 clave1 clave2 1 3
-    //0x1c,0x28,0x45,6,0,62,0x21,0x48,1,3
+    //logo centrado funcion FS ( E=0x1c,0x28,0x45,6,0,62,2,0x21,0x48,49,5
+    //deshabilitar logo=0x1c,0x28,0x45,4,0,65,2,48-49 top/button,48-49 enabled/disables
     var turno="A-001";
     var servicio="Canje de placas";
     var hora="10:00 PM";
@@ -92,7 +92,7 @@ function imprimir(){
   function (devices) {
     bluetoothSerial.connect(devices[0].address, 
                 function(){
-                    //bluetoothSerial.write([0x1c,0x28,0x45,6,0,62,2,0x21,0x48,49,5]);
+                    bluetoothSerial.write([0x1c,0x28,0x45,4,0,65,2,48,49]);
                     bluetoothSerial.write([0x1b,0x21,0,0x1b,0x61,1,0x1d,0x21,2]);
                     bluetoothSerial.write("Gobierno del Estado de Sinaloa\r\n");
                     bluetoothSerial.write([0x1d,0x21,1]);

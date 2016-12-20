@@ -77,7 +77,8 @@ function borrar(){
     $$("input#numero_celular").val(actual.substring(0,actual.length-1));
 }
 function imprimir(){
-    //tamaño=0x1d,0x21,0-8
+    myApp.showPreloader('Imprimiendo');
+    //tamaño=0x1d,0x21,0-7 -120
     //centrar=0x1b,0x61,1
     //cortar=0x1d,0x56, 0x00
     //salto=0x01B, 0x64, n
@@ -88,13 +89,10 @@ function imprimir(){
     var hora="10:00 PM";
     var fecha="19/12/2016";
     window.DatecsPrinter.listBluetoothDevices(
-  function (devices) {//
-//    devicex=devices[0].address;
+  function (devices) {
     bluetoothSerial.connect(devices[0].address, 
                 function(){
-                    bluetoothSerial.write([0x1c,0x28,0x45,0x06,0x00,62,0x21,0x48,1,3]);
-                    bluetoothSerial.write("Gobierno\r\n");
-                    
+                    bluetoothSerial.write([0x1c,0x28,0x45,0x06,0x00,62,0x6d,0x21,0x48,49,5]);
                    // bluetoothSerial.write([0x1b,0x21,0,0x1b,0x61,1,0x1d,0x21,2]);
 //                    bluetoothSerial.write("Gobierno del Estado de Sinaloa\r\n");
 //                    bluetoothSerial.write([0x1d,0x21,1]);
@@ -110,72 +108,19 @@ function imprimir(){
 //                    bluetoothSerial.write("Fecha:"+fecha+"\r\n");
                     bluetoothSerial.write([0x01B, 0x64, 5, 0x1d, 0x56, 0x00],
                     function(){
-                        bluetoothSerial.disconnect(function(){alert("desconectado");},function(){alert("no se pudo desconectar");});
+                        bluetoothSerial.disconnect(function(){},function(){});
                     },
                     function(error){alert(error);}
                     );
+                    myApp.hidePreloader();
                 }
-            , function(){alert("fallo la conexcion");});
+            , function(){myApp.hidePreloader();alert("Fallo la conexion con la impresora");});
             },
   function (error) {
+    myApp.hidePreloader();
     alert(JSON.stringify(error));
   }
 );
-//  window.DatecsPrinter.connect(devicex, 
-//      function() {
-//var canvas = document.createElement('canvas');
-//      canvas.height = 80;
-//      canvas.width = 400;
-//      var ctx = canvas.getContext('2d');
-//      ctx.fillStyle = "#FFFFFF";
-//      ctx.fillRect(0, 0, 400, 80);
-//       
-//    ctx.fillStyle="#000000";
-//    ctx.textAlign = "center"; 
-//    ctx.font = "bold 50px Avenir";
-//    ctx.fillText("Gobierno del Estado de Sinaloa", 200, 50,400);
-//    ctx.font = "20px avenir";
-//    ctx.fillText("USE", 200,70);
-//    //ctx.font = "10px Avenir";
-////    ctx.fillText("Número de turno;", 75,120);
-////    ctx.font = "20px Avenir";
-////    ctx.fillText("A-02", 75,170);
-////    ctx.font = "10px Avenir";
-////    ctx.fillText("Servicio:", 75,200);
-////    ctx.font = "bold 10px Avenir";
-////    ctx.fillText("Canje de placas", 75,220);
-////    ctx.font = "10px Avenir";
-////    ctx.fillText("Hora: 10:00 PM.", 75,250);
-////    ctx.font = "10px Avenir";
-////    ctx.fillText("Fecha: 18/dic/2016", 75,280);
-//    var imageData = canvas.toDataURL('image/jpeg').replace(/^data:image\/(png|jpg|jpeg);base64,/, "");
-//    window.DatecsPrinter.printImage(
-//        imageData, //base64 
-//        canvas.width, 
-//        canvas.height, 
-//        1, 
-//    function() {         
-//          window.DatecsPrinter.disconnect(function(){alert("cortar");},function(){alert('mal');});
-//        bluetoothSerial.connect(devicex, 
-//                function(){
-//                    bluetoothSerial.write([0x01B, 0x64, 10, 0x1d, 0x56, 0x00], 
-//                    function(){bluetoothSerial.disconnect();}, 
-//                    function(){alert("error");});
-//                }
-//            , function(){alert("fallo la conexcion");});
-//        
-//          },
-//          function(error) {
-//              alert(JSON.stringify(error));
-//          }
-//      ) 
-//
-//      },
-//      function() {
-//        alert(JSON.stringify(error));
-//      }
-//    );
-
 }
 
 

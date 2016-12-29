@@ -126,5 +126,7 @@ socket.onClose = function(hasError) {
 function checar(){
     if (socket.state == Socket.State.OPENED) {
   alert("Socket is opened");
+}else{
+    alert(socket.state);
 }
 }

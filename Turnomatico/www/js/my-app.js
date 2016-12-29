@@ -104,7 +104,7 @@ function imprimir(){
 function conectar(){
 socket = new Socket();
 socket.open(
-  "192.168.1.64",
+  "192.168.1.68",
   3000,
   function() {
     alert("conectado");    
@@ -112,7 +112,15 @@ socket.open(
   function(errorMessage) {
     alert("error: "+errorMessage);
   }); 
-  
+ socket.onData = function(data) {
+  alert(data);
+};
+socket.onError = function(errorMessage) {
+  // invoked after error occurs during connection
+};
+socket.onClose = function(hasError) {
+  // invoked after connection close
+}; 
 }
 function checar(){
     if (socket.state == Socket.State.OPENED) {

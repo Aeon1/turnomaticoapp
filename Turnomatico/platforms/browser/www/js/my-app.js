@@ -20,7 +20,21 @@ document.addEventListener('deviceready', function () {
 };
  
 var ws = new WebSocket('ws://echo.websocket.org');
-alert(ws);
+ws.onopen = function () {
+        console.log('open');
+        this.send('hello');
+    };
+ws.onmessage = function (event) {
+        console.log(event.data);    // will be "hello" 
+        this.close();
+    };
+ws.onerror = function () {
+        console.log('error occurred!');
+    };
+ 
+ws.onclose = function (event) {
+    console.log('close code=' + event.code);
+};
 });
 
 

@@ -24,6 +24,14 @@ socket.open(
   function(errorMessage) {
     alert("error: "+errorMessage);
   });
+  
+  var dataString = "Hello world";
+var data = new Uint8Array(dataString.length);
+for (var i = 0; i < data.length; i++) {
+  data[i] = dataString.charCodeAt(i);
+}
+socket.write(data);
+
   socket.onData = function(data) {
   alert(data);
 };

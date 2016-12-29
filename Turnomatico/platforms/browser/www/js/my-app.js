@@ -23,11 +23,11 @@ var ws = new WebSocket('ws://echo.websocket.org');
 
 ws.onopen = function () {
         alert('open');
-        this.send('hello');
+       // this.send('hello');
     };
 ws.onmessage = function (event) {
-        console.log(event.data);    // will be "hello" 
-        this.close();
+        alert(event.data);    // will be "hello" 
+        //this.close();
     };
 ws.onerror = function () {
         console.log('error occurred!');

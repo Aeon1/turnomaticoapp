@@ -104,7 +104,7 @@ function imprimir(){
 function conectar(){
 socket = new Socket();
 socket.open(
-  "http://192.168.1.68",
+  "192.168.1.68",
   3000,
   function() {
     alert("conectado");
@@ -129,4 +129,12 @@ function checar(){
 }else{
     alert(socket.state);
 }
+}
+function enviar(){
+    var dataString = "Hello world";
+var data = new Uint8Array(dataString.length);
+for (var i = 0; i < data.length; i++) {
+  data[i] = dataString.charCodeAt(i);
+}
+socket.write(data);
 }

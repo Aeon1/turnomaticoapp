@@ -12,7 +12,8 @@ var mainView = myApp.addView('.view-main', {
 });
 var devicex="";
 // Handle Cordova Device Ready Event
-$$(document).on('deviceready', function() {    
+$$(document).on('deviceready', function() { 
+    alert("ejecutando");
 var ws = new WebSocket('http://192.168.1.68:3000/');
 
     ws.onopen = function () {

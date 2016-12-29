@@ -13,26 +13,15 @@ var mainView = myApp.addView('.view-main', {
 var devicex="";
 // Handle Cordova Device Ready Event
 document.addEventListener('deviceready', function () {
-    var ws = new WebSocket('192.168.1.68:3000');
-    alert(ws);
-    ws.onopen = function () {
-        alert('open');
-        this.send('hello');
-    };
+    WebSocket.pluginOptions = {
+    origin: 'http://192.168.1.68',
+    maxConnectTime: 5000,
+    override: true
+};
  
-    ws.onmessage = function (event) {
-        alert(event.data);
-        this.close();
-    };
- 
-    ws.onerror = function () {
-        alert('error occurred!');
-    };
- 
-    ws.onclose = function (event) {
-        alert('close code=' + event.code);
-    };
-}, false);
+var ws = new WebSocket('ws://echo.websocket.org');
+alert(ws);
+});
 
 
 // Now we need to run the code that will be executed only for About page.

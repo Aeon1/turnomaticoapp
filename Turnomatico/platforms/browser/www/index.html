@@ -31,41 +31,41 @@
         <div class="pages navbar-fixed">
           <!-- Page, "data-page" contains page name -->
           <div data-page="index" class="page">
- 
-            <!-- Top Navbar. In Material theme it should be inside of the page-->
-            <div class="navbar">
-              <div class="navbar-inner">
-                <div class="center">Principal</div>
-              </div>
-            </div> 
-            <!-- Scrollable page content -->
-            <div class="page-content">
-                <img class="logo_sinaloa" src="img/sinaloa.png" />
-                <div class="content-block">
-                    <a href="login.html" class="button button-mega-big button-fill button-raised color-teal">Tengo cita</a>
-                    <p>&nbsp;</p>
-                    <p>
-                        <a href="celular.html" class="button button-mega-big button-fill button-raised color-cyan">Carta de no antecedentes penales</a>
-                    </p>
-                    <p>
-                        <a href="celular.html" class="button button-mega-big button-fill button-raised color-cyan">Placas</a>
-                    </p>
-                    <p>
-                        <a href="celular.html" class="button button-mega-big button-fill button-raised color-cyan">Recaudacion</a>
-                    </p>
-                    <p>
-                        <a href="#" class="button button-mega-big button-fill button-raised color-cyan" onclick="conectar()">conectar</a>
-                    </p>
-                    <p>
-                        <a href="#" class="button button-mega-big button-fill button-raised color-cyan" onclick="checar()">checar</a>
-                    </p>
-                    <p>
-                        <a href="#" class="button button-mega-big button-fill button-raised color-cyan" onclick="enviar()">enviar</a>
-                    </p>
-                </div>
-                
+
+<!-- Scrollable page content -->
+<div class="page-content">
+    <div class="content-block"><br /><br /><br /><br />
+    <div class="list-block cards-list">
+      <ul>
+        <li class="card">
+        <form id="codeaccess">
+          <div class="card-header" style="background: #009688;color: #FFFFFF;"><h3 style="margin: auto;display: block;">Por favor ingresa el codigo</h3></div>
+          <div class="card-content">
+            <div class="content-block tablet-inset">
+      <div class="content-block-inner">
+        <div class="item-content">
+        <div class="item-media"><img src="img/smartphone.svg" height="20" /></div>
+        <div class="item-inner">
+          <div class="item-input">
+            <input type="text" id="accesscode" placeholder="Codigo de acceso">
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+          </div>
+          <div class="card-content">
+               <div class="card-content-inner">
+                <a href="#" class="button button-big button-fill" onclick="submitNip()">Ingresar&nbsp;&nbsp;<img src="img/login.svg" height="20" /></a>
             </div>
           </div>
+          </form>
+        </li>
+      </ul>
+    </div>
+    </div>
+</div>
+</div>
         </div>
       </div>
     </div>

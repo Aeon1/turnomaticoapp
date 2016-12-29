@@ -14,12 +14,12 @@ var devicex="";
 // Handle Cordova Device Ready Event
 document.addEventListener('deviceready', function() {
     
-var socket = io('http://192.168.1.68:3000');
-console.log(socket);
-  socket.on('news', function (data) {
-    console.log(data);
-    socket.emit('prueba de conexion', { my: 'data' });
-  });
+//var socket = io('http://192.168.1.68:3000');
+//console.log(socket);
+//  socket.on('news', function (data) {
+//    console.log(data);
+//    socket.emit('prueba de conexion', { my: 'data' });
+//  });
   });
 
 
@@ -106,40 +106,24 @@ function imprimir(){
   }
 );
 }
-    var socket;
-function conectar(){
-socket = new Socket();
-socket.open(
-  "192.168.1.68",
-  3000,
-  function() {
-    alert("conectado");    
-  },
-  function(errorMessage) {
-    alert("error: "+errorMessage);
-  }); 
- socket.onData = function(data) {
-  alert(data);
-};
-socket.onError = function(errorMessage) {
-  // invoked after error occurs during connection
-};
-socket.onClose = function(hasError) {
-  // invoked after connection close
-}; 
-}
-function checar(){
-    if (socket.state == Socket.State.OPENED) {
-  alert("Socket is opened");
-}else{
-    alert(socket.state);
-}
-}
-function enviar(){
-var dataString = "Hello world";
-var data = new Uint8Array(dataString.length);
-for (var i = 0; i < data.length; i++) {
-  data[i] = dataString.charCodeAt(i);
-}
-socket.write(data,function(){alert('enviado');},function(err){alert("error: "+err);});
-}
+//validar conexion
+function submitNip() {
+    var accesCode=$$("#codeaccess>#accesscode").val();
+      var token =null;
+      //8476445
+      if(accesCode !== '' && accesCode !== null){
+        $$.post('http://192.168.1.68:3000/api/devices/register', {
+          nip: accesCode
+        },function(respuesta){
+             view.router.loadPage('principal.html');      
+        },function(error) {
+          console.log(error,'error');
+          if(token===null){
+            myApp.alert('Ups! El nip que ingreso es incorrecto o ya fue usado','Error');
+          }
+        })
+
+      }else {
+        myApp.alert('Ingrese un nip','Error');
+      }
+    }

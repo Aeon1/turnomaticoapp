@@ -113,9 +113,7 @@ function submitNip() {
       //8476445
       if(accesCode !== '' && accesCode !== null){
         $$.post('http://192.168.1.68:3000/api/devices/register',{
-          nip:{
-          nip: accesCode
-        }
+          nip: "accesCode"
         },function(respuesta){
             myApp.alert(respuesta);
              view.router.loadPage('principal.html');      

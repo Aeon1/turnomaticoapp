@@ -30,5 +30,5 @@
     <plugin name="cordova-plugin-statusbar" spec="~1.0.1" />
     <plugin name="cordova-plugin-datecs-printer" spec="*" source="npm" />
     <plugin name="cordova-plugin-bluetooth-serial" spec="*" source="npm"/>
-    <plugin name="cordova-plugin-socket-scrutinizer" spec="*" source="npm"/>
+    <plugin name="cordova-plugin-websocket" spec="*" source="npm"/>
 </widget>

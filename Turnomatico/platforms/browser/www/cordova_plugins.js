@@ -47,6 +47,14 @@ module.exports = [
         "clobbers": [
             "window.bluetoothSerial"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-socket-scrutinizer/www/SocketConnection.js",
+        "id": "cordova-plugin-socket-scrutinizer.SocketConnection",
+        "pluginId": "cordova-plugin-socket-scrutinizer",
+        "clobbers": [
+            "SocketConnection"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -58,7 +66,9 @@ module.exports.metadata =
     "cordova-plugin-datecs-printer": "0.5.0",
     "intspirit.cordova.plugin.printer": "0.0.1",
     "com.iigservices.cordova.plugin": "0.0.1",
-    "cordova-plugin-bluetooth-serial": "0.4.6"
+    "cordova-plugin-bluetooth-serial": "0.4.6",
+    "cordova-plugin-socket-scrutinizer": "0.0.0",
+    "cordova-plugin-websocket": "0.12.1"
 }
 // BOTTOM OF METADATA
 });

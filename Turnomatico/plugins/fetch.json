@@ -215,34 +215,18 @@
         "is_top_level": true,
         "variables": {}
     },
-    "cordova-plugin-datecs-printer": {
+    "cordova-plugin-socket-scrutinizer": {
         "source": {
             "type": "registry",
-            "id": "cordova-plugin-datecs-printer@*"
+            "id": "cordova-plugin-socket-scrutinizer@*"
         },
         "is_top_level": true,
         "variables": {}
     },
-    "intspirit.cordova.plugin.printer": {
+    "cordova-plugin-websocket": {
         "source": {
             "type": "registry",
-            "id": "intspirit.cordova.plugin.printer@*"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
-    "com.iigservices.cordova.plugin": {
-        "source": {
-            "type": "registry",
-            "id": "SignaturePrinter@*"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
-    "cordova-plugin-bluetooth-serial": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-bluetooth-serial@*"
+            "id": "cordova-plugin-websocket@*"
         },
         "is_top_level": true,
         "variables": {}

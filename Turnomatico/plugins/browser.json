@@ -27,6 +27,12 @@
         },
         "cordova-plugin-bluetooth-serial": {
             "PACKAGE_NAME": "com.avi.turnomatico"
+        },
+        "cordova-plugin-socket-scrutinizer": {
+            "PACKAGE_NAME": "com.avi.turnomatico"
+        },
+        "cordova-plugin-websocket": {
+            "PACKAGE_NAME": "com.avi.turnomatico"
         }
     },
     "dependent_plugins": {}

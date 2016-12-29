@@ -24,6 +24,12 @@ socket.open(
   function(errorMessage) {
     alert("error: "+errorMessage);
   });
+  socket.onData = function(data) {
+  alert(data);
+};
+socket.onError = function(errorMessage) {
+  alert("error "+errorMessage);
+};
 });
 
 

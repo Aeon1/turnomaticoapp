@@ -34,7 +34,7 @@ ws.onerror = function () {
     };
  
 ws.onclose = function (event) {
-    alert('close code=' + event.code);
+    //alert('close code=' + event.code);
 };
 });
 

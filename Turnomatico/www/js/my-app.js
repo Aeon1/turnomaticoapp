@@ -23,7 +23,7 @@ var ws = new WebSocket('ws://192.168.1.68:3000');
 
 ws.onopen = function () {
         alert('open');
-       // this.send('hello');
+        this.send('hello');
     };
 ws.onmessage = function (event) {
         alert(event.data);

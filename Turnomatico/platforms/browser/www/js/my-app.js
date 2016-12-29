@@ -108,13 +108,14 @@ function imprimir(){
 }
 //validar conexion
 function submitNip() {
-    var accesCode=$$("#codeaccess>#accesscode").val();
+    var accesCode=$$("#accesscode").val();
       var token =null;
       //8476445
       if(accesCode !== '' && accesCode !== null){
         $$.post('http://192.168.1.68:3000/api/devices/register', {
           nip: accesCode
         },function(respuesta){
+            myApp.alert(respuesta);
              view.router.loadPage('principal.html');      
         },function(error) {
           console.log(error,'error');

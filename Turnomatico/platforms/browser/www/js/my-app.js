@@ -104,19 +104,10 @@ function imprimir(){
 function conectar(){
 socket = new Socket();
 socket.open(
-  "192.168.1.68",
+  "192.168.1.64",
   3000,
   function() {
-    alert("conectado");
-    socket.onData = function(data) {
-  alert("mensaje "+data);
-};
-socket.onError = function(errorMessage) {
-  alert("error "+errorMessage);
-};
-socket.onClose = function(hasError) {
-  alert("cerrado "+hasError);
-};
+    alert("conectado");    
   },
   function(errorMessage) {
     alert("error: "+errorMessage);
@@ -131,10 +122,10 @@ function checar(){
 }
 }
 function enviar(){
-    var dataString = "Hello world";
+var dataString = "Hello world";
 var data = new Uint8Array(dataString.length);
 for (var i = 0; i < data.length; i++) {
   data[i] = dataString.charCodeAt(i);
 }
-socket.write(data);
+socket.write(data,function(){alert('enviado');},function(err){alert("error: "+err);});
 }

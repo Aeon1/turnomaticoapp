@@ -37,6 +37,7 @@ $$(document).on('pageInit', function (e) {
 $$(document).on('pageInit', '.page[data-page="aboutx"]', function (e) {
 
 })
+
 function pressbtn(num){
     var actual=$$("input#numero_celular").val();
     if(actual.length<10){
@@ -99,10 +100,9 @@ function imprimir(){
   }
 );
 }
-
+    var socket;
 function conectar(){
-   var socket = new Socket();
-
+socket = new Socket();
 socket.open(
   "192.168.1.68",
   3000,

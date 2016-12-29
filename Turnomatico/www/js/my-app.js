@@ -13,29 +13,17 @@ var mainView = myApp.addView('.view-main', {
 var devicex="";
 // Handle Cordova Device Ready Event
 document.addEventListener('deviceready', function () {
-//    WebSocket.pluginOptions = {
-//    origin: 'http://192.168.1.68',
-//    maxConnectTime: 5000,
-//    override: true
-//};
- 
-var ws = new WebSocket('ws://192.168.1.68:3000');
+var socket = new Socket();
 
-ws.onopen = function () {
-        alert('open');
-        this.send('hello');
-    };
-ws.onmessage = function (event) {
-        alert(event.data);
-        //this.close();
-    };
-ws.onerror = function () {
-        alert('error occurred!');
-    };
- 
-ws.onclose = function (event) {
-    //alert('close code=' + event.code);
-};
+socket.open(
+  "192.168.1.68",
+  3000,
+  function() {
+    alert("conectado");
+  },
+  function(errorMessage) {
+    alert("error: "+errorMessage);
+  });
 });
 
 

@@ -55,6 +55,14 @@ module.exports = [
         "clobbers": [
             "SocketConnection"
         ]
+    },
+    {
+        "file": "plugins/cz.blocshop.socketsforcordova/socket.js",
+        "id": "cz.blocshop.socketsforcordova.Socket",
+        "pluginId": "cz.blocshop.socketsforcordova",
+        "clobbers": [
+            "window.Socket"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -68,7 +76,8 @@ module.exports.metadata =
     "com.iigservices.cordova.plugin": "0.0.1",
     "cordova-plugin-bluetooth-serial": "0.4.6",
     "cordova-plugin-socket-scrutinizer": "0.0.0",
-    "cordova-plugin-websocket": "0.12.1"
+    "cordova-plugin-websocket": "0.12.1",
+    "cz.blocshop.socketsforcordova": "1.1.0"
 }
 // BOTTOM OF METADATA
 });

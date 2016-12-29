@@ -230,5 +230,13 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "cz.blocshop.socketsforcordova": {
+        "source": {
+            "type": "registry",
+            "id": "sockets-for-cordova@*"
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }

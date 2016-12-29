@@ -33,6 +33,9 @@
         },
         "cordova-plugin-websocket": {
             "PACKAGE_NAME": "com.avi.turnomatico"
+        },
+        "cz.blocshop.socketsforcordova": {
+            "PACKAGE_NAME": "com.avi.turnomatico"
         }
     },
     "dependent_plugins": {}

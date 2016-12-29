@@ -14,7 +14,7 @@ var devicex="";
 // Handle Cordova Device Ready Event
 document.addEventListener('deviceready', function () {
     var ws = new WebSocket('192.168.1.68:3000');
- 
+    alert(ws);
     ws.onopen = function () {
         alert('open');
         this.send('hello');

@@ -12,9 +12,13 @@ var mainView = myApp.addView('.view-main', {
 });
 var devicex="";
 // Handle Cordova Device Ready Event
-document.addEventListener('deviceready', function () {
-
-});
+document.addEventListener('deviceready', function() {
+    socket.on('connect', function() {
+      socket.on('text', function(text) {
+        alert(text);
+       });
+     });
+  });
 
 
 // Now we need to run the code that will be executed only for About page.

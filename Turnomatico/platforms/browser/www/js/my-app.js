@@ -104,7 +104,7 @@ function imprimir(){
 function conectar(){
 socket = new Socket();
 socket.open(
-  "192.168.1.68",
+  "192.168.1.68/",
   3000,
   function() {
     alert("conectado");

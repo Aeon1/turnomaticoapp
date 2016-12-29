@@ -13,31 +13,7 @@ var mainView = myApp.addView('.view-main', {
 var devicex="";
 // Handle Cordova Device Ready Event
 document.addEventListener('deviceready', function () {
-var socket = new Socket();
 
-socket.open(
-  "192.168.1.68",
-  3000,
-  function() {
-    alert("conectado");
-  },
-  function(errorMessage) {
-    alert("error: "+errorMessage);
-  });
-  
-  var dataString = "Hello world";
-var data = new Uint8Array(dataString.length);
-for (var i = 0; i < data.length; i++) {
-  data[i] = dataString.charCodeAt(i);
-}
-socket.write(data);
-
-  socket.onData = function(data) {
-  alert(data);
-};
-socket.onError = function(errorMessage) {
-  alert("error "+errorMessage);
-};
 });
 
 
@@ -124,4 +100,31 @@ function imprimir(){
 );
 }
 
+function conectar(){
+   var socket = new Socket();
 
+socket.open(
+  "192.168.1.68",
+  3000,
+  function() {
+    alert("conectado");
+    socket.onData = function(data) {
+  alert("mensaje "+data);
+};
+socket.onError = function(errorMessage) {
+  alert("error "+errorMessage);
+};
+socket.onClose = function(hasError) {
+  alert("cerrado "+hasError);
+};
+  },
+  function(errorMessage) {
+    alert("error: "+errorMessage);
+  }); 
+  
+}
+function checar(){
+    if (socket.state == Socket.State.OPENED) {
+  alert("Socket is opened");
+}
+}

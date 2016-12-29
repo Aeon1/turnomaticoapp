@@ -13,25 +13,13 @@ var mainView = myApp.addView('.view-main', {
 var devicex="";
 // Handle Cordova Device Ready Event
 document.addEventListener('deviceready', function() {
-    var server = require('http').createServer();
-var io = require('socket.io')(server);
-
-io.sockets.on('connection', function (socket) {
-    console.log('socket connected');
-
-    socket.on('disconnect', function () {
-        console.log('socket disconnected');
-    });
-
-    socket.emit('text', 'wow. such event. very real time.');
-});
-
-server.listen(3000);
-    socket.on('connect', function() {
-      socket.on('text', function(text) {
-        alert(text);
-       });
-     });
+    
+var socket = io('http://192.168.1.68:3000');
+console.log(socket);
+  socket.on('news', function (data) {
+    console.log(data);
+    socket.emit('prueba de conexion', { my: 'data' });
+  });
   });
 
 

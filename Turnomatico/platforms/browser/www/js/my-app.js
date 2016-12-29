@@ -20,8 +20,9 @@ document.addEventListener('deviceready', function () {
 };
  
 var ws = new WebSocket('ws://echo.websocket.org');
+
 ws.onopen = function () {
-        console.log('open');
+        alert('open');
         this.send('hello');
     };
 ws.onmessage = function (event) {

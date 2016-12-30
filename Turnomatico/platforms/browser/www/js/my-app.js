@@ -119,10 +119,9 @@ function sendsms(){
     if(numcel=="" || numcel.length<10){
         myApp.alert('Debe ingresar un n&uacute;mero de celular', 'Requerido');
     }else{
-        console.log('bien');
-    socket.emit('createTicket', {'ticket':{phoneNumber:numcel,serviceId: id_serivicio}}, function (data,response) {
-        console.log(response);
+    socket.emit('createTicket', {'ticket':{phoneNumber:numcel,serviceId: id_serivicio}}, function (data,response) {        
       var key=response.key;
+      alert(key);
     });
     }
 }

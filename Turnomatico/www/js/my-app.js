@@ -65,10 +65,7 @@ myApp.onPageInit('home', function (page) {
                 //console.log(value.name); 
                 //socket = io.connect(ip);
                 socket = plugin.socket.io.connect(ip);
-                socket.on("connect", function() {
-  alert("connected");
 
-});
             });          
         },
       error:
@@ -123,6 +120,9 @@ function sendsms(){
     if(numcel=="" || numcel.length<10){
         myApp.alert('Debe ingresar un n&uacute;mero de celular', 'Requerido');
     }else{
+        socket.emit('createTicket', {'ticket':{phoneNumber:numcel,serviceId: id_serivicio}}, function(res) {
+    alert(JSON.stringify(res));
+  });
     //socket.emit('createTicket', {'ticket':{phoneNumber:numcel,serviceId: id_serivicio}}, function (data,response) {        
 //      var key=response.key;
 //      alert(key);

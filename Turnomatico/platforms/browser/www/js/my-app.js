@@ -160,7 +160,7 @@ function imprimir(key,fecha,hora){
                     bluetoothSerial.write("USE\r\n\n");
                     bluetoothSerial.write([0x1d,0x21,0]);
                     bluetoothSerial.write("Numero de turno:\r\n\n");
-                    bluetoothSerial.write([0x1d,0x21,2]);
+                    bluetoothSerial.write([0x1b,0x21,0,0x1b,0x61,1,0x1d,0x21,2]);
                     bluetoothSerial.write(turno+"\r\n\n");
                     bluetoothSerial.write([0x1d,0x21,0]);
                     bluetoothSerial.write("Servicio: "+serviciox+"\r\n\n\n");

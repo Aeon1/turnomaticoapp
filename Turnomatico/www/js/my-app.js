@@ -121,10 +121,14 @@ function sendsms(){
         myApp.alert('Debe ingresar un n&uacute;mero de celular', 'Requerido');
     }else{
         socket.emit('createTicket', {'ticket':{phoneNumber:numcel,serviceId: id_serivicio}}, function(res) {
-    respuesta=JSON.stringify(res);
-    alert(respuesta);
+    respuesta=JSON.parse(JSON.stringify(res));
+        var date = new Date(respuesta[1].createdAt);
+      var fecha=date.getDate() + '/' + (date.getMonth() + 1) + '/' +   date.getFullYear();
+      var hora=addZero(date.getHours())+":"+addZero(date.getMinutes())+":"+addZero(date.getSeconds())+" "+((date.getHours() >= 12) ? "PM" : "AM");
+    var key=respuesta[1].key;
+    imprimir(key,fecha,hora);
   });
-    //socket.emit('createTicket', {'ticket':{phoneNumber:numcel,serviceId: id_serivicio}}, function (data,response) {        
+   // socket.emit('createTicket', {'ticket':{phoneNumber:numcel,serviceId: id_serivicio}}, function (data,response) {        
 //      var key=response.key;
 //      alert(key);
 //    });
@@ -132,7 +136,7 @@ function sendsms(){
 }
 function addZero(i) {if (i < 10) {i = "0" + i;}return i;}
 
-function imprimir(key){
+function imprimir(key,fecha,hora){
     myApp.showPreloader('Imprimiendo');
     //tamaño=0x1d,0x21,0-7 -120
     //centrar=0x1b,0x61,1
@@ -141,45 +145,42 @@ function imprimir(key){
     //logo centrado funcion FS ( E=0x1c,0x28,0x45,6,0,62,2,0x21,0x48,49,5
     //deshabilitar logo=0x1c,0x28,0x45,4,0,65,2,48-49 top/button,48-49 enabled/disables
     //                    bluetoothSerial.write([0x1c,0x28,0x45,4,0,65,2,48,49]);//deshabilita la impresion de imagen
-   // var date = new Date();
-//      fecha=date.getDate() + '/' + (date.getMonth() + 1) + '/' +   date.getFullYear();
-//      hora=addZero(date.getHours())+":"+addZero(date.getMinutes())+":"+addZero(date.getSeconds())+" "+((date.getHours() >= 12) ? "PM" : "AM");
-    var turno=key;
+ var turno=key;
     var serviciox=servicio;
     var hora="";
     var fecha="";
-  //  window.DatecsPrinter.listBluetoothDevices(
-//  function (devices) { 
-//    bluetoothSerial.connect(devices[0].address, 
-//                function(){
-//                    bluetoothSerial.write([0x1b,0x21,0,0x1b,0x61,1,0x1d,0x21,2]);
-//                    bluetoothSerial.write("Gobierno del Estado de Sinaloa\r\n");
-//                    bluetoothSerial.write([0x1d,0x21,1]);
-//                    bluetoothSerial.write("USE\r\n\n");
-//                    bluetoothSerial.write([0x1d,0x21,0]);
-//                    bluetoothSerial.write("Numero de turno:\r\n\n");
-//                    bluetoothSerial.write([0x1d,0x21,2]);
-//                    bluetoothSerial.write(turno+"\r\n\n");
-//                    bluetoothSerial.write([0x1d,0x21,0]);
-//                    bluetoothSerial.write("Servicio: "+serviciox+"\r\n\n\n");
-//                    bluetoothSerial.write([0x1d,0x21,0]);
-//                    bluetoothSerial.write("Hora:"+hora+"\r\n");
-//                    bluetoothSerial.write("Fecha:"+fecha+"\r\n");
-//                    bluetoothSerial.write([0x01B, 0x64, 5, 0x1d, 0x56, 0x00],
-//                    function(){
-//                        bluetoothSerial.disconnect(function(){},function(){});
-//                    },
-//                    function(error){alert(error);}
-//                    );
-//                    myApp.hidePreloader();
-//                }
-//            , function(){myApp.hidePreloader();alert("Fallo la conexion con la impresora");});
-//            },
-//  function (error) {
-//    myApp.hidePreloader();
-//    alert(JSON.stringify(error));
-//  }
-//);
+    window.DatecsPrinter.listBluetoothDevices(
+  function (devices) { 
+    bluetoothSerial.connect(devices[0].address, 
+                function(){
+                    bluetoothSerial.write([0x1b,0x21,0,0x1b,0x61,1,0x1d,0x21,2]);
+                    bluetoothSerial.write("Gobierno del Estado de Sinaloa\r\n");
+                    bluetoothSerial.write([0x1d,0x21,1]);
+                    bluetoothSerial.write("USE\r\n\n");
+                    bluetoothSerial.write([0x1d,0x21,0]);
+                    bluetoothSerial.write("Numero de turno:\r\n\n");
+                    bluetoothSerial.write([0x1d,0x21,2]);
+                    bluetoothSerial.write(turno+"\r\n\n");
+                    bluetoothSerial.write([0x1d,0x21,0]);
+                    bluetoothSerial.write("Servicio: "+serviciox+"\r\n\n\n");
+                    bluetoothSerial.write([0x1d,0x21,0]);
+                    bluetoothSerial.write("Hora:"+hora+"\r\n");
+                    bluetoothSerial.write("Fecha:"+fecha+"\r\n");
+                    bluetoothSerial.write([0x01B, 0x64, 5, 0x1d, 0x56, 0x00],
+                    function(){
+                        bluetoothSerial.disconnect(function(){},function(){});
+                    },
+                    function(error){alert(error);}
+                    );
+                    myApp.hidePreloader();
+                }
+            , function(){myApp.hidePreloader();alert("Fallo la conexion con la impresora");});
+            },
+  function (error) {
+    myApp.hidePreloader();
+    alert(JSON.stringify(error));
+  }
+);
 }
 //validar conexion
 function submitNip(acceso) {

@@ -5,7 +5,10 @@ var myApp = new Framework7({material:true});
 // If we need to use custom DOM library, let's save it to $$ variable:
 var $$ = Dom7;
 var value="";
-var ip="http://192.168.0.8:3000";
+var ip="http://192.168.1.73:3000";
+var socket="";
+var servicio="";
+var id_serivicio="";
 // Add view
 var mainView = myApp.addView('.view-main', {
     // Because we want to use dynamic navbar, we need to enable it for this view:
@@ -57,10 +60,11 @@ myApp.onPageInit('home', function (page) {
         function (data, status, xhr){
             //console.log(data.services);
             $$("#btn_options").html("");
-            $$.each(data.services, function (index,value) {
-                $$("#btn_options").append("<a href='celular.html?id="+value._id+"' class='button button-mega-big button-fill button-raised color-cyan'>"+value.name+"</a>");
-                console.log(value.name); 
-                var socket = io.connect(ip);
+            $$.each(data.services, function (index,value) {                
+                $$("#btn_options").append("<a href='celular.html?id="+value._id+"&ser="+value.name+"' class='button button-mega-big button-fill button-raised color-cyan'>"+value.name+"</a>");
+                //console.log(value.name); 
+                socket = io.connect(ip);
+                
             });          
         },
       error:
@@ -75,7 +79,7 @@ myApp.onPageInit('home', function (page) {
 
 myApp.onPageInit('celular', function(page) {
     id_serivicio=page.query.id;
-    console.log(id_serivicio);
+    servicio=page.query.ser;
 });
 
 
@@ -114,9 +118,20 @@ function sendsms(){
     var numcel=$$("#numero_celular").val();
     if(numcel=="" || numcel.length<10){
         myApp.alert('Debe ingresar un n&uacute;mero de celular', 'Requerido');
+    }else{
+    socket.emit('createTicket', {'ticket':{phoneNumber:'6672244900',serviceId: id_serivicio}}, function (data,response) {
+      console.log(response);
+      var date = new Date(response.date);
+      var fecha=date.getDate() + '/' + (date.getMonth() + 1) + '/' +   date.getFullYear();
+      var hora=addZero(date.getHours())+":"+addZero(date.getMinutes())+":"+addZero(date.getSeconds())+" "+((date.getHours() >= 12) ? "PM" : "AM");
+     console.log(hora);
+      imprimir(response.key,fecha,hora)
+    });
     }
 }
-function imprimir(){
+function addZero(i) {if (i < 10) {i = "0" + i;}return i;}
+
+function imprimir(key,fecha,hora){
     myApp.showPreloader('Imprimiendo');
     //tamaño=0x1d,0x21,0-7 -120
     //centrar=0x1b,0x61,1
@@ -124,10 +139,10 @@ function imprimir(){
     //salto=0x01B, 0x64, n
     //logo centrado funcion FS ( E=0x1c,0x28,0x45,6,0,62,2,0x21,0x48,49,5
     //deshabilitar logo=0x1c,0x28,0x45,4,0,65,2,48-49 top/button,48-49 enabled/disables
-    var turno="A-001";
-    var servicio="Canje de placas";
-    var hora="10:00 PM";
-    var fecha="19/12/2016";
+    var turno=key;
+    var serviciox=servicio;
+    var hora=hora;
+    var fecha=fecha;
     window.DatecsPrinter.listBluetoothDevices(
   function (devices) { 
     bluetoothSerial.connect(devices[0].address, 
@@ -141,7 +156,7 @@ function imprimir(){
                     bluetoothSerial.write([0x1d,0x21,2]);
                     bluetoothSerial.write(turno+"\r\n\n");
                     bluetoothSerial.write([0x1d,0x21,0]);
-                    bluetoothSerial.write("Servicio:"+servicio+"\r\n\n\n");
+                    bluetoothSerial.write("Servicio: "+serviciox+"\r\n\n\n");
                     bluetoothSerial.write([0x1d,0x21,0]);
                     bluetoothSerial.write("Hora:"+hora+"\r\n");
                     bluetoothSerial.write("Fecha:"+fecha+"\r\n");
@@ -178,7 +193,7 @@ $$.ajax({
   data: x1,
   success:
     function (data, status, xhr){
-        console.log(data.token);
+        //console.log(data.token);
         window.localStorage.setItem("token", data.token);
         mainView.router.loadPage('principal.html');        
     }
@@ -188,7 +203,6 @@ $$.ajax({
         var error=JSON.parse(status.response);
         myApp.alert(error.message,"Error");
         $$("#accesscode").val("");
-        $$("#accesscode").focus();
     }
 })
 }else {

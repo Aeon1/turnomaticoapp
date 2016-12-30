@@ -15,30 +15,27 @@ var devicex="";
 // Handle Cordova Device Ready Event
 document.addEventListener('deviceready', function() {
 value = window.localStorage.getItem("token");
-if(value!=""){
-    $$.ajax({
-  url: ip+'/api/devices/info',
-  method:"POST",
-  dataType:'json',
-  headers: {        
-    'token':value 
-    },
-  contentType:"application/json",
-  success:
-    function (data, status, xhr){
-        //console.log(data.response);
-        mainView.router.loadPage('principal.html');        
-    },
-  error:
-    function(status){
-        //console.log(status);
-        window.localStorage.removeItem("token");    }
-})
-}
-document.addEventListener("menubutton", onMenuKeyDown, false);
-document.addEventListener("backbutton", onBackKeyDown, false);
-
-  });
+    if(value!=""){
+        $$.ajax({
+          url: ip+'/api/devices/info',
+          method:"POST",
+          dataType:'json',
+          headers: {        
+            'token':value 
+            },
+          contentType:"application/json",
+          success:
+            function (data, status, xhr){
+                //console.log(data.response);
+                mainView.router.loadPage('principal.html');        
+            },
+          error:
+            function(status){
+                //console.log(status);
+                window.localStorage.removeItem("token");    }
+        })
+    }
+});
 
 
 
@@ -190,6 +187,8 @@ $$.ajax({
     function(status){
         var error=JSON.parse(status.response);
         myApp.alert(error.message,"Error");
+        $$("#accesscode").val("");
+        $$("#accesscode").focus();
     }
 })
 }else {

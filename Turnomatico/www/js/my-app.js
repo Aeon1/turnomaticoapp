@@ -119,13 +119,13 @@ function sendsms(){
     if(numcel=="" || numcel.length<10){
         myApp.alert('Debe ingresar un n&uacute;mero de celular', 'Requerido');
     }else{
-    socket.emit('createTicket', {'ticket':{phoneNumber:'6672244900',serviceId: id_serivicio}}, function (data,response) {
-      console.log(response);
+    socket.emit('createTicket', {'ticket':{phoneNumber:numcel,serviceId: id_serivicio}}, function (data,response) {
       var date = new Date(response.date);
       var fecha=date.getDate() + '/' + (date.getMonth() + 1) + '/' +   date.getFullYear();
       var hora=addZero(date.getHours())+":"+addZero(date.getMinutes())+":"+addZero(date.getSeconds())+" "+((date.getHours() >= 12) ? "PM" : "AM");
-     console.log(hora);
-      imprimir(response.key,fecha,hora)
+      var key=response.key;
+      imprimir(key,fecha,hora);
+      
     });
     }
 }
@@ -139,6 +139,7 @@ function imprimir(key,fecha,hora){
     //salto=0x01B, 0x64, n
     //logo centrado funcion FS ( E=0x1c,0x28,0x45,6,0,62,2,0x21,0x48,49,5
     //deshabilitar logo=0x1c,0x28,0x45,4,0,65,2,48-49 top/button,48-49 enabled/disables
+    //                    bluetoothSerial.write([0x1c,0x28,0x45,4,0,65,2,48,49]);//deshabilita la impresion de imagen
     var turno=key;
     var serviciox=servicio;
     var hora=hora;
@@ -160,7 +161,6 @@ function imprimir(key,fecha,hora){
                     bluetoothSerial.write([0x1d,0x21,0]);
                     bluetoothSerial.write("Hora:"+hora+"\r\n");
                     bluetoothSerial.write("Fecha:"+fecha+"\r\n");
-//                    bluetoothSerial.write([0x1c,0x28,0x45,4,0,65,2,48,49]);//deshabilita la impresion de imagen
                     bluetoothSerial.write([0x01B, 0x64, 5, 0x1d, 0x56, 0x00],
                     function(){
                         bluetoothSerial.disconnect(function(){},function(){});

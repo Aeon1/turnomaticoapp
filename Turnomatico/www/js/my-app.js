@@ -35,10 +35,11 @@ if(value!=""){
         window.localStorage.removeItem("token");    }
 })
 }
-
-  });
 document.addEventListener("menubutton", onMenuKeyDown, false);
 document.addEventListener("backbutton", onBackKeyDown, false);
+
+  });
+
 
 
 // Now we need to run the code that will be executed only for About page.

@@ -119,9 +119,10 @@ function sendsms(){
     if(numcel=="" || numcel.length<10){
         myApp.alert('Debe ingresar un n&uacute;mero de celular', 'Requerido');
     }else{
+        console.log('bien');
     socket.emit('createTicket', {'ticket':{phoneNumber:numcel,serviceId: id_serivicio}}, function (data,response) {
+        console.log(response);
       var key=response.key;
-      imprimir(key);
     });
     }
 }
@@ -143,38 +144,38 @@ function imprimir(key){
     var serviciox=servicio;
     var hora="";
     var fecha="";
-    window.DatecsPrinter.listBluetoothDevices(
-  function (devices) { 
-    bluetoothSerial.connect(devices[0].address, 
-                function(){
-                    bluetoothSerial.write([0x1b,0x21,0,0x1b,0x61,1,0x1d,0x21,2]);
-                    bluetoothSerial.write("Gobierno del Estado de Sinaloa\r\n");
-                    bluetoothSerial.write([0x1d,0x21,1]);
-                    bluetoothSerial.write("USE\r\n\n");
-                    bluetoothSerial.write([0x1d,0x21,0]);
-                    bluetoothSerial.write("Numero de turno:\r\n\n");
-                    bluetoothSerial.write([0x1d,0x21,2]);
-                    bluetoothSerial.write(turno+"\r\n\n");
-                    bluetoothSerial.write([0x1d,0x21,0]);
-                    bluetoothSerial.write("Servicio: "+serviciox+"\r\n\n\n");
-                    bluetoothSerial.write([0x1d,0x21,0]);
-                    bluetoothSerial.write("Hora:"+hora+"\r\n");
-                    bluetoothSerial.write("Fecha:"+fecha+"\r\n");
-                    bluetoothSerial.write([0x01B, 0x64, 5, 0x1d, 0x56, 0x00],
-                    function(){
-                        bluetoothSerial.disconnect(function(){},function(){});
-                    },
-                    function(error){alert(error);}
-                    );
-                    myApp.hidePreloader();
-                }
-            , function(){myApp.hidePreloader();alert("Fallo la conexion con la impresora");});
-            },
-  function (error) {
-    myApp.hidePreloader();
-    alert(JSON.stringify(error));
-  }
-);
+  //  window.DatecsPrinter.listBluetoothDevices(
+//  function (devices) { 
+//    bluetoothSerial.connect(devices[0].address, 
+//                function(){
+//                    bluetoothSerial.write([0x1b,0x21,0,0x1b,0x61,1,0x1d,0x21,2]);
+//                    bluetoothSerial.write("Gobierno del Estado de Sinaloa\r\n");
+//                    bluetoothSerial.write([0x1d,0x21,1]);
+//                    bluetoothSerial.write("USE\r\n\n");
+//                    bluetoothSerial.write([0x1d,0x21,0]);
+//                    bluetoothSerial.write("Numero de turno:\r\n\n");
+//                    bluetoothSerial.write([0x1d,0x21,2]);
+//                    bluetoothSerial.write(turno+"\r\n\n");
+//                    bluetoothSerial.write([0x1d,0x21,0]);
+//                    bluetoothSerial.write("Servicio: "+serviciox+"\r\n\n\n");
+//                    bluetoothSerial.write([0x1d,0x21,0]);
+//                    bluetoothSerial.write("Hora:"+hora+"\r\n");
+//                    bluetoothSerial.write("Fecha:"+fecha+"\r\n");
+//                    bluetoothSerial.write([0x01B, 0x64, 5, 0x1d, 0x56, 0x00],
+//                    function(){
+//                        bluetoothSerial.disconnect(function(){},function(){});
+//                    },
+//                    function(error){alert(error);}
+//                    );
+//                    myApp.hidePreloader();
+//                }
+//            , function(){myApp.hidePreloader();alert("Fallo la conexion con la impresora");});
+//            },
+//  function (error) {
+//    myApp.hidePreloader();
+//    alert(JSON.stringify(error));
+//  }
+//);
 }
 //validar conexion
 function submitNip(acceso) {

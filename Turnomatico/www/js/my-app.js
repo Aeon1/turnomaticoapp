@@ -121,7 +121,8 @@ function sendsms(){
         myApp.alert('Debe ingresar un n&uacute;mero de celular', 'Requerido');
     }else{
         socket.emit('createTicket', {'ticket':{phoneNumber:numcel,serviceId: id_serivicio}}, function(res) {
-    alert(res);
+    respuesta=JSON.stringify(res);
+    alert(respuesta);
   });
     //socket.emit('createTicket', {'ticket':{phoneNumber:numcel,serviceId: id_serivicio}}, function (data,response) {        
 //      var key=response.key;

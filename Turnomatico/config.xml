@@ -9,7 +9,7 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
-    <allow-intent href="ws://192.168.1.73:3000/socket.io/" />
+    <access origin="192.168.1.73*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
@@ -32,5 +32,6 @@
     <plugin name="cordova-plugin-console" spec="~1.0.1" />
     <plugin name="cordova-plugin-statusbar" spec="~1.0.1" />
     <plugin name="cordova-plugin-datecs-printer" spec="*" source="npm" />
+    <plugin name="cordova-plugin-bluetooth-serial" spec="*" source="npm"/>
     <plugin name="cordova-plugin-bluetooth-serial" spec="*" source="npm"/>
 </widget>

@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html >
+<head>
+	<meta http-equiv="content-type" content="text/html" />
+	<meta name="author" content="Aeon1" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<title>Sin título 1</title>
+</head>
+
+<body>
+<div ng-app="myApp" ng-controller="myCtrl">
+  <h1>Pruebo Ajax</h1>
+
+        
+        <input type="button" value="Enviar" >
+
+</div>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope, $http) {
+  $http.post("prueba.html",{nip:'29292'})
+  .then(function(response) {
+      $scope.myWelcome = response.data;
+  });
+});
+</script>
+
+</body>
+</html>

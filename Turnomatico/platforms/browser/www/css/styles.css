@@ -54,3 +54,9 @@ legend{
     display: block;
 }
 .row{margin-bottom: 10px!important;}
+.link-circle{
+    border: 1px solid #cddc39;
+    border-radius: 50px;
+    width: 60px;
+    background: #cddc39;
+}

@@ -4,7 +4,8 @@ var myApp = new Framework7({material:true});
 
 // If we need to use custom DOM library, let's save it to $$ variable:
 var $$ = Dom7;
-
+var value="";
+var ip="http://192.168.0.8:3000";
 // Add view
 var mainView = myApp.addView('.view-main', {
     // Because we want to use dynamic navbar, we need to enable it for this view:
@@ -13,36 +14,69 @@ var mainView = myApp.addView('.view-main', {
 var devicex="";
 // Handle Cordova Device Ready Event
 document.addEventListener('deviceready', function() {
-    
-//var socket = io('http://192.168.1.68:3000');
-//console.log(socket);
-//  socket.on('news', function (data) {
-//    console.log(data);
-//    socket.emit('prueba de conexion', { my: 'data' });
-//  });
+value = window.localStorage.getItem("token");
+if(value!=""){
+    $$.ajax({
+  url: ip+'/api/devices/info',
+  method:"POST",
+  dataType:'json',
+  headers: {        
+    'token':value 
+    },
+  contentType:"application/json",
+  success:
+    function (data, status, xhr){
+        //console.log(data.response);
+        mainView.router.loadPage('principal.html');        
+    },
+  error:
+    function(status){
+        //console.log(status);
+        window.localStorage.removeItem("token");    }
+})
+}
   });
 
 
 // Now we need to run the code that will be executed only for About page.
 
 // Option 1. Using page callback for page (for "about" page in this case) (recommended way):
-myApp.onPageInit('about', function (page) {
-    // Do something here for "about" page
-    
-
-
+myApp.onPageInit('home', function (page) {
+    value = window.localStorage.getItem("token");
+    if(value!=""){
+        $$.ajax({
+      url: ip+'/api/devices/info',
+      method:"POST",
+      dataType:'json',
+      headers: {        
+        'token':value 
+        },
+      contentType:"application/json",
+      success:
+        function (data, status, xhr){
+            //console.log(data.services);
+            $$("#btn_options").html("");
+            $$.each(data.services, function (index,value) {
+                $$("#btn_options").append("<a href='celular.html?id="+value._id+"' class='button button-mega-big button-fill button-raised color-cyan'>"+value.name+"</a>");
+                console.log(value.name); 
+                var socket = io.connect(ip);
+            });          
+        },
+      error:
+        function(status){
+            myApp.alert("Error de validacion de token","Error");
+            mainView.router.loadPage('index.html');
+            window.localStorage.removeItem("token");    
+            }
+    })
+    }
 })
 
-// Option 2. Using one 'pageInit' event handler for all pages:
-$$(document).on('pageInit', function (e) {
-    // Get page data from event data
-    var page = e.detail.page;
+myApp.onPageInit('celular', function(page) {
+    id_serivicio=page.query.id;
+    console.log(id_serivicio);
+});
 
-})
-// Option 2. Using live 'pageInit' event handlers for each page
-$$(document).on('pageInit', '.page[data-page="aboutx"]', function (e) {
-
-})
 
 function pressbtn(num){
     var actual=$$("input#numero_celular").val();
@@ -60,6 +94,27 @@ function borrar(){
     var actual=$$("input#numero_celular").val();
     $$("input#numero_celular").val(actual.substring(0,actual.length-1));
 }
+function pressnip(num){
+    var actual=$$("input#numero_celular_nip").val();
+    if(actual.length<10){
+        if(actual!=""){
+        valor=actual+num;
+        $$("input#numero_celular_nip").val(valor);
+        }else{
+            $$("input#numero_celular_nip").val(num);
+        }
+    }
+}
+function borrarnip(){    
+    var actual=$$("input#numero_celular_nip").val();
+    $$("input#numero_celular_nip").val(actual.substring(0,actual.length-1));
+}
+function sendsms(){
+    var numcel=$$("#numero_celular").val();
+    if(numcel=="" || numcel.length<10){
+        myApp.alert('Debe ingresar un n&uacute;mero de celular', 'Requerido');
+    }
+}
 function imprimir(){
     myApp.showPreloader('Imprimiendo');
     //tamaño=0x1d,0x21,0-7 -120
@@ -73,7 +128,7 @@ function imprimir(){
     var hora="10:00 PM";
     var fecha="19/12/2016";
     window.DatecsPrinter.listBluetoothDevices(
-  function (devices) {
+  function (devices) { 
     bluetoothSerial.connect(devices[0].address, 
                 function(){
                     bluetoothSerial.write([0x1b,0x21,0,0x1b,0x61,1,0x1d,0x21,2]);
@@ -107,24 +162,41 @@ function imprimir(){
 );
 }
 //validar conexion
-function submitNip() {
-    var accesCode=$$("#accesscode").val();
+function submitNip(acceso) {
+    var accesCode="";
+        accesCode=$$("#accesscode").val();
       var token =null;
-      //8476445
-      if(accesCode !== '' && accesCode !== null){
-        $$.post('http://192.168.1.68:3000/api/devices/register',{
-          nip: "accesCode"
-        },function(respuesta){
-            myApp.alert(respuesta);
-             view.router.loadPage('principal.html');      
-        },function(error) {
-          console.log(error,'error');
-          if(token===null){
-            myApp.alert('Ups! El nip que ingreso es incorrecto o ya fue usado','Error');
-          }
-        })
-
-      }else {
+if(accesCode !== '' && accesCode !== null){
+    var x1 = new Object();
+    x1=JSON.stringify({ nip: accesCode})
+$$.ajax({
+  url: ip+'/api/devices/register',
+  method:"POST",
+  dataType:'json',
+  contentType:"application/json",
+  data: x1,
+  success:
+    function (data, status, xhr){
+        console.log(data.token);
+        window.localStorage.setItem("token", data.token);
+        mainView.router.loadPage('principal.html');        
+    }
+  ,
+  error:
+    function(status){
+        var error=JSON.parse(status.response);
+        myApp.alert(error.message,"Error");
+    }
+})
+}else {
         myApp.alert('Ingrese un nip','Error');
       }
+
     }
+
+//funcion salir y quitar token
+function deletetoken(){
+    window.localStorage.removeItem("token");
+    mainView.router.loadPage('index.html');
+    myApp.closePanel(); 
+}

@@ -1,0 +1,92 @@
+
+<html>
+<head>
+<title>Sample JWS Verification Application</title>
+<script type="text/javascript" src="https://kjur.github.io/jsrsasign/jsrsasign-latest-all-min.js"></script>
+
+<style type="text/css">
+TD  {vertical-align: top; border: solid 1px #000000; }
+</style>
+<script type="text/javascript">
+function doVerify() {
+  var sJWS = document.form1.jws1.value;
+  var hN = "a1f8160ae2e3c9b465ce8d2d656263362b927dbe29e1f02477fc1625cc90a136e38bd93497c5b6ea63dd7711e67c7429f956b0fb8a8f089adc4b69893cc1333f53edd019b87784252fec914fe4857769594bea4280d32c0f55bf62944f130396bc6e9bdf6ebdd2bda3678eeca0c668f701b38dbffb38c8342ce2fe6d27fade4a5a4874979dd4b9cf9adec4c75b05852c2c0f5ef8a5c1750392f944e8ed64c110c6b647609aa4783aeb9c6c9ad755313050638b83665c6f6f7a82a396702a1f641b82d3ebf2392219491fb686872c5716f50af8358d9a8b9d17c340728f7f87d89a18d8fcab67ad84590c2ecf759339363c07034d6f606f9e21e05456cae5e9a1";
+  var hE = "010001";
+
+  var jws = new KJUR.jws.JWS();
+  var result = 0;
+  var pubKey;
+  try {
+    pubKey = KEYUTIL.getKey({n: hN, e: hE});
+    jws.parseJWS(sJWS);
+    result = KJUR.jws.JWS.verify(sJWS, pubKey, ["RS256"]);
+  } catch (ex) {
+    //alert("Error: " + ex);
+    result = 0;
+  }
+  var head = jws.parsedJWS.headS;
+  var decodificado = jws.parsedJWS.payloadS;
+var xx=JSON.parse( decodificado);
+console.log(xx);
+
+  if (result == 1) {
+    console.log("JWS signature is *Valid*.");
+  } else {
+    console.log("JWS signature is *Invalid*.");
+  }
+}
+</script>
+</head>
+
+<body>
+
+<form name="form1">
+<h1>Sample JWS Verification Application</h1>
+
+<p>
+Default values are cited from <a href="http://tools.ietf.org/html/draft-jones-json-web-signature-04#appendix-A.2" target="_blank">
+"draft-jones-json-web-signature-04 Annex.2"</a>.
+</p>
+
+<table width="100%">
+<tbody>
+<tr><td rowspan="3">Input</td><td>JWS</td><td colspan="2">
+<textarea name="jws1" rows="8" cols="100">
+</textarea></td></tr>
+
+<tr><td colspan="4">
+<input type="button" value="Verify JWS Signature" onClick="doVerify();"/><br/>
+</td></tr>
+
+
+<tr><td colspan="2">Head</td><td colspan="2">
+<textarea name="im_head1" cols="100" rows="2" readonly></textarea>
+</td></tr>
+<tr><td colspan="2">Payload</td><td colspan="2">
+<textarea name="im_payload1" cols="100" rows="3" readonly></textarea>
+</td></tr>
+</tbody>
+
+</table>
+</form>
+
+<h3>USAGE</h3>
+<ol>
+<li>Fill JWS signature, modulus and public exponent of a public key if you need.</li>
+<li>Then just press "Verify JWS Signature" button.</li>
+<li>If the signature is valid, you will see a dialog 'JWS signature is '*Valid*'.
+You may see an error dialog if it is malformed signature.</li>
+</li>
+<li>As for JWS signature generation, please see <a href="sample_generate.html">this sample</a>.</li>
+</ol>
+
+<center>
+Copyright &copy; 2012-2016 Kenji Urushima, All Rights Reserved.
+</center>
+
+<div align="right">
+<a href="index.html">Go back to index</a>
+</div>
+
+</body>
+</html>

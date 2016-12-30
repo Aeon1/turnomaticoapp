@@ -63,8 +63,12 @@ myApp.onPageInit('home', function (page) {
             $$.each(data.services, function (index,value) {                
                 $$("#btn_options").append("<a href='celular.html?id="+value._id+"&ser="+value.name+"' class='button button-mega-big button-fill button-raised color-cyan'>"+value.name+"</a>");
                 //console.log(value.name); 
-                socket = io.connect(ip);
-                
+                //socket = io.connect(ip);
+                socket = plugin.socket.io.connect(ip);
+                socket.on("connect", function() {
+  alert("connected");
+
+});
             });          
         },
       error:
@@ -119,10 +123,10 @@ function sendsms(){
     if(numcel=="" || numcel.length<10){
         myApp.alert('Debe ingresar un n&uacute;mero de celular', 'Requerido');
     }else{
-    socket.emit('createTicket', {'ticket':{phoneNumber:numcel,serviceId: id_serivicio}}, function (data,response) {        
-      var key=response.key;
-      alert(key);
-    });
+    //socket.emit('createTicket', {'ticket':{phoneNumber:numcel,serviceId: id_serivicio}}, function (data,response) {        
+//      var key=response.key;
+//      alert(key);
+//    });
     }
 }
 function addZero(i) {if (i < 10) {i = "0" + i;}return i;}

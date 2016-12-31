@@ -27,16 +27,13 @@
     <preference name="DisallowOverscroll" value="true" />
     <preference name="orientation" value="portrait" />
     <preference name="Fullscreen" value="true" />
-    <feature name="Insomnia">
-      <param name="android-package" value="nl.xservices.plugins.Insomnia" />
-    </feature>
     <plugin name="cordova-plugin-whitelist" spec="~1.2.0" />
     <plugin name="cordova-plugin-console" spec="~1.0.1" />
     <plugin name="cordova-plugin-statusbar" spec="~1.0.1" />
     <plugin name="cordova-plugin-datecs-printer" spec="*" source="npm" />
     <plugin name="cordova-plugin-bluetooth-serial" spec="*" source="npm"/>
     <plugin spec="https://github.com/wf9a5m75/plugin-socket.io.git" />
-    <plugin name="cordova-plugin-insomnia" spec="*" source="npm" />
+    <plugin name="cordova-plugin-fullscreen" spec="*" source="npm" />
     <plugin name="cordova-plugin-bluetooth-serial" spec="*" source="npm"/>
 	<icon src="icon.png"/>
 </widget>

@@ -60,7 +60,7 @@ myApp.onPageInit('home', function (page) {
         function (data, status, xhr){
             $$("#btn_options").html("");
             $$.each(data.services, function (index,value) {                
-                $$("#btn_options").append("<a href='celular.html?id="+value._id+"&ser="+value.name+"' class='button button-mega-big button-fill button-raised color-cyan'>"+value.name+"</a>");
+                $$("#btn_options").append("<a href='celular.html?id="+value._id+"&ser="+value.name+"' class='button button-mega-big button-fill button-raised color-cyan size-btn'><b>"+value.name+"</b></a>");
                 //socket = io.connect(ip);
                 socket = plugin.socket.io.connect(ip);
 
@@ -123,7 +123,7 @@ function sendsms(){
         socket.emit('createTicket', {'ticket':{phoneNumber:numcel,serviceId: id_serivicio}}, function(res) {
     respuesta=JSON.parse(JSON.stringify(res));
     if(respuesta[0]!==null){
-        myApp.alert(respuesta[0].message,"Error");
+        myApp.alert(respuesta.message,"Error");
     }else{
         //myApp.modal({
 //        title:  '<img src="img/checked.svg" style="height:50px;margin:auto;display:block"/>'+
@@ -156,7 +156,7 @@ function sendprint(){
     socket.emit('createTicket', {'ticket':{phoneNumber:numcel,serviceId: id_serivicio}}, function(res) {
     respuesta=JSON.parse(JSON.stringify(res));
     if(respuesta[0]!==null){
-        myApp.alert(respuesta[0].message,"Error");
+        myApp.alert(respuesta.message,"Error");
     }else{
         var date = new Date(respuesta[1].createdAt);
         var fecha=date.getDate() + '/' + (date.getMonth() + 1) + '/' +   date.getFullYear();
@@ -311,7 +311,6 @@ function sendnipdate(){
 var xx=JSON.parse(decodificado);   
     socket.emit('haveAppointment', {nip:numnip,serviceId: id_serivicio,branchId:xx.branch.id}, function(res) {
     respuesta=JSON.parse(JSON.stringify(res));
-    console.log(respuesta.message);
     if(respuesta[0]!==null){
         myApp.alert(respuesta.message,"Error");
     }else{

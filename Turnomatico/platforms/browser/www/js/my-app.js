@@ -309,7 +309,7 @@ function sendnipdate(){
   var head = jws.parsedJWS.headS;
   var decodificado = jws.parsedJWS.payloadS;
 var xx=JSON.parse(decodificado);   
-    socket.emit('haveAppointment', {nip:numnip,serviceId: id_serivicio,branch:xx.branch.id}, function(res) {
+    socket.emit('haveAppointment', {nip:numnip,serviceId: id_serivicio,branchId:xx.branch.id}, function(res) {
     respuesta=JSON.parse(JSON.stringify(res));
     if(respuesta[0]!==null){
         myApp.alert(respuesta[0].message,"Error");

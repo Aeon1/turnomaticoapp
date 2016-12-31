@@ -41,7 +41,7 @@ value = window.localStorage.getItem("token");
             }
         })
     }
-    community.templateplugin.setPreventSleep(true);
+    window.plugins.insomnia.keepAwake();
 });
 
 

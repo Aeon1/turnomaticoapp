@@ -42,7 +42,11 @@ value = window.localStorage.getItem("token");
         })
     }
     window.plugins.insomnia.keepAwake();
-    AndroidFullScreen.showUnderSystemUI(function(){alert("bien");}, function(err){alert(err);});
+    AndroidFullScreen.isSupported();
+ 
+// Is immersive mode supported? 
+AndroidFullScreen.isImmersiveModeSupported(function(){alert("bien suported");}, function(err){alert(err);});
+    AndroidFullScreen.immersiveMode(function(){alert("bien");}, function(err){alert(err);});
 });
 
 

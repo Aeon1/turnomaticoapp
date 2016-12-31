@@ -5,7 +5,8 @@ var myApp = new Framework7({material:true});
 // If we need to use custom DOM library, let's save it to $$ variable:
 var $$ = Dom7;
 var value="";
-var ip="http://192.168.1.73:3000";
+//var ip="http://192.168.1.73:3000";
+var ip="http://turnomatico.quody.xyz";
 var socket="";
 var servicio="";
 var id_serivicio="";

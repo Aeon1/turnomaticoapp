@@ -49,7 +49,7 @@ function successFunction(){
 }
  
 function errorFunction(error){
-    console.error(error);
+    alert(error);
 }
 
 

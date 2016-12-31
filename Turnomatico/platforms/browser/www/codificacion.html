@@ -14,26 +14,17 @@ function doVerify() {
   var hE = "010001";
 
   var jws = new KJUR.jws.JWS();
-  var result = 0;
   var pubKey;
   try {
     pubKey = KEYUTIL.getKey({n: hN, e: hE});
     jws.parseJWS(sJWS);
     result = KJUR.jws.JWS.verify(sJWS, pubKey, ["RS256"]);
-  } catch (ex) {
-    //alert("Error: " + ex);
-    result = 0;
-  }
+  } catch (ex) {result = 0;}
   var head = jws.parsedJWS.headS;
   var decodificado = jws.parsedJWS.payloadS;
-var xx=JSON.parse( decodificado);
-console.log(xx);
+var xx=JSON.parse(decodificado);
+console.log(xx.branch.id);
 
-  if (result == 1) {
-    console.log("JWS signature is *Valid*.");
-  } else {
-    console.log("JWS signature is *Invalid*.");
-  }
 }
 </script>
 </head>

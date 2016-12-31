@@ -44,7 +44,7 @@ value = window.localStorage.getItem("token");
 
 // Now we need to run the code that will be executed only for About page.
 
-// Option 1. Using page callback for page (for "about" page in this case) (recommended way):
+//cargar servicios al abrir el home
 myApp.onPageInit('home', function (page) {
     value = window.localStorage.getItem("token");
     if(value!=""){
@@ -58,11 +58,9 @@ myApp.onPageInit('home', function (page) {
       contentType:"application/json",
       success:
         function (data, status, xhr){
-            //console.log(data.services);
             $$("#btn_options").html("");
             $$.each(data.services, function (index,value) {                
                 $$("#btn_options").append("<a href='celular.html?id="+value._id+"&ser="+value.name+"' class='button button-mega-big button-fill button-raised color-cyan'>"+value.name+"</a>");
-                //console.log(value.name); 
                 //socket = io.connect(ip);
                 socket = plugin.socket.io.connect(ip);
 
@@ -77,13 +75,13 @@ myApp.onPageInit('home', function (page) {
     })
     }
 })
-
+//optener los datos del servicio al abrir la pagina de celular
 myApp.onPageInit('celular', function(page) {
     id_serivicio=page.query.id;
     servicio=page.query.ser;
 });
 
-
+//escribir numero de celular
 function pressbtn(num){
     var actual=$$("input#numero_celular").val();
     if(actual.length<10){
@@ -95,11 +93,12 @@ function pressbtn(num){
         }
     }
 }
-function borrar(){
-    
+//borrar numero de celular
+function borrar(){    
     var actual=$$("input#numero_celular").val();
     $$("input#numero_celular").val(actual.substring(0,actual.length-1));
 }
+//funcion para escribir nip de cita
 function pressnip(num){
     var actual=$$("input#numero_celular_nip").val();
     if(actual.length<10){
@@ -111,6 +110,7 @@ function pressnip(num){
         }
     }
 }
+//funcion de borrar nip
 function borrarnip(){    
     var actual=$$("input#numero_celular_nip").val();
     $$("input#numero_celular_nip").val(actual.substring(0,actual.length-1));
@@ -118,21 +118,53 @@ function borrarnip(){
 function sendsms(){
     var numcel=$$("#numero_celular").val();
     if(numcel=="" || numcel.length<10){
-        myApp.alert('Debe ingresar un n&uacute;mero de celular', 'Requerido');
+        myApp.alert('Debe ingresar un n&uacute;mero de celular valido', 'Requerido');
     }else{
         socket.emit('createTicket', {'ticket':{phoneNumber:numcel,serviceId: id_serivicio}}, function(res) {
     respuesta=JSON.parse(JSON.stringify(res));
+    if(respuesta[0]!==null){
+        myApp.alert(respuesta[0].message,"Error");
+    }else{
+        //myApp.modal({
+//        title:  '<img src="img/checked.svg" style="height:50px;margin:auto;display:block"/>'+
+//                  '<h1 class="center-text" style="margin:0px">Registrado</h1>',
+//        text: "<p class='center-text'>Por favor, tome asiento y en breve lo atenderemos</p>"+
+//        "<h3 class='center-text'>Su numero de turno es:</h3><h1 class='center-text'>"+respuesta[1].key+"</h1>"+
+//        "<p>En un momento le llegara el ticket a su celular</p>",
+//        buttons: [
+//        {
+//        text: 'Ok, gracias',
+//        bold: true,
+//        onClick: function() {
+//          mainView.router.loadPage('principal.html');
+//            }
+//        }
+//        ]
+//      })
         var date = new Date(respuesta[1].createdAt);
-      var fecha=date.getDate() + '/' + (date.getMonth() + 1) + '/' +   date.getFullYear();
-      var hora=addZero(date.getHours())+":"+addZero(date.getMinutes())+":"+addZero(date.getSeconds())+" "+((date.getHours() >= 12) ? "PM" : "AM");
-    var key=respuesta[1].key;
-    imprimir(key,fecha,hora);
+        var fecha=date.getDate() + '/' + (date.getMonth() + 1) + '/' +   date.getFullYear();
+        var hora=addZero(date.getHours())+":"+addZero(date.getMinutes())+":"+addZero(date.getSeconds())+" "+((date.getHours() >= 12) ? "PM" : "AM");
+        var key=respuesta[1].key;
+        imprimir(key,fecha,hora);
+    }        
   });
-   // socket.emit('createTicket', {'ticket':{phoneNumber:numcel,serviceId: id_serivicio}}, function (data,response) {        
-//      var key=response.key;
-//      alert(key);
-//    });
+//haveAppointment
     }
+}
+function sendprint(){
+    var numcel=$$("#numero_celular").val();    
+    socket.emit('createTicket', {'ticket':{phoneNumber:numcel,serviceId: id_serivicio}}, function(res) {
+    respuesta=JSON.parse(JSON.stringify(res));
+    if(respuesta[0]!==null){
+        myApp.alert(respuesta[0].message,"Error");
+    }else{
+        var date = new Date(respuesta[1].createdAt);
+        var fecha=date.getDate() + '/' + (date.getMonth() + 1) + '/' +   date.getFullYear();
+        var hora=addZero(date.getHours())+":"+addZero(date.getMinutes())+":"+addZero(date.getSeconds())+" "+((date.getHours() >= 12) ? "PM" : "AM");
+        var key=respuesta[1].key;
+        imprimir(key,fecha,hora);
+    } 
+});
 }
 function addZero(i) {if (i < 10) {i = "0" + i;}return i;}
 
@@ -153,7 +185,7 @@ function imprimir(key,fecha,hora){
   function (devices) { 
     bluetoothSerial.connect(devices[0].address, 
                 function(){
-                    bluetoothSerial.write([0x1c,0x28,0x45,4,0,65,2,48,49]);//deshabilita la impresion de imagen
+                    //bluetoothSerial.write([0x1c,0x28,0x45,4,0,65,2,48,49]);//deshabilita la impresion de imagen
                     bluetoothSerial.write([0x1b,0x21,0,0x1b,0x61,1,0x1d,0x21,2]);
                     bluetoothSerial.write("Gobierno del Estado de Sinaloa\r\n");
                     bluetoothSerial.write([0x1d,0x21,1]);
@@ -170,14 +202,49 @@ function imprimir(key,fecha,hora){
                     bluetoothSerial.write([0x01B, 0x64, 5, 0x1d, 0x56, 0x00],
                     function(){
                         bluetoothSerial.disconnect(function(){
-                            mainView.router.loadPage('principal.html'); 
+                          myApp.modal({
+                            title:  '<img src="img/checked.svg" style="height:50px;margin:auto;display:block"/>'+
+                                      '<h1 class="center-text" style="margin:0px">Registrado</h1>',
+                            text: "<p class='center-text'>Por favor, tome asiento y en breve lo atenderemos</p>"+
+                            "<h3 class='center-text'>Su numero de turno es:</h3><h1 class='center-text'>"+turno+"</h1>",
+                            buttons: [
+                            {
+                            text: 'Ok, gracias',
+                            bold: true,
+                            onClick: function() {
+                              mainView.router.loadPage('principal.html');
+                                }
+                            }
+                            ]
+                          })
                         },function(){});
                     },
-                    function(error){alert(error);}
+                    function(error){
+                        myApp.alert(error,"Error");
+                        }
                     );
                     myApp.hidePreloader();
                 }
-            , function(){myApp.hidePreloader();alert("Fallo la conexion con la impresora");});
+            , function(){myApp.hidePreloader();
+                myApp.modal({
+                    title:  'Ocurrio un error',
+                    text: 'No se pudo conectar con la impresora',
+                    buttons: [
+                      {
+                        text: 'Reimprimir',
+                        onClick: function() {
+                          imprimir(key,fecha,hora);
+                        }
+                      },
+                      {
+                        text: 'Cancelar',
+                        onClick: function() {
+                          myApp.closeModal()
+                        }
+                      },
+                    ]
+                  })
+            });
             },
   function (error) {
     myApp.hidePreloader();
@@ -201,7 +268,6 @@ $$.ajax({
   data: x1,
   success:
     function (data, status, xhr){
-        //console.log(data.token);
         window.localStorage.setItem("token", data.token);
         mainView.router.loadPage('principal.html');        
     }
@@ -217,11 +283,42 @@ $$.ajax({
         myApp.alert('Ingrese un nip','Error');
       }
 
-    }
+}
 
 //funcion salir y quitar token
 function deletetoken(){
     window.localStorage.removeItem("token");
     mainView.router.loadPage('index.html');
     myApp.closePanel(); 
+}
+
+//validar nip de cita
+function sendnipdate(){
+    var numnip=$$("#numero_celular_nip").val(); 
+    var sJWS = window.localStorage.getItem("token");;
+  var hN = "a1f8160ae2e3c9b465ce8d2d656263362b927dbe29e1f02477fc1625cc90a136e38bd93497c5b6ea63dd7711e67c7429f956b0fb8a8f089adc4b69893cc1333f53edd019b87784252fec914fe4857769594bea4280d32c0f55bf62944f130396bc6e9bdf6ebdd2bda3678eeca0c668f701b38dbffb38c8342ce2fe6d27fade4a5a4874979dd4b9cf9adec4c75b05852c2c0f5ef8a5c1750392f944e8ed64c110c6b647609aa4783aeb9c6c9ad755313050638b83665c6f6f7a82a396702a1f641b82d3ebf2392219491fb686872c5716f50af8358d9a8b9d17c340728f7f87d89a18d8fcab67ad84590c2ecf759339363c07034d6f606f9e21e05456cae5e9a1";
+  var hE = "010001";
+
+  var jws = new KJUR.jws.JWS();
+  var pubKey;
+  try {
+    pubKey = KEYUTIL.getKey({n: hN, e: hE});
+    jws.parseJWS(sJWS);
+    result = KJUR.jws.JWS.verify(sJWS, pubKey, ["RS256"]);
+  } catch (ex) {result = 0;}
+  var head = jws.parsedJWS.headS;
+  var decodificado = jws.parsedJWS.payloadS;
+var xx=JSON.parse(decodificado);   
+    socket.emit('haveAppointment', {nip:numnip,serviceId: id_serivicio,branch:xx.branch.id}, function(res) {
+    respuesta=JSON.parse(JSON.stringify(res));
+    if(respuesta[0]!==null){
+        myApp.alert(respuesta[0].message,"Error");
+    }else{
+        var date = new Date(respuesta[1].createdAt);
+        var fecha=date.getDate() + '/' + (date.getMonth() + 1) + '/' +   date.getFullYear();
+        var hora=addZero(date.getHours())+":"+addZero(date.getMinutes())+":"+addZero(date.getSeconds())+" "+((date.getHours() >= 12) ? "PM" : "AM");
+        var key=respuesta[1].key;
+        imprimir(key,fecha,hora);
+    } 
+});
 }

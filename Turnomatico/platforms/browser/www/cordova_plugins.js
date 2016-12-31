@@ -63,6 +63,14 @@ module.exports = [
         "clobbers": [
             "window.Socket"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-preventsleep/www/client.js",
+        "id": "cordova-plugin-preventsleep.client",
+        "pluginId": "cordova-plugin-preventsleep",
+        "clobbers": [
+            "community.preventsleep"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -77,7 +85,8 @@ module.exports.metadata =
     "cordova-plugin-bluetooth-serial": "0.4.6",
     "cordova-plugin-socket-scrutinizer": "0.0.0",
     "cordova-plugin-websocket": "0.12.1",
-    "cz.blocshop.socketsforcordova": "1.1.0"
+    "cz.blocshop.socketsforcordova": "1.1.0",
+    "cordova-plugin-preventsleep": "1.1.1"
 }
 // BOTTOM OF METADATA
 });

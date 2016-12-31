@@ -36,6 +36,9 @@
         },
         "cz.blocshop.socketsforcordova": {
             "PACKAGE_NAME": "com.avi.turnomatico"
+        },
+        "cordova-plugin-preventsleep": {
+            "PACKAGE_NAME": "com.avi.turnomatico"
         }
     },
     "dependent_plugins": {}

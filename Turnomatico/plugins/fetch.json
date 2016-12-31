@@ -215,26 +215,10 @@
         "is_top_level": true,
         "variables": {}
     },
-    "cordova-plugin-socket-scrutinizer": {
+    "cordova-plugin-preventsleep": {
         "source": {
             "type": "registry",
-            "id": "cordova-plugin-socket-scrutinizer@*"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
-    "cordova-plugin-websocket": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-websocket@*"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
-    "cz.blocshop.socketsforcordova": {
-        "source": {
-            "type": "registry",
-            "id": "sockets-for-cordova@*"
+            "id": "cordova-plugin-preventsleep@*"
         },
         "is_top_level": true,
         "variables": {}

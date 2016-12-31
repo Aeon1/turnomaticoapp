@@ -18,6 +18,7 @@ var mainView = myApp.addView('.view-main', {
 var devicex="";
 // Handle Cordova Device Ready Event
 document.addEventListener('deviceready', function() {
+    
 value = window.localStorage.getItem("token");
     if(value!=""){
         $$.ajax({
@@ -36,9 +37,11 @@ value = window.localStorage.getItem("token");
           error:
             function(status){
                 //console.log(status);
-                window.localStorage.removeItem("token");    }
+                window.localStorage.removeItem("token");    
+            }
         })
     }
+    community.templateplugin.setPreventSleep(true);
 });
 
 

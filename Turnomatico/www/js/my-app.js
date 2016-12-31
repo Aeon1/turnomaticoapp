@@ -29,7 +29,7 @@ value = window.localStorage.getItem("token");
           contentType:"application/json",
           success:
             function (data, status, xhr){
-                //console.log(data.response);
+                console.log(data.response);
                 mainView.router.loadPage('principal.html');        
             },
           error:
@@ -286,12 +286,7 @@ $$.ajax({
 
 }
 
-//funcion salir y quitar token
-function deletetoken(){
-    window.localStorage.removeItem("token");
-    mainView.router.loadPage('index.html');
-    myApp.closePanel(); 
-}
+
 
 //validar nip de cita
 function sendnipdate(){
@@ -326,4 +321,54 @@ var xx=JSON.parse(decodificado);
     } 
 });
 }
+}
+function verificar(){
+    var user=$$("#username").val();
+    var pass=$$("#password").val();
+    if(user==""){
+        $$("#username").focus();
+    }
+    if(pass==""){
+        $$("#password").focus();
+    }
+    if(user!="" && pass!=""){
+        var x1 = new Object();
+    x1=JSON.stringify({email: user,password:pass})
+        $$.ajax({
+      url: ip+'/api/sign_in',
+      method:"POST",
+      dataType:'json',
+      data:x1,
+      contentType:"application/json",
+      success:
+        function (data, status, xhr){
+            var sJWS = data.token;
+  var hN = "a1f8160ae2e3c9b465ce8d2d656263362b927dbe29e1f02477fc1625cc90a136e38bd93497c5b6ea63dd7711e67c7429f956b0fb8a8f089adc4b69893cc1333f53edd019b87784252fec914fe4857769594bea4280d32c0f55bf62944f130396bc6e9bdf6ebdd2bda3678eeca0c668f701b38dbffb38c8342ce2fe6d27fade4a5a4874979dd4b9cf9adec4c75b05852c2c0f5ef8a5c1750392f944e8ed64c110c6b647609aa4783aeb9c6c9ad755313050638b83665c6f6f7a82a396702a1f641b82d3ebf2392219491fb686872c5716f50af8358d9a8b9d17c340728f7f87d89a18d8fcab67ad84590c2ecf759339363c07034d6f606f9e21e05456cae5e9a1";
+  var hE = "010001";
+
+  var jws = new KJUR.jws.JWS();
+  var pubKey;
+  try {
+    pubKey = KEYUTIL.getKey({n: hN, e: hE});
+    jws.parseJWS(sJWS);
+    result = KJUR.jws.JWS.verify(sJWS, pubKey, ["RS256"]);
+  } catch (ex) {result = 0;}
+  var head = jws.parsedJWS.headS;
+  var decodificado = jws.parsedJWS.payloadS;
+var xx=JSON.parse(decodificado);
+console.log(xx);
+if(xx.role=="admin" || xx.role=="manager"){
+    window.localStorage.removeItem("token");
+    mainView.router.loadPage('index.html');
+    myApp.closeModal();
+}else{
+    myApp.alert("No tiene permisos suficientes","No permitido");
+}
+        },
+      error:
+        function(status){
+            myApp.alert(status.response,"Error");   
+            }
+    }) 
+    }
 }

@@ -23,23 +23,45 @@
 </head>
 
 <body>
-<div class="panel-overlay"></div>
-<div class="panel panel-left panel-reveal">
-    <div class="content-block">
-      <div class="content-block-title">Opciones</div>
-      <div class="list-block">
-          <ul>
-            <li class="item-content">
-              <div class="item-inner">
-                <a href="#" class="item-link item-content" onclick="deletetoken()">
-                  <div class="item-inner">Quitar token</div>
-                </a> 
-              </div>
-            </li>
-        </ul>
-      </div>
-    </div>
-  </div>
+<div class="login-screen">
+                    <div class="view">
+                      <div class="page">
+                        <div class="page-content login-screen-content">
+                          <div class="login-screen-title">Mi impresora</div>
+                          <form>
+                            <div class="list-block">
+                              <ul>
+                                <li class="item-content">
+                                  <div class="item-inner">
+                                    <div class="item-title label">Usuario</div>
+                                    <div class="item-input">
+                                      <input type="text" name="username" id="username" placeholder="Escribe tu usuario" required="">
+                                    </div>
+                                  </div>
+                                </li>
+                                <li class="item-content">
+                                  <div class="item-inner">
+                                    <div class="item-title label">Clave</div>
+                                    <div class="item-input">
+                                      <input type="password" name="password" id="password" placeholder="Escribe tu clave">
+                                    </div>
+                                  </div>
+                                </li>
+                              </ul>
+                            </div>
+                            <div class="list-block">
+                              <ul>
+                                <li><a href="#" class="button button-big button-fill" onclick="verificar()">Enviar</a></li>
+                              </ul>
+                              <div class="list-block">
+                                <p><a href="#" class="close-login-screen button button-big button-fill color-red">Cancelar</a></p>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
     <!-- Views -->
     <div class="views">
       <!-- Your main view, should have "view-main" class -->
@@ -93,9 +115,7 @@
 <script type="text/javascript" src="js/socket.io-1.0.3.js"></script>
     <script type="text/javascript" src="js/my-app.js"></script>
     <script type="text/javascript" src="js/jsrsasign-latest-all-min.js"></script>
-    <script>
-  
-</script>
+
     
 
 </body>

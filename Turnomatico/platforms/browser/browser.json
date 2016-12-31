@@ -39,6 +39,9 @@
         },
         "cordova-plugin-preventsleep": {
             "PACKAGE_NAME": "com.avi.turnomatico"
+        },
+        "nl.x-services.plugins.insomnia": {
+            "PACKAGE_NAME": "com.avi.turnomatico"
         }
     },
     "dependent_plugins": {},
@@ -114,6 +117,14 @@
             "clobbers": [
                 "community.preventsleep"
             ]
+        },
+        {
+            "file": "plugins/nl.x-services.plugins.insomnia/www/Insomnia.js",
+            "id": "nl.x-services.plugins.insomnia.Insomnia",
+            "pluginId": "nl.x-services.plugins.insomnia",
+            "clobbers": [
+                "window.plugins.insomnia"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -127,6 +138,7 @@
         "cordova-plugin-socket-scrutinizer": "0.0.0",
         "cordova-plugin-websocket": "0.12.1",
         "cz.blocshop.socketsforcordova": "1.1.0",
-        "cordova-plugin-preventsleep": "1.1.1"
+        "cordova-plugin-preventsleep": "1.1.1",
+        "nl.x-services.plugins.insomnia": "4.1.0"
     }
 }

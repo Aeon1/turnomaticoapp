@@ -71,6 +71,14 @@ module.exports = [
         "clobbers": [
             "community.preventsleep"
         ]
+    },
+    {
+        "file": "plugins/nl.x-services.plugins.insomnia/www/Insomnia.js",
+        "id": "nl.x-services.plugins.insomnia.Insomnia",
+        "pluginId": "nl.x-services.plugins.insomnia",
+        "clobbers": [
+            "window.plugins.insomnia"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -86,7 +94,8 @@ module.exports.metadata =
     "cordova-plugin-socket-scrutinizer": "0.0.0",
     "cordova-plugin-websocket": "0.12.1",
     "cz.blocshop.socketsforcordova": "1.1.0",
-    "cordova-plugin-preventsleep": "1.1.1"
+    "cordova-plugin-preventsleep": "1.1.1",
+    "nl.x-services.plugins.insomnia": "4.1.0"
 }
 // BOTTOM OF METADATA
 });

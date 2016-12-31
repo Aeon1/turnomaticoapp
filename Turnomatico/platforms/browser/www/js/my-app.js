@@ -42,8 +42,15 @@ value = window.localStorage.getItem("token");
         })
     }
     window.plugins.insomnia.keepAwake();
+    AndroidFullScreen.showUnderSystemUI(successFunction, errorFunction);
 });
-
+function successFunction(){
+    alert("It worked!");
+}
+ 
+function errorFunction(error){
+    console.error(error);
+}
 
 
 // Now we need to run the code that will be executed only for About page.

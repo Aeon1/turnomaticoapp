@@ -39,6 +39,9 @@
         },
         "cordova-plugin-preventsleep": {
             "PACKAGE_NAME": "com.avi.turnomatico"
+        },
+        "nl.x-services.plugins.insomnia": {
+            "PACKAGE_NAME": "com.avi.turnomatico"
         }
     },
     "dependent_plugins": {}

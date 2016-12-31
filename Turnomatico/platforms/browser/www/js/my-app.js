@@ -311,8 +311,9 @@ function sendnipdate(){
 var xx=JSON.parse(decodificado);   
     socket.emit('haveAppointment', {nip:numnip,serviceId: id_serivicio,branchId:xx.branch.id}, function(res) {
     respuesta=JSON.parse(JSON.stringify(res));
+    console.log(respuesta.message);
     if(respuesta[0]!==null){
-        myApp.alert(respuesta[0].message,"Error");
+        myApp.alert(respuesta.message,"Error");
     }else{
         var date = new Date(respuesta[1].createdAt);
         var fecha=date.getDate() + '/' + (date.getMonth() + 1) + '/' +   date.getFullYear();

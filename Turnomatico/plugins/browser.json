@@ -42,6 +42,9 @@
         },
         "nl.x-services.plugins.insomnia": {
             "PACKAGE_NAME": "com.avi.turnomatico"
+        },
+        "cordova-plugin-fullscreen": {
+            "PACKAGE_NAME": "com.avi.turnomatico"
         }
     },
     "dependent_plugins": {}

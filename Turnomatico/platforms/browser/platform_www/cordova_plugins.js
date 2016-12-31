@@ -79,6 +79,14 @@ module.exports = [
         "clobbers": [
             "window.plugins.insomnia"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-fullscreen/www/AndroidFullScreen.js",
+        "id": "cordova-plugin-fullscreen.AndroidFullScreen",
+        "pluginId": "cordova-plugin-fullscreen",
+        "clobbers": [
+            "AndroidFullScreen"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -95,7 +103,8 @@ module.exports.metadata =
     "cordova-plugin-websocket": "0.12.1",
     "cz.blocshop.socketsforcordova": "1.1.0",
     "cordova-plugin-preventsleep": "1.1.1",
-    "nl.x-services.plugins.insomnia": "4.1.0"
+    "nl.x-services.plugins.insomnia": "4.1.0",
+    "cordova-plugin-fullscreen": "1.1.0"
 }
 // BOTTOM OF METADATA
 });

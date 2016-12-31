@@ -42,6 +42,9 @@
         },
         "nl.x-services.plugins.insomnia": {
             "PACKAGE_NAME": "com.avi.turnomatico"
+        },
+        "cordova-plugin-fullscreen": {
+            "PACKAGE_NAME": "com.avi.turnomatico"
         }
     },
     "dependent_plugins": {},
@@ -125,6 +128,14 @@
             "clobbers": [
                 "window.plugins.insomnia"
             ]
+        },
+        {
+            "file": "plugins/cordova-plugin-fullscreen/www/AndroidFullScreen.js",
+            "id": "cordova-plugin-fullscreen.AndroidFullScreen",
+            "pluginId": "cordova-plugin-fullscreen",
+            "clobbers": [
+                "AndroidFullScreen"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -139,6 +150,7 @@
         "cordova-plugin-websocket": "0.12.1",
         "cz.blocshop.socketsforcordova": "1.1.0",
         "cordova-plugin-preventsleep": "1.1.1",
-        "nl.x-services.plugins.insomnia": "4.1.0"
+        "nl.x-services.plugins.insomnia": "4.1.0",
+        "cordova-plugin-fullscreen": "1.1.0"
     }
 }

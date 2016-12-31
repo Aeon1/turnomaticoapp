@@ -27,7 +27,8 @@
     <preference name="DisallowOverscroll" value="true" />
     <preference name="orientation" value="portrait" />
     <preference name="Fullscreen" value="true" />
-    <preference name="StatusBarOverlaysWebView" value="false" />
+    <preference name="StatusBarOverlaysWebView" value="true" />
+    <preference name="StatusBarBackgroundColor" value="#FF0000" />
     <feature name="Insomnia">
       <param name="android-package" value="nl.xservices.plugins.Insomnia" />
     </feature>

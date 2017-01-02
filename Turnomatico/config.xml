@@ -25,7 +25,7 @@
         <preference name="BackupWebStorage" value="none" />
     </platform>
     <preference name="DisallowOverscroll" value="true" />
-    <preference name="orientation" value="portrait" />
+    <preference name="orientation" value="default" />
     <preference name="Fullscreen" value="true" />
     <feature name="Insomnia">
       <param name="android-package" value="nl.xservices.plugins.Insomnia" />

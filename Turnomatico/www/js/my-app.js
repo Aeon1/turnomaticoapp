@@ -225,7 +225,7 @@ function imprimir(key,fecha,hora){
                                 onClick: function() {
                                   imprimir(key,fecha,hora);
                                 }
-                              }
+                              },
                             ]
                           })
                         },function(){});
@@ -382,3 +382,26 @@ if(xx.role=="admin" || xx.role=="manager"){
     }) 
     }
 }
+function prueba(){
+    myApp.modal({
+    title:  '<img src="img/checked.svg" style="height:50px;margin:auto;display:block"/>'+
+              '<h1 class="center-text" style="margin:0px">Registrado</h1>',
+    text: "<p class='center-text'>Por favor, tome asiento y en breve lo atenderemos</p>"+
+    "<h3 class='center-text'>Su numero de turno es:</h3><h1 class='center-text'>sd</h1>",
+    buttons: [
+    {
+        text: 'Reimprimir',
+        bold: true,
+        onClick: function() {
+          imprimir(key,fecha,hora);
+        }
+      },{
+    text: 'Ok, gracias',
+    bold: true,
+    onClick: function() {
+      mainView.router.loadPage('principal.html');
+        }
+    },
+    ]
+  })
+  }

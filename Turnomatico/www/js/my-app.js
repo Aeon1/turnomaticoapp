@@ -212,6 +212,7 @@ function imprimir(key,fecha,hora){
                                       '<h1 class="center-text" style="margin:0px">Registrado</h1>',
                             text: "<p class='center-text'>Por favor, tome asiento y en breve lo atenderemos</p>"+
                             "<h3 class='center-text'>Su numero de turno es:</h3><h1 class='center-text'>"+turno+"</h1>",
+                            verticalButtons: true,
                             buttons: [
                             {
                             text: 'Ok, gracias',

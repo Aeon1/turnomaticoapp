@@ -219,7 +219,12 @@ function imprimir(key,fecha,hora){
                             onClick: function() {
                               mainView.router.loadPage('principal.html');
                                 }
-                            }
+                            },{
+                                text: 'Reimprimir',
+                                onClick: function() {
+                                  imprimir(key,fecha,hora);
+                                }
+                              }
                             ]
                           })
                         },function(){});

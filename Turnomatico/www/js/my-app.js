@@ -215,14 +215,15 @@ function imprimir(key,fecha,hora){
                             buttons: [
                             {
                                 text: 'Reimprimir',
+                                bold: true,
                                 onClick: function() {
                                   imprimir(key,fecha,hora);
                                 }
                               },{
-                            text: 'Ok, gracias',
-                            bold: true,
-                            onClick: function() {
-                              mainView.router.loadPage('principal.html');
+                                text: 'Ok, gracias',
+                                bold: true,
+                                onClick: function() {
+                                mainView.router.loadPage('principal.html');
                                 }
                             },
                             ]

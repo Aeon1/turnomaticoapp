@@ -5,7 +5,7 @@ var myApp = new Framework7({material:true});
 // If we need to use custom DOM library, let's save it to $$ variable:
 var $$ = Dom7;
 var value="";
-var ip="http://192.168.1.138:3001";
+var ip="http://192.168.1.138:3000";
 //var ip="http://turnomatico.quody.xyz";
 var socket="";
 var servicio="";
@@ -235,7 +235,7 @@ function imprimir(key,fecha,hora){
                             function() {
                                     bluetoothSerial.write([0x01B, 0x64, 5, 0x1d, 0x56, 0x00],
                                     function(){
-                                        bluetoothSerial.write([0x10,0x14,8,1,3,14,1,6,2,8]);
+                                        bluetoothSerial.write([0x10,0x14,8,1,3,14,1,6,2,8],function(){alert("buffer vaciado");},function(error){alert("buffer error: "error);});
                                         bluetoothSerial.disconnect();
                                     },function(error){
                                         myApp.alert(error,"Error");

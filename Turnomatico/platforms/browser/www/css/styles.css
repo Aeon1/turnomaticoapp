@@ -64,3 +64,25 @@ legend{
      font-size: 20px;
 
 }
+.modal{
+    width: 350px!important;
+    margin-left: -175px!important;
+}
+.modal-button-bold {
+    width: 100%;
+    padding: 0 5px;
+    height: 44px;
+    font-size: 17px;
+    line-height: 44px;
+    text-align: center;
+    color: #007aff;
+    display: block;
+    position: relative;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    cursor: pointer;
+    box-sizing: border-box;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+}

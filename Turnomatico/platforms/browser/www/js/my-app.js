@@ -5,8 +5,8 @@ var myApp = new Framework7({material:true});
 // If we need to use custom DOM library, let's save it to $$ variable:
 var $$ = Dom7;
 var value="";
-//var ip="http://192.168.1.73:3000";
-var ip="http://turnomatico.quody.xyz";
+var ip="http://192.168.1.138:3001";
+//var ip="http://turnomatico.quody.xyz";
 var socket="";
 var servicio="";
 var id_serivicio="";
@@ -214,15 +214,40 @@ function imprimir(key,fecha,hora){
                             "<h3 class='center-text'>Su numero de turno es:</h3><h1 class='center-text'>"+turno+"</h1>",
                             buttons: [
                             {
-                            text: 'Ok, gracias',
-                            bold: true,
-                            onClick: function() {
-                              mainView.router.loadPage('principal.html');
+                                text: 'Reimprimir',
+                                bold: true,
+                                onClick: function() {
+                                  imprimir(key,fecha,hora);
                                 }
-                            }
+                              },{
+                                text: 'Ok, gracias',
+                                bold: true,
+                                onClick: function() {
+                                mainView.router.loadPage('principal.html');
+                                }
+                            },
                             ]
                           })
                         },function(){});
+                        window.DatecsPrinter.listBluetoothDevices(
+                          function (devices) {
+                            bluetoothSerial.connect(devices[0].address, 
+                            function() {
+                                    bluetoothSerial.write([0x01B, 0x64, 5, 0x1d, 0x56, 0x00],
+                                    function(){
+                                        bluetoothSerial.disconnect();
+                                    },function(error){
+                                        myApp.alert(error,"Error");
+                                    });
+                              },
+                              function() {
+                                alert(JSON.stringify(error));
+                              }); 
+                          },
+                          function (error) {
+                            alert(JSON.stringify(error));
+                          }
+                        );
                     },
                     function(error){
                         myApp.alert(error,"Error");

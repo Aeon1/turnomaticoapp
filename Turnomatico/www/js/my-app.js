@@ -203,8 +203,8 @@ function imprimir(key,fecha,hora){
                     bluetoothSerial.write("Servicio: "+serviciox+"\r\n\n\n");
                     bluetoothSerial.write([0x1d,0x21,0]);
                     bluetoothSerial.write("Hora:"+hora+"\r\n");
-                    bluetoothSerial.write("Fecha:"+fecha+"\r\n");
-                    bluetoothSerial.write([0x01B, 0x64, 5, 0x1d, 0x56, 0x00],
+                    bluetoothSerial.write("Fecha:"+fecha+"\r\n",//);
+//                    bluetoothSerial.write([0x01B, 0x64, 5, 0x1d, 0x56, 0x00],
                     function(){
                         //bluetoothSerial.write([0x10,0x14,8,1,3,14,1,6,2,8]);
                         bluetoothSerial.disconnect(function(){
@@ -234,9 +234,9 @@ function imprimir(key,fecha,hora){
                           function (devices) {
                             bluetoothSerial.connect(devices[0].address, 
                             function() {
-                                    bluetoothSerial.write([0x1d, 0x56, 0x00],
+                                    bluetoothSerial.write([0x01B, 0x64, 5,0x1d, 0x56, 0x00],
                                     function(){
-                                        bluetoothSerial.write([0x10,0x14,8,1,3,14,1,6,2,8],function(msg){alert(msg);},function(error){alert("buffer error: "+error);});
+                                        bluetoothSerial.write([0x10,0x14,8,1,3,14,1,6,2,8],function(msg){},function(error){});
                                         bluetoothSerial.disconnect();
                                     },function(error){
                                         myApp.alert(error,"Error");

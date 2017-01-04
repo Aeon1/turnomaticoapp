@@ -119,14 +119,16 @@ function borrarnip(){
     var actual=$$("input#numero_celular_nip").val();
     $$("input#numero_celular_nip").val(actual.substring(0,actual.length-1));
 }
-function sendsms(){
+function sendsms(){   
     var numcel=$$("#numero_celular").val();
     if(numcel=="" || numcel.length<10){
         myApp.alert('Debe ingresar un n&uacute;mero de celular valido', 'Requerido');
     }else{
+         myApp.showPreloader('Enviando SMS e imprimiendo');
         socket.emit('createTicket', {'ticket':{phoneNumber:numcel,serviceId: id_serivicio}}, function(res) {
     respuesta=JSON.parse(JSON.stringify(res));
     if(respuesta[0]!==null){
+        myApp.hidePreloader();
         myApp.alert(respuesta.message,"Error");
     }else{
         //myApp.modal({
@@ -156,10 +158,12 @@ function sendsms(){
     }
 }
 function sendprint(){
+    myApp.showPreloader('Imprimiendo');
     var numcel=$$("#numero_celular").val();    
     socket.emit('createTicket', {'ticket':{phoneNumber:numcel,serviceId: id_serivicio}}, function(res) {
     respuesta=JSON.parse(JSON.stringify(res));
     if(respuesta[0]!==null){
+        myApp.hidePreloader();
         myApp.alert(respuesta.message,"Error");
     }else{
         var date = new Date(respuesta[1].createdAt);
@@ -173,7 +177,7 @@ function sendprint(){
 function addZero(i) {if (i < 10) {i = "0" + i;}return i;}
 
 function imprimir(key,fecha,hora){
-    myApp.showPreloader('Imprimiendo');
+    //myApp.showPreloader('Imprimiendo');
     //tamaño=0x1d,0x21,0-7 -120
     //centrar=0x1b,0x61,1
     //cortar=0x1d,0x56, 0x00

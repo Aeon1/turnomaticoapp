@@ -206,7 +206,7 @@ function imprimir(key,fecha,hora){
                     bluetoothSerial.write("Fecha:"+fecha+"\r\n");
                     bluetoothSerial.write([0x01B, 0x64, 5, 0x1d, 0x56, 0x00],
                     function(){
-                        bluetoothSerial.write([0x10,0x14,8,1,3,14,1,6,2,8]);
+                        //bluetoothSerial.write([0x10,0x14,8,1,3,14,1,6,2,8]);
                         bluetoothSerial.disconnect(function(){
                           myApp.modal({
                             title:  '<img src="img/checked.svg" style="height:50px;margin:auto;display:block"/>'+

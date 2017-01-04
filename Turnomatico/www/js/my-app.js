@@ -235,7 +235,7 @@ function imprimir(key,fecha,hora){
                             function() {
                                     bluetoothSerial.write([0x01B, 0x64, 5, 0x1d, 0x56, 0x00],
                                     function(){
-                                        bluetoothSerial.write([10,14,08,01,03,14,01,06,02,08]);
+                                        bluetoothSerial.write([0x10,0x14,8,1,3,14,1,6,2,8]);
                                         bluetoothSerial.disconnect();
                                     },function(error){
                                         myApp.alert(error,"Error");

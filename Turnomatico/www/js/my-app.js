@@ -222,7 +222,8 @@ function imprimir(key,fecha,hora){
                                 text: 'Reimprimir',
                                 bold: true,
                                 onClick: function() {
-                                  imprimir(key,fecha,hora);
+                                    myApp.showPreloader('Imprimiendo');
+                                    imprimir(key,fecha,hora);
                                 }
                               },{
                                 text: 'Ok, gracias',
@@ -269,7 +270,8 @@ function imprimir(key,fecha,hora){
                       {
                         text: 'Reimprimir',
                         onClick: function() {
-                          imprimir(key,fecha,hora);
+                            myApp.showPreloader('Imprimiendo');
+                            imprimir(key,fecha,hora);
                         }
                       },
                       {
